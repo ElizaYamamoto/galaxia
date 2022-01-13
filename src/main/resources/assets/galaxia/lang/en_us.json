@@ -5,7 +5,11 @@
 	"block.galaxia.dragonfire_furnace": "Dragonfire Furnace",
 	"block.galaxia.soul_furnace": "Soul Furnace",
 	"block.galaxia.meteor_ore": "Meteorite",
+	"block.galaxia.meteor_block": "Meteor Block",
 	"block.galaxia.cometsteel_ore": "Cometstone",
+	"block.galaxia.cometsteel_block": "Cometsteel Block",
+	"block.galaxia.soal_ore": "Soal Ore",
+	"block.galaxia.soal_block": "Soal Block",
 	
 	//Items
 	"item.galaxia.soal": "Soal", 

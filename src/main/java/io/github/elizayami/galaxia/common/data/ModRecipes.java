@@ -48,6 +48,8 @@ public class ModRecipes extends RecipeProvider
 		
 		// ITEMS
 		
+		ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COMETSTEEL.ingot.get(), 1).addIngredient(ItemInit.STARDUST.get(), 4).addIngredient(ItemInit.STARDUST.get(), 4).addCriterion("has_item", hasItem(BlockInit.METEOR.ingot.get())).addCriterion("has_stardust", hasItem(ItemInit.STARDUST.get())).build(consumer, rl("cometsteel_ingot_from_stardust"));
+		
 	    // LANTERNS
 	    
 	    // PEDESTALS
@@ -133,9 +135,16 @@ public class ModRecipes extends RecipeProvider
 	    int blastTime = smeltTime / 2;
 	    if (material.hasOre)
 	    {
+	    	Item result = material.ingot.get();
+	    	
+	    	if (material == BlockInit.COMETSTEEL)
+	    	{
+	    		result = ItemInit.STARDUST.get();
+	    	}
+	    	
 	    	CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, smeltTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_smelting"));
 	    	CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, blastTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_blasting"));
-	    }
+	 	}
 	    Item[] nuggetables = new Item[] { material.axe.get(), material.pickaxe.get(), material.shovel.get(), material.hoe.get(),material.sword.get(), material.helmet.get(), material.chestplate.get(), material.leggings.get(), material.boots.get() };
 	    CookingRecipeBuilder nuggetSmeltingRecipes = CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(nuggetables), material.nugget.get(), exp, smeltTime);
 	    CookingRecipeBuilder nuggetBlastingRecipes = CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(nuggetables), material.nugget.get(), exp, blastTime);

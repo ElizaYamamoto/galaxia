@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "galaxia:block/cometsteel_tile",
+    "bottom": "galaxia:block/cometsteel_tile",
+    "top": "galaxia:block/cometsteel_tile"
+  }
+}

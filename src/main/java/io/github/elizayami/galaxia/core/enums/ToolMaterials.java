@@ -9,7 +9,7 @@ import net.minecraft.util.LazyValue;
 
 public enum ToolMaterials implements IItemTier 
 {
-	METEOR(2, 2000, 3, 5, 3, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
+	METEOR(2, 2000, 3, 1, 1, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
 
 	COMETSTEEL(5, 3000, 9, 5, 15, () -> Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get())),
 

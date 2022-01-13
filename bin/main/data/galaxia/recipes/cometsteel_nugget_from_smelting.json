@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    {
+      "item": "galaxia:cometsteel_axe"
+    },
+    {
+      "item": "galaxia:cometsteel_pickaxe"
+    },
+    {
+      "item": "galaxia:cometsteel_shovel"
+    },
+    {
+      "item": "galaxia:cometsteel_hoe"
+    },
+    {
+      "item": "galaxia:cometsteel_sword"
+    },
+    {
+      "item": "galaxia:cometsteel_helmet"
+    },
+    {
+      "item": "galaxia:cometsteel_chestplate"
+    },
+    {
+      "item": "galaxia:cometsteel_leggings"
+    },
+    {
+      "item": "galaxia:cometsteel_boots"
+    }
+  ],
+  "result": "galaxia:cometsteel_nugget",
+  "experience": 0.35,
+  "cookingtime": 200
+}

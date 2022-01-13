@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": [
+    {
+      "item": "galaxia:meteor_axe"
+    },
+    {
+      "item": "galaxia:meteor_pickaxe"
+    },
+    {
+      "item": "galaxia:meteor_shovel"
+    },
+    {
+      "item": "galaxia:meteor_hoe"
+    },
+    {
+      "item": "galaxia:meteor_sword"
+    },
+    {
+      "item": "galaxia:meteor_helmet"
+    },
+    {
+      "item": "galaxia:meteor_chestplate"
+    },
+    {
+      "item": "galaxia:meteor_leggings"
+    },
+    {
+      "item": "galaxia:meteor_boots"
+    }
+  ],
+  "result": "galaxia:meteor_nugget",
+  "experience": 0.35,
+  "cookingtime": 100
+}

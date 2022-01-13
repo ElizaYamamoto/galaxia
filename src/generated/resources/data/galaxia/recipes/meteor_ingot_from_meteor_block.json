@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "meteor_ingot",
+  "ingredients": [
+    {
+      "item": "galaxia:meteor_block"
+    }
+  ],
+  "result": {
+    "item": "galaxia:meteor_ingot",
+    "count": 9
+  }
+}

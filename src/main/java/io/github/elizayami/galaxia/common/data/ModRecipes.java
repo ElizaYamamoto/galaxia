@@ -165,7 +165,6 @@ public class ModRecipes extends RecipeProvider
 	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.tile.get()).patternLine("###").setGroup("end_metal_slabs").addCriterion("has_" + material.block + "_block", hasItem(material.block.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.door.get(), 3).key('#', material.ingot.get()).patternLine("##").patternLine("##").patternLine("##").setGroup("end_metal_doors").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.trapdoor.get()).key('#', material.ingot.get()).patternLine("##").patternLine("##").setGroup("end_metal_trapdoors").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.pressure_plate.get()).key('#', material.ingot.get()).patternLine("##").setGroup("end_metal_plates").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(Blocks.SMITHING_TABLE).key('I', material.ingot.get()).key('#', ItemTags.PLANKS).patternLine("II").patternLine("##").patternLine("##").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer, rl("smithing_table_from_" + material.name + "_ingot"));
 	    
 	    // Furnace & blast furnace

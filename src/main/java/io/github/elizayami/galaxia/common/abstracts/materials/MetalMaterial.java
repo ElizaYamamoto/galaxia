@@ -7,8 +7,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.StairsBlock;
@@ -32,7 +30,6 @@ public class MetalMaterial
 	public final RegistryObject<Block> ore;
 	public final RegistryObject<Block> block;
 	public final RegistryObject<Block> tile;
-	public final RegistryObject<Block> pressure_plate;
 	public final RegistryObject<Block> door;
 	public final RegistryObject<Block> trapdoor;
 	public final RegistryObject<Block> stairs;
@@ -90,7 +87,6 @@ public class MetalMaterial
 		slab = BlockInit.registerBlockWithDefaultItem(name + "_slab", () -> new SlabBlock(blockSettings));
 		door = BlockInit.registerBlockWithDefaultItem(name + "_door", () -> new DoorBlock(AbstractBlock.Properties.from(block.get()).notSolid()));
 		trapdoor = BlockInit.registerBlockWithDefaultItem(name + "_trapdoor", () -> new TrapDoorBlock(AbstractBlock.Properties.from(block.get()).notSolid()));
-		pressure_plate = BlockInit.registerBlockWithDefaultItem(name + "_pressure_plate", () -> new PressurePlateBlock(Sensitivity.EVERYTHING, blockSettings));
 		
 		nugget = ItemInit.registerItem(name + "_nugget", () -> new Item(itemSettings));
 		ingot = ItemInit.registerItem(name + "_ingot", () -> new Item(itemSettings));

@@ -174,9 +174,6 @@ public class ModBlockStates extends BlockStateProvider
         
 		trapdoorBlock((TrapDoorBlock) material.trapdoor.get(), modLoc("block/" + material.name + "_trapdoor"), true);		
 	    makeBlockItemFromExistingModel(material.trapdoor.get(), "block/" + material.name + "_trapdoor_bottom");
-	    
-		pressurePlateBlock((PressurePlateBlock)material.pressure_plate.get(), material.name, modLoc("block/" + material.name + "_block"));
-		makeBlockItemFromExistingModel(material.pressure_plate.get());
 		
 	}
 	

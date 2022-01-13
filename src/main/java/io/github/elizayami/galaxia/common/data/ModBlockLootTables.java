@@ -30,6 +30,7 @@ public class ModBlockLootTables extends BlockLootTables {
 		// BLOCKS
 		registerDropSelfLootTable(TileEntityInit.blockSF);
 		registerDropSelfLootTable(TileEntityInit.blockDFF);
+		registerDropSelfLootTable(BlockInit.SOAL_BLOCK.get());
 
 		// MATERIALS
 
@@ -50,7 +51,8 @@ public class ModBlockLootTables extends BlockLootTables {
 
 		// METAL MATERIALS
 		
-		//registerMetalMaterialLootTables(BlockInit.METAL);
+		registerMetalMaterialLootTables(BlockInit.METEOR);
+		registerMetalMaterialLootTables(BlockInit.COMETSTEEL);
 
 	}
 
@@ -103,7 +105,6 @@ public class ModBlockLootTables extends BlockLootTables {
 		registerLootTable(material.slab.get(), BlockLootTables::droppingSlab);
 		registerLootTable(material.door.get(), BlockLootTables::registerDoor);
 		registerDropSelfLootTable(material.trapdoor.get());
-		registerDropSelfLootTable(material.pressure_plate.get());
 	}
 
 }

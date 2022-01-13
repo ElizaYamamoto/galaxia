@@ -1,9 +1,9 @@
 {
   "parent": "minecraft:block/orientable_with_bottom",
   "textures": {
-    "top": "galaxia:blocks/dragonfire_furnace_top",
-    "front": "galaxia:blocks/dragonfire_furnace_front",
-    "side": "galaxia:blocks/dragonfire_furnace_side",
-    "bottom": "galaxia:blocks/dragonfire_furnace_bottom"
+    "top": "galaxia:block/dragonfire_furnace_top",
+    "front": "galaxia:block/dragonfire_furnace_front",
+    "side": "galaxia:block/dragonfire_furnace_side",
+    "bottom": "galaxia:block/dragonfire_furnace_bottom"
   }
 }

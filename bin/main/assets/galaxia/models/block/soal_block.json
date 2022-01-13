@@ -1,7 +1,7 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "galaxia:blocks/soal_block",
-    "particle": "galaxia:blocks/soal_block"
+    "all": "galaxia:block/soal_block",
+    "particle": "galaxia:block/soal_block"
   }
 }

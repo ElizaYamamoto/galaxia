@@ -32,25 +32,6 @@ public class BlockInit
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Galaxia.MOD_ID);
 	
 	//ores
-	public static final RegistryObject<Block> COMETSTONE = BLOCKS.
-			register("cometstone",
-					() -> new Block(AbstractBlock.Properties.
-							create(Material.IRON).
-							sound(SoundType.ANCIENT_DEBRIS).
-							hardnessAndResistance(5f, 10f).
-							harvestLevel(4).
-							harvestTool(ToolType.PICKAXE).
-							setRequiresTool()));
-	
-	public static final RegistryObject<Block> METEORITE = BLOCKS.
-			register("meteorite",
-					() -> new Block(AbstractBlock.Properties.
-							create(Material.IRON).
-							sound(SoundType.ANCIENT_DEBRIS).
-							hardnessAndResistance(2f, 4f).
-							harvestLevel(2).
-							harvestTool(ToolType.PICKAXE).
-							setRequiresTool()));
 	
 	public static final RegistryObject<Block> SOAL_ORE = BLOCKS.
 			register("soal_ore",

@@ -9,11 +9,11 @@ import net.minecraft.util.LazyValue;
 
 public enum ToolMaterials implements IItemTier 
 {
-	METEOR(2, 2000, 3, 5, 3, () -> Ingredient.fromItems(BlockInit.METEORITE.get())),
+	METEOR(2, 2000, 3, 5, 3, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
 
-	COMETSTEEL(5, 3000, 9, 5, 15, () -> Ingredient.fromItems(BlockInit.COMETSTONE.get())),
+	COMETSTEEL(5, 3000, 9, 5, 15, () -> Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get())),
 
-	GALAXIUM(6, 5000, 11, 6, 16, () -> Ingredient.fromItems(BlockInit.COMETSTONE.get()));
+	GALAXIUM(6, 5000, 11, 6, 16, () -> Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get()));
 	
 	private final int harvestLevel, maxUses, enchantability;
 	private final float efficiency, attackDamage;

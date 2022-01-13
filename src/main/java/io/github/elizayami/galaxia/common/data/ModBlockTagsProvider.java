@@ -26,8 +26,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 	{
 		// Misc Forge tags
 		getOrCreateBuilder(Tags.Blocks.ORES).add(BlockInit.SOAL_ORE.get());
-		getOrCreateBuilder(Tags.Blocks.ORES).add(BlockInit.METEORITE.get());
-		getOrCreateBuilder(Tags.Blocks.ORES).add(BlockInit.COMETSTONE.get());
 		
 		getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).add(BlockInit.SOAL_BLOCK.get());
 		

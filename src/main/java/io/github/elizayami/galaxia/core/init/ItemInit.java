@@ -21,15 +21,6 @@ public class ItemInit
 	
 	//Tools
 	
-	//Blocks
-	public static final RegistryObject<BlockItem> COMETSTONE = ITEMS.register("cometstone",
-			() -> new BlockItem(BlockInit.COMETSTONE.get(),
-					new Item.Properties().group(Galaxia.galaxiaGroup)));
-	
-	public static final RegistryObject<BlockItem> METEORITE = ITEMS.register("meteorite",
-			() -> new BlockItem(BlockInit.METEORITE.get(),
-					new Item.Properties().group(Galaxia.galaxiaGroup)));
-	
 	public static final RegistryObject<BlockItem> SOAL_ORE = ITEMS.register("soal_ore",
 			() -> new BlockItem(BlockInit.SOAL_ORE.get(),
 					new Item.Properties().group(Galaxia.galaxiaGroup)));

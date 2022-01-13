@@ -55,7 +55,7 @@ public class ModBlockStates extends BlockStateProvider
 		//registerStoneMaterialBlockStates(BlockInit.STONE);
 
 		// METAL MATERIALS
-		registerMetalMaterialBlockStates(BlockInit.COMETSTEEL);
+		registerMetalMaterialBlockStates(BlockInit.METEOR);
 		registerMetalMaterialBlockStates(BlockInit.COMETSTEEL);
 		
 		

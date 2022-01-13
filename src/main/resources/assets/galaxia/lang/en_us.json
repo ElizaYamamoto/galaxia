@@ -1,0 +1,10 @@
+{
+	"itemGroup.galaxiatab": "Galaxia",
+
+	//Blocks
+	"block.galaxia.dragonfire_furnace": "Dragonfire Furnace",
+	
+	//Items
+	"item.galaxia.soal": "Soal", 
+	"item.galaxia.stardust": "Stardust"  
+}

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,is_burning=false": {
+      "model": "galaxia:block/dragonfire_furnace"
+    },
+    "facing=south,is_burning=false": {
+      "model": "galaxia:block/dragonfire_furnace",
+      "y": 180
+    },
+    "facing=west,is_burning=false": {
+      "model": "galaxia:block/dragonfire_furnace",
+      "y": 270
+    },
+    "facing=east,is_burning=false": {
+      "model": "galaxia:block/dragonfire_furnace",
+      "y": 90
+    },
+    "facing=north,is_burning=true": {
+      "model": "galaxia:block/dragonfire_furnace_on"
+    },
+    "facing=south,is_burning=true": {
+      "model": "galaxia:block/dragonfire_furnace_on",
+      "y": 180
+    },
+    "facing=west,is_burning=true": {
+      "model": "galaxia:block/dragonfire_furnace_on",
+      "y": 270
+    },
+    "facing=east,is_burning=true": {
+      "model": "galaxia:block/dragonfire_furnace_on",
+      "y": 90
+    }
+  }
+}

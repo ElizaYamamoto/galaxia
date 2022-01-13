@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "top": "galaxia:blocks/soul_furnace_top",
+    "front": "galaxia:blocks/soul_furnace_front",
+    "side": "galaxia:blocks/soul_furnace_side",
+    "bottom": "galaxia:blocks/soul_furnace_top"
+  }
+}

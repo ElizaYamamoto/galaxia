@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_metal_tile",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:meteor_block"
+    }
+  },
+  "result": {
+    "item": "galaxia:meteor_tile",
+    "count": 4
+  }
+}

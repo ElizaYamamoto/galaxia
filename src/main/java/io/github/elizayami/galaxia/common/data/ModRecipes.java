@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
@@ -48,65 +49,73 @@ public class ModRecipes extends RecipeProvider
 		
 		// ITEMS
 		
-		ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COMETSTEEL.ingot.get(), 1).addIngredient(ItemInit.STARDUST.get(), 4).addIngredient(ItemInit.STARDUST.get(), 4).addCriterion("has_item", hasItem(BlockInit.METEOR.ingot.get())).addCriterion("has_stardust", hasItem(ItemInit.STARDUST.get())).build(consumer, rl("cometsteel_ingot_from_stardust"));
+		ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COMETSTEEL.ingot.get(), 1).addIngredient(ItemInit.COMET_TRAIL_DUST.get(), 4).addIngredient(ItemInit.COMET_TRAIL_DUST.get(), 4).addCriterion("has_item", hasItem(BlockInit.METEOR.ingot.get())).addCriterion("has_comet_trail_dust", hasItem(ItemInit.COMET_TRAIL_DUST.get())).build(consumer, rl("cometsteel_ingot_from_stardust"));
 		
 	    // LANTERNS
 	    
 	    // PEDESTALS
 	    
 		// FURNACE
+		
 		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ItemInit.SOAL_ORE.get()), ItemInit.SOAL.get(), 0.35F, 200).addCriterion("has_soal_ore", hasItem(ItemInit.SOAL_ORE.get())).build(consumer, rl("soal_from_ore"));
 		
 		// ARMORS AND TOOLS
-		makeToolsetRecipes(BlockInit.METEOR, consumer);
-		makeToolsetRecipes(BlockInit.COMETSTEEL, consumer);
 		
 		// WOODEN MATERIALS
+
+		makeWoodenMaterialRecipes(BlockInit.SHADOWSPIKE, consumer);
 		
 		// STONE MATERIALS
 		
+		makeStoneMaterialRecipes(BlockInit.DRAGONSTONE, consumer);
+		
+		// SANDSTONE MATERIALS
+
+		makeSandstoneMaterialRecipes(BlockInit.SOULSANDSTONE, consumer);
+		
 		// METAL MATERIALS
+		makeMetalMaterialRecipes(BlockInit.METEOR, consumer);
+		makeMetalMaterialRecipes(BlockInit.COMETSTEEL, consumer);
 		
 		// COLORED MATERIALS
 	}
 	
 	private void makeWoodenMaterialRecipes(WoodenMaterial material, Consumer<IFinishedRecipe> consumer)
 	{
-		ShapelessRecipeBuilder.shapelessRecipe(material.planks.get(), 4).addIngredient(material.logItemTag).setGroup("end_planks").addCriterion("has_logs", hasItem(material.logItemTag)).build(consumer);
-		ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.planks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("end_planks__stairs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-		ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.planks.get()).patternLine("###").setGroup("end_planks_slabs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.fence.get(), 3).key('#', Items.STICK).key('W', material.planks.get()).patternLine("W#W").patternLine("W#W").setGroup("end_planks_fences").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.gate.get()).key('#', Items.STICK).key('W', material.planks.get()).patternLine("#W#").patternLine("#W#").setGroup("end_planks_gates").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapelessRecipeBuilder.shapelessRecipe(material.button.get()).addIngredient(material.planks.get()).setGroup("end_planks_buttons").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.pressurePlate.get()).key('#', material.planks.get()).patternLine("##").setGroup("end_planks_plates").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.trapdoor.get(), 2).key('#', material.planks.get()).patternLine("###").patternLine("###").setGroup("end_trapdoors").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.door.get(), 3).key('#', material.planks.get()).patternLine("##").patternLine("##").patternLine("##").setGroup("end_doors").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+		ShapelessRecipeBuilder.shapelessRecipe(material.planks.get(), 4).addIngredient(material.logItemTag).setGroup("galaxia_planks").addCriterion("has_logs", hasItem(material.logItemTag)).build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.planks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_planks_stairs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.planks.get()).patternLine("###").setGroup("galaxia_planks_slabs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.fence.get(), 3).key('#', Items.STICK).key('W', material.planks.get()).patternLine("W#W").patternLine("W#W").setGroup("galaxia__planks_fences").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.gate.get()).key('#', Items.STICK).key('W', material.planks.get()).patternLine("#W#").patternLine("#W#").setGroup("galaxia_planks_gates").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapelessRecipeBuilder.shapelessRecipe(material.button.get()).addIngredient(material.planks.get()).setGroup("galaxia_planks_buttons").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.pressurePlate.get()).key('#', material.planks.get()).patternLine("##").setGroup("galaxia_planks_plates").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.trapdoor.get(), 2).key('#', material.planks.get()).patternLine("###").patternLine("###").setGroup("galaxia_trapdoors").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.door.get(), 3).key('#', material.planks.get()).patternLine("##").patternLine("##").patternLine("##").setGroup("galaxia_doors").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.bark.get(), 3).key('#', material.log.get()).patternLine("##").patternLine("##").addCriterion("has_log", hasItem(material.log.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.bark_stripped.get(), 3).key('#', material.log_stripped.get()).patternLine("##").patternLine("##").addCriterion("has_log_stripped", hasItem(material.log_stripped.get())).build(consumer);
 	    
-	    ShapedRecipeBuilder.shapedRecipe(material.composter.get(), 1).key('#', material.slab.get()).patternLine("# #").patternLine("# #").patternLine("###").setGroup("end_composters").addCriterion("has_slabs", hasItem(material.slab.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.craftingTable.get(), 1).key('#', material.planks.get()).patternLine("##").patternLine("##").setGroup("end_crafting_tables").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.ladder.get(), 3).key('#', material.planks.get()).key('I', Items.STICK).patternLine("I I").patternLine("I#I").patternLine("I I").setGroup("end_ladders").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.chest.get(), 1).key('#', material.planks.get()).patternLine("###").patternLine("# #").patternLine("###").setGroup("end_chests").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.sign.get(), 3).key('#', material.planks.get()).key('I', Items.STICK).patternLine("###").patternLine("###").patternLine(" I ").setGroup("end_signs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.barrel.get(), 1).key('#', material.planks.get()).key('S', material.slab.get()).patternLine("#S#").patternLine("# #").patternLine("#S#").setGroup("end_barrels").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.shelf.get(), 1).key('#', material.planks.get()).key('P', Items.BOOK).patternLine("###").patternLine("PPP").patternLine("###").setGroup("end_bookshelves").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.craftingTable.get(), 1).key('#', material.planks.get()).patternLine("##").patternLine("##").setGroup("galaxia_crafting_tables").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.ladder.get(), 3).key('#', material.planks.get()).key('I', Items.STICK).patternLine("I I").patternLine("I#I").patternLine("I I").setGroup("galaxia_ladders").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.chest.get(), 1).key('#', material.planks.get()).patternLine("###").patternLine("# #").patternLine("###").setGroup("galaxia_chests").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.sign.get(), 3).key('#', material.planks.get()).key('I', Items.STICK).patternLine("###").patternLine("###").patternLine(" I ").setGroup("galaxia_signs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.barrel.get(), 1).key('#', material.planks.get()).key('S', material.slab.get()).patternLine("#S#").patternLine("# #").patternLine("#S#").setGroup("galaxia_barrels").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.shelf.get(), 1).key('#', material.planks.get()).key('P', Items.BOOK).patternLine("###").patternLine("PPP").patternLine("###").setGroup("galaxia_bookshelves").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	}
 	
 	private void makeStoneMaterialRecipes(StoneMaterial material, Consumer<IFinishedRecipe> consumer)
 	{
 		// Crafting
-		ShapedRecipeBuilder.shapedRecipe(material.bricks.get(), 4).key('#', material.stone.get()).patternLine("##").patternLine("##").setGroup("end_bricks").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
-		ShapedRecipeBuilder.shapedRecipe(material.polished.get(), 4).key('#', material.bricks.get()).patternLine("##").patternLine("##").setGroup("end_tile").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
-		ShapedRecipeBuilder.shapedRecipe(material.tiles.get(), 4).key('#', material.polished.get()).patternLine("##").patternLine("##").setGroup("end_small_tile").addCriterion("has_" + material.polished.get().getRegistryName().getPath(), hasItem(material.polished.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.stone.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("end_stone_stairs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.stone.get()).patternLine("###").setGroup("end_stone_slabs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.brick_stairs.get(), 4).key('#', material.bricks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("end_stone_stairs").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.brick_slab.get(), 6).key('#', material.bricks.get()).patternLine("###").setGroup("end_stone_slabs").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.wall.get(), 6).key('#', material.stone.get()).patternLine("###").patternLine("###").setGroup("end_wall").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.brick_wall.get(), 6).key('#', material.bricks.get()).patternLine("###").patternLine("###").setGroup("end_wall").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
-	    ShapelessRecipeBuilder.shapelessRecipe(material.button.get()).addIngredient(material.stone.get()).setGroup("end_stone_buttons").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.pressure_plate.get()).key('#', material.stone.get()).patternLine("##").setGroup("end_stone_plates").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(material.bricks.get(), 4).key('#', material.stone.get()).patternLine("##").patternLine("##").setGroup("galaxia_bricks").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(material.polished.get(), 4).key('#', material.bricks.get()).patternLine("##").patternLine("##").setGroup("galaxia_tile").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(material.tiles.get(), 4).key('#', material.polished.get()).patternLine("##").patternLine("##").setGroup("galaxia_small_tile").addCriterion("has_" + material.polished.get().getRegistryName().getPath(), hasItem(material.polished.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.stone.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_stone_stairs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.stone.get()).patternLine("###").setGroup("galaxia_stone_slabs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.brick_stairs.get(), 4).key('#', material.bricks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_stone_stairs").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.brick_slab.get(), 6).key('#', material.bricks.get()).patternLine("###").setGroup("galaxia_stone_slabs").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.wall.get(), 6).key('#', material.stone.get()).patternLine("###").patternLine("###").setGroup("galaxia_wall").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.brick_wall.get(), 6).key('#', material.bricks.get()).patternLine("###").patternLine("###").setGroup("galaxia_wall").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
+	    ShapelessRecipeBuilder.shapelessRecipe(material.button.get()).addIngredient(material.stone.get()).setGroup("galaxia_stone_buttons").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.pressure_plate.get()).key('#', material.stone.get()).patternLine("##").setGroup("galaxia_stone_plates").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
 
 		// Stonecutting
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.stone.get()), material.bricks.get()).addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer, rl(material.name + "_bricks_from_" + material.name + "_stonecutting"));
@@ -122,6 +131,33 @@ public class ModRecipes extends RecipeProvider
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.bricks.get()), material.brick_stairs.get()).addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer, rl(material.name + "_bricks_stairs_from_" + material.name + "_bricks_stonecutting"));
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.bricks.get()), material.brick_slab.get(), 2).addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer, rl(material.name + "_bricks_slab_from_" + material.name + "_bricks_stonecutting"));
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.bricks.get()), material.brick_wall.get()).addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer, rl(material.name + "_bricks_wall_from_" + material.name + "_bricks_stonecutting"));
+	}
+
+	private void makeSandstoneMaterialRecipes(SandstoneMaterial material, Consumer<IFinishedRecipe> consumer)
+	{
+		// Crafting
+		if (material == BlockInit.IMPACTSANDSTONE)
+		{
+			ShapedRecipeBuilder.shapedRecipe(material.stone.get(), 4).key('#', ItemInit.IMPACT_SAND.get()).patternLine("##").patternLine("##").setGroup("galaxia_bricks").addCriterion("has_" + ItemInit.IMPACT_SAND.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+		}
+		if (material == BlockInit.SOULSANDSTONE)
+		{
+			ShapedRecipeBuilder.shapedRecipe(material.stone.get(), 4).key('#', Blocks.SOUL_SAND).patternLine("##").patternLine("##").setGroup("galaxia_bricks").addCriterion("has_" + Blocks.SOUL_SAND.getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+		}
+	    ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.stone.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_stone_stairs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.stone.get()).patternLine("###").setGroup("galaxia_stone_slabs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.wall.get(), 6).key('#', material.stone.get()).patternLine("###").patternLine("###").setGroup("galaxia_wall").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.smooth_stairs.get(), 4).key('#', material.smooth.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_stone_stairs").addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.smooth.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.smooth_slab.get(), 6).key('#', material.smooth.get()).patternLine("###").setGroup("galaxia_stone_slabs").addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.smooth.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.smooth_wall.get(), 6).key('#', material.smooth.get()).patternLine("###").patternLine("###").setGroup("galaxia_wall").addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.smooth.get())).build(consumer);
+
+		// Stonecutting
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.stone.get()), material.stairs.get()).addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer, rl(material.name + "_stairs_from_" + material.name + "_stonecutting"));
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.stone.get()), material.slab.get(), 2).addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer, rl(material.name + "_slab_from_" + material.name + "_stonecutting"));
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.stone.get()), material.wall.get()).addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer, rl(material.name + "_wall_from_" + material.name + "_stonecutting"));
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.smooth.get()), material.smooth_stairs.get()).addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.smooth.get())).build(consumer, rl(material.name + "_smooth_stairs_from_" + material.name + "_stonecutting"));
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.smooth.get()), material.smooth_slab.get(), 2).addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer, rl(material.name + "_smooth_slab_from_" + material.name + "_stonecutting"));
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.smooth.get()), material.smooth_wall.get()).addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.smooth.get())).build(consumer, rl(material.name + "_smooth_wall_from_" + material.name + "_stonecutting"));
 	}
 	
 	private void makeToolsetRecipes(MetalMaterial material, Consumer<IFinishedRecipe> consumer)
@@ -139,7 +175,7 @@ public class ModRecipes extends RecipeProvider
 	    	
 	    	if (material == BlockInit.COMETSTEEL)
 	    	{
-	    		result = ItemInit.STARDUST.get();
+	    		result = ItemInit.COMET_TRAIL_DUST.get();
 	    	}
 	    	
 	    	CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, smeltTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_smelting"));
@@ -169,11 +205,11 @@ public class ModRecipes extends RecipeProvider
 	    ShapedRecipeBuilder.shapedRecipe(material.ingot.get()).key('#', material.nugget.get()).patternLine("###").patternLine("###").patternLine("###").addCriterion("has_" + material.name + "_nugget", hasItem(material.nugget.get())).build(consumer, rl(material.name + "_ingot_from_" + material.name + "_nuggets"));
 		
 	    // Blocks
-	    ShapedRecipeBuilder.shapedRecipe(material.tile.get(), 4).key('#', material.block.get()).patternLine("##").patternLine("##").setGroup("end_metal_tile").addCriterion("has_" + material.name + "_block", hasItem(material.block.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.tile.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("end_metal_stairs").addCriterion("has_" + material.name + "_block", hasItem(material.block.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.tile.get()).patternLine("###").setGroup("end_metal_slabs").addCriterion("has_" + material.block + "_block", hasItem(material.block.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.door.get(), 3).key('#', material.ingot.get()).patternLine("##").patternLine("##").patternLine("##").setGroup("end_metal_doors").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.trapdoor.get()).key('#', material.ingot.get()).patternLine("##").patternLine("##").setGroup("end_metal_trapdoors").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.tile.get(), 4).key('#', material.block.get()).patternLine("##").patternLine("##").setGroup("galaxia_metal_tile").addCriterion("has_" + material.name + "_block", hasItem(material.block.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.tile.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_metal_stairs").addCriterion("has_" + material.name + "_block", hasItem(material.block.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.tile.get()).patternLine("###").setGroup("galaxia_metal_slabs").addCriterion("has_" + material.block + "_block", hasItem(material.block.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.door.get(), 3).key('#', material.ingot.get()).patternLine("##").patternLine("##").patternLine("##").setGroup("galaxia_metal_doors").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.trapdoor.get()).key('#', material.ingot.get()).patternLine("##").patternLine("##").setGroup("galaxia_metal_trapdoors").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(Blocks.SMITHING_TABLE).key('I', material.ingot.get()).key('#', ItemTags.PLANKS).patternLine("II").patternLine("##").patternLine("##").addCriterion("has_" + material.name + "_ingot", hasItem(material.ingot.get())).build(consumer, rl("smithing_table_from_" + material.name + "_ingot"));
 	    
 	    // Furnace & blast furnace

@@ -1,6 +1,7 @@
 package io.github.elizayami.galaxia.common.abstracts.materials;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.items.PaxelItem;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.block.AbstractBlock;
@@ -43,6 +44,8 @@ public class MetalMaterial
 	public final RegistryObject<Item> pickaxe;
 	public final RegistryObject<Item> axe;
 	public final RegistryObject<Item> hoe;
+	public final RegistryObject<Item> paxel;
+	
 	
 	public final RegistryObject<Item> helmet;
 	public final RegistryObject<Item> chestplate;
@@ -98,6 +101,7 @@ public class MetalMaterial
 		pickaxe = ItemInit.registerItem(name + "_pickaxe", () -> new PickaxeItem(material, 1, -2.8F, new Item.Properties().group(Galaxia.galaxiaGroup)));
 		axe = ItemInit.registerItem(name + "_axe", () -> new AxeItem(material, 6.0F, -3.0F, new Item.Properties().group(Galaxia.galaxiaGroup)));
 		hoe = ItemInit.registerItem(name + "_hoe", () -> new HoeItem(material, -3, 0.0F, new Item.Properties().group(Galaxia.galaxiaGroup)));
+		paxel = ItemInit.registerItem(name + "_paxel", () -> new PaxelItem(material,  1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 		
 		helmet = ItemInit.registerItem(name + "_helmet", () -> new ArmorItem(armor, EquipmentSlotType.HEAD, itemSettings));
 		chestplate = ItemInit.registerItem(name + "_chestplate", () -> new ArmorItem(armor, EquipmentSlotType.CHEST, itemSettings));

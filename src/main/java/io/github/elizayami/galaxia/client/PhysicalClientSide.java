@@ -38,7 +38,7 @@ public class PhysicalClientSide implements IPhysicalSide
 	{
 		// WOODEN MATERIALS
 		
-		//setWoodenMaterialRenderLayers(BlockInit.WOOD);
+		setWoodenMaterialRenderLayers(BlockInit.SHADOWSPIKE);
 		
 		// METAL MATERIALS
 

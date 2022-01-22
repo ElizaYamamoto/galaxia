@@ -16,12 +16,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
-public class StripableLogBlockTemplate extends PillarBlockTemplate 
+public class StripableLogBlockTemplate extends PillarBlockTemplate
 {
 	private final Block striped;
 	private final MaterialColor color;
-	
-	public StripableLogBlockTemplate(MaterialColor color, Block striped) 
+
+	public StripableLogBlockTemplate(MaterialColor color, Block striped)
 	{
 		super(AbstractBlock.Properties.from(striped));
 		this.striped = striped;
@@ -29,22 +29,24 @@ public class StripableLogBlockTemplate extends PillarBlockTemplate
 	}
 
 	@Override
-	public MaterialColor getMaterialColor() 
+	public MaterialColor getMaterialColor()
 	{
 		return color;
 	}
-	
+
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) 
+			Hand handIn, BlockRayTraceResult hit)
 	{
-		if (player.getHeldItemMainhand().getItem() instanceof AxeItem) 
+		if (player.getHeldItemMainhand().getItem() instanceof AxeItem)
 		{
 			worldIn.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			if (!worldIn.isRemote()) 
+			if (!worldIn.isRemote())
 			{
-				worldIn.setBlockState(pos, striped.getDefaultState().with(RotatedPillarBlock.AXIS, state.get(RotatedPillarBlock.AXIS)), 11);
-				if (player != null && !player.isCreative()) 
+				worldIn.setBlockState(pos,
+						striped.getDefaultState().with(RotatedPillarBlock.AXIS, state.get(RotatedPillarBlock.AXIS)),
+						11);
+				if (player != null && !player.isCreative())
 				{
 					player.getHeldItemMainhand().attemptDamageItem(1, worldIn.rand, (ServerPlayerEntity) player);
 				}

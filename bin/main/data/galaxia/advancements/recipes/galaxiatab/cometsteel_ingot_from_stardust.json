@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:cometsteel_ingot_from_stardust"
+    ]
+  },
+  "criteria": {
+    "has_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:meteor_ingot"
+          }
+        ]
+      }
+    },
+    "has_comet_trail_dust": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:comet_trail_dust"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:cometsteel_ingot_from_stardust"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_item",
+      "has_comet_trail_dust",
+      "has_the_recipe"
+    ]
+  ]
+}

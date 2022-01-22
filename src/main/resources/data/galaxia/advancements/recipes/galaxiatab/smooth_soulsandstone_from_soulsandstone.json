@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:smooth_soulsandstone_from_soulsandstone"
+    ]
+  },
+  "criteria": {
+    "has_soulsandstone": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:soul_sandstone"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:smooth_soulsandstone_from_soulsandstone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_soulsandstone",
+      "has_the_recipe"
+    ]
+  ]
+}

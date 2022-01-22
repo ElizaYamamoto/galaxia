@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:soul_sand"
+  },
+  "result": "galaxia:soul_sandstone_smooth",
+  "experience": 0.35,
+  "cookingtime": 200
+}

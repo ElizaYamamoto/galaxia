@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:soulsandstone_smooth"
+  },
+  "result": "galaxia:soulsandstone_smooth_stairs",
+  "count": 1
+}

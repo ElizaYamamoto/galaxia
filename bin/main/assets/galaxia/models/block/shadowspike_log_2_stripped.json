@@ -1,0 +1,8 @@
+{
+  "parent": "branchout:custom/spike2strip",
+  "textures": {
+    "all": "branchout:blocks/strippedshadowspikelog2",
+    "particle": "branchout:blocks/strippedshadowspikelog2",
+    "0": "branchout:blocks/strippedshadowspikelog2"
+  }
+}

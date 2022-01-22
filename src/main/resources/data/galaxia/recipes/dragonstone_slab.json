@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_stone_slabs",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:dragonstone"
+    }
+  },
+  "result": {
+    "item": "galaxia:dragonstone_slab",
+    "count": 6
+  }
+}

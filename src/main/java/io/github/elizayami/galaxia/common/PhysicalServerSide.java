@@ -16,4 +16,9 @@ public class PhysicalServerSide implements IPhysicalSide
 	{
 
 	}
+
+    public Object getArmorModel(int armorId) 
+    {
+        return null;
+    }
 }

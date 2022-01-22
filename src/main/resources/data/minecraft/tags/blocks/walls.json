@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:dragonstone_wall",
+    "galaxia:dragonstone_bricks_wall",
+    "galaxia:soul_sandstone_wall",
+    "galaxia:soul_sandstone_smooth_wall"
+  ]
+}

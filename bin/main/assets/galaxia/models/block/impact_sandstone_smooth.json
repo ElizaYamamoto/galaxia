@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "galaxia:block/impact_sandstone_bottom",
+    "up": "galaxia:block/impact_sandstone_top",
+    "north": "galaxia:block/impact_sandstone_smooth",
+    "south": "galaxia:block/impact_sandstone_smooth",
+    "east": "galaxia:block/impact_sandstone_smooth",
+    "west": "galaxia:block/impact_sandstone_smooth",
+    "particle": "galaxia:block/impact_sandstone_smooth"
+  }
+}

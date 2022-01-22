@@ -4,6 +4,7 @@ import java.util.function.Supplier;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.crafting.Ingredient;
@@ -12,13 +13,17 @@ import net.minecraft.util.SoundEvents;
 
 public enum ArmorMaterials implements IArmorMaterial
 {
-	METEOR(Galaxia.MOD_ID + ":meteor", 5, new int[] { 1, 4, 5, 2 }, 3, 
-			SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, () -> {
+	METEOR(Galaxia.MOD_ID + ":meteor", 20, new int[] { 2, 2, 2, 2 }, 3, 
+			SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1F, () -> {
 				return Ingredient.fromItems(BlockInit.METEOR.ingot.get());}, 0.0F),
 	
 	COMETSTEEL(Galaxia.MOD_ID + ":cometsteel", 26, new int[] {3, 6, 7, 3}, 15, 
 			SoundEvents.ITEM_ARMOR_EQUIP_IRON, 3.0F, () -> {
-				return Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get());}, 0.05F);
+				return Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get());}, 0.05F),
+	
+	GALAXIUM(Galaxia.MOD_ID + ":galaxium", 26, new int[] {5, 8, 10, 5}, 15, 
+			SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 6.0F, () -> {
+				return Ingredient.fromItems(ItemInit.GALAXIUM_STAR.get());}, 0.05F);
 
 
 	private static final int[] MAX_DAMAGE_ARRAY = { 11, 16, 15, 13 };

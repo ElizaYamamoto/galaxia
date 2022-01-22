@@ -1,0 +1,8 @@
+{
+  "parent": "branchout:custom/spike1",
+  "textures": {
+    "all": "branchout:blocks/shadowspikelog1",
+    "particle": "branchout:blocks/shadowspikelog1",
+    "0": "branchout:blocks/shadowspikelog1"
+  }
+}

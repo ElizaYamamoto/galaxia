@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_wall",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:dragonstone_bricks"
+    }
+  },
+  "result": {
+    "item": "galaxia:dragonstone_bricks_wall",
+    "count": 6
+  }
+}

@@ -19,21 +19,27 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class GalaxiaCraftingTableBlock extends CraftingTableBlock {
+public class GalaxiaCraftingTableBlock extends CraftingTableBlock
+{
 	private static final ITextComponent CONTAINER_NAME = new TranslationTextComponent("container.crafting");
 
-	public GalaxiaCraftingTableBlock(Properties properties) {
+	public GalaxiaCraftingTableBlock(Properties properties)
+	{
 		super(properties);
 	}
 
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		if (worldIn.isRemote) {
+			Hand handIn, BlockRayTraceResult hit)
+	{
+		if (worldIn.isRemote)
+		{
 			return ActionResultType.SUCCESS;
-		} else {
-			SimpleNamedContainerProvider provider = new SimpleNamedContainerProvider((id, inventory,
-					p) -> new ModCraftingContainer(id, inventory, IWorldPosCallable.of(worldIn, pos)),
+		}
+		else
+		{
+			SimpleNamedContainerProvider provider = new SimpleNamedContainerProvider(
+					(id, inventory, p) -> new ModCraftingContainer(id, inventory, IWorldPosCallable.of(worldIn, pos)),
 					CONTAINER_NAME);
 			NetworkHooks.openGui((ServerPlayerEntity) player, provider);
 			player.addStat(Stats.INTERACT_WITH_CRAFTING_TABLE);
@@ -42,24 +48,30 @@ public class GalaxiaCraftingTableBlock extends CraftingTableBlock {
 	}
 
 	@Override
-	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
-		return new SimpleNamedContainerProvider((id, inventory, player) -> {
+	public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos)
+	{
+		return new SimpleNamedContainerProvider((id, inventory, player) ->
+		{
 			return new WorkbenchContainer(id, inventory, IWorldPosCallable.of(worldIn, pos));
 		}, CONTAINER_NAME);
 	}
 
-	private static class ModCraftingContainer extends WorkbenchContainer {
+	private static class ModCraftingContainer extends WorkbenchContainer
+	{
 
 		private IWorldPosCallable worldPosCallable;
 
-		public ModCraftingContainer(int syncid, PlayerInventory playerInv, IWorldPosCallable posCallable) {
+		public ModCraftingContainer(int syncid, PlayerInventory playerInv, IWorldPosCallable posCallable)
+		{
 			super(syncid, playerInv, posCallable);
 			this.worldPosCallable = posCallable;
 		}
 
 		@Override
-		public boolean canInteractWith(PlayerEntity playerIn) {
-			return worldPosCallable.applyOrElse((world, pos) -> {
+		public boolean canInteractWith(PlayerEntity playerIn)
+		{
+			return worldPosCallable.applyOrElse((world, pos) ->
+			{
 				return !(world.getBlockState(pos).getBlock() instanceof GalaxiaCraftingTableBlock) ? false
 						: playerIn.getDistanceSq(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) <= 64d;
 			}, true);

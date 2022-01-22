@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "galaxia_stone_buttons",
+  "ingredients": [
+    {
+      "item": "galaxia:dragonstone"
+    }
+  ],
+  "result": {
+    "item": "galaxia:dragonstone_button"
+  }
+}

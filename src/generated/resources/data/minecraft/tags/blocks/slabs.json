@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
+    "galaxia:dragonstone_slab",
+    "galaxia:dragonstone_bricks_slab",
+    "galaxia:soul_sandstone_slab",
+    "galaxia:soul_sandstone_smooth_slab",
     "galaxia:meteor_slab",
     "galaxia:cometsteel_slab"
   ]

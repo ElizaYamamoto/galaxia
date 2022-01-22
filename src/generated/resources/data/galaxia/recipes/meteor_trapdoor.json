@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_metal_trapdoors",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:meteor_ingot"
+    }
+  },
+  "result": {
+    "item": "galaxia:meteor_trapdoor"
+  }
+}

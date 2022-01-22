@@ -51,7 +51,7 @@ public class StoneMaterial
 				() -> new Block(material));
 		polished = BlockInit.registerBlockWithDefaultItem(name + "_polished", 
 				() -> new Block(material));
-		tiles = BlockInit.registerBlockWithDefaultItem(name + "_tiles", 
+		tiles = BlockInit.registerBlockWithDefaultItem(name + "_tile", 
 				() -> new Block(material));
 		stairs = BlockInit.registerBlockWithDefaultItem(name + "_stairs", 
 				() -> new StairsBlock(() -> stone.get().getDefaultState(), material));

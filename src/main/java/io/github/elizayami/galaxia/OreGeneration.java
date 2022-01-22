@@ -23,18 +23,18 @@ public class OreGeneration
 	{
 		if (!(event.getCategory().equals(Biome.Category.NETHER) || event.getCategory().equals(Biome.Category.THEEND)))
 		{
-			generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
-					BlockInit.METEOR.ore.get().getDefaultState(), 5, 1, 30, 10);
+			generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, BlockInit.METEOR.ore.get().getDefaultState(), 5, 1, 30, 10);
 		}
 
 		if (event.getCategory().equals(Biome.Category.THEEND))
 		{
 			generateOre(event.getGeneration(), END_STONE, BlockInit.COMETSTEEL.ore.get().getDefaultState(), 2, 1, 255, 2);
+			
+			generateOre(event.getGeneration(), new BlockMatchRuleTest(Blocks.AIR), BlockInit.GALAXIUM_STAR2.getDefaultState(), 1, 1, 100, 1);
 		}
 	}
 
-	private static void generateOre(BiomeGenerationSettingsBuilder settings, RuleTest fillerType, BlockState state,
-			int veinSize, int minHeight, int maxHeight, int amount)
+	private static void generateOre(BiomeGenerationSettingsBuilder settings, RuleTest fillerType, BlockState state, int veinSize, int minHeight, int maxHeight, int amount)
 	{
 		settings.withFeature(GenerationStage.Decoration.UNDERGROUND_ORES,
 				Feature.ORE.withConfiguration(new OreFeatureConfig(fillerType, state, veinSize))

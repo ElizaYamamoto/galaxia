@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:soal_ore",
+    "galaxia:meteor_ore",
+    "galaxia:cometsteel_ore"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "galaxia:block/soul_sandstone_smooth_slab_top"
+    },
+    "type=bottom": {
+      "model": "galaxia:block/soul_sandstone_smooth_slab"
+    },
+    "type=double": {
+      "model": "galaxia:block/soul_sandstone_smooth"
+    }
+  }
+}

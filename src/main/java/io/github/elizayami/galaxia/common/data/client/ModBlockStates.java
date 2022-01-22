@@ -2,6 +2,8 @@ package io.github.elizayami.galaxia.common.data.client;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
@@ -44,21 +46,30 @@ public class ModBlockStates extends BlockStateProvider
 	@Override
 	protected void registerStatesAndModels() 
 	{
+		simpleBlock(BlockInit.IMPACT_SAND.get());
+		makeBlockItemFromExistingModel(BlockInit.IMPACT_SAND.get());
+		
 		// BLOCKS
 		
 		// WOODEN MATERIALS
 		
-		//registerWoodenMaterialBlockStates(BlockInit.WOOD);
+		registerWoodenMaterialBlockStates(BlockInit.SHADOWSPIKE);
 		
 		// STONE MATERIALS
 		
-		//registerStoneMaterialBlockStates(BlockInit.STONE);
+		registerStoneMaterialBlockStates(BlockInit.DRAGONSTONE);
 
+		// SANDSTONE MATERIALS
+		
+		registerSandstoneMaterialBlockStates(BlockInit.SOULSANDSTONE);
+		registerSandstoneMaterialBlockStates(BlockInit.IMPACTSANDSTONE);
+		
 		// METAL MATERIALS
 		registerMetalMaterialBlockStates(BlockInit.METEOR);
 		registerMetalMaterialBlockStates(BlockInit.COMETSTEEL);
 		
-		
+		//GEM MATERIALS
+		registerGemMaterialBlockStates(BlockInit.GALAXIUM);
 	}
 	
 	private void registerWoodenMaterialBlockStates(WoodenMaterial material)
@@ -92,8 +103,6 @@ public class ModBlockStates extends BlockStateProvider
 		pressurePlateBlock((PressurePlateBlock)material.pressurePlate.get(), material.name, planksTexture);
 		makeBlockItemFromExistingModel(material.pressurePlate.get());
 		
-	    composterBlock((ComposterBlock)material.composter.get(), material.name);
-		makeBlockItemFromExistingModel(material.composter.get());
 	    craftingTableBlock((CraftingTableBlock)material.craftingTable.get(), material.name);
 		makeBlockItemFromExistingModel(material.craftingTable.get());
 	    // BlockItem handled in item model provider
@@ -148,6 +157,36 @@ public class ModBlockStates extends BlockStateProvider
 		pressurePlateBlock((PressurePlateBlock)material.pressure_plate.get(), material.name, stoneTexture);
 		makeBlockItemFromExistingModel(material.pressure_plate.get());
 	}	
+
+	private void registerSandstoneMaterialBlockStates(SandstoneMaterial material)
+	{
+		ResourceLocation stoneTexture = modLoc("block/" + material.name);
+		
+		sandstoneBlock(material.stone.get(), material.name, "");
+		makeBlockItemFromExistingModel(material.stone.get());
+
+		sandstoneBlock(material.chiseled.get(), material.name, "_chiseled");
+		makeBlockItemFromExistingModel(material.chiseled.get());
+
+		sandstoneBlock(material.smooth.get(), material.name, "_smooth");
+		makeBlockItemFromExistingModel(material.smooth.get());
+		
+		stairsBlock((StairsBlock) material.stairs.get(), modLoc("block/" + material.name), modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
+		makeBlockItemFromExistingModel(material.stairs.get());
+		
+		slabBlock((SlabBlock) material.slab.get(), material.stone.get().getRegistryName(), modLoc("block/" + material.name), modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
+		makeBlockItemFromExistingModel(material.slab.get());
+
+		wallBlock((WallBlock) material.wall.get(), stoneTexture);
+		
+		stairsBlock((StairsBlock) material.smooth_stairs.get(), modLoc("block/" + material.name + "_smooth"), modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
+		makeBlockItemFromExistingModel(material.smooth_stairs.get());
+		
+		slabBlock((SlabBlock) material.smooth_slab.get(), material.smooth.get().getRegistryName(), modLoc("block/" + material.name + "_smooth"), modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
+		makeBlockItemFromExistingModel(material.smooth_slab.get());
+		
+		wallBlock((WallBlock) material.smooth_wall.get(), modLoc("block/" + material.name + "_smooth"));
+	}	
 	
 	private void registerMetalMaterialBlockStates(MetalMaterial material)
 	{
@@ -174,6 +213,28 @@ public class ModBlockStates extends BlockStateProvider
         
 		trapdoorBlock((TrapDoorBlock) material.trapdoor.get(), modLoc("block/" + material.name + "_trapdoor"), true);		
 	    makeBlockItemFromExistingModel(material.trapdoor.get(), "block/" + material.name + "_trapdoor_bottom");
+		
+	}
+	
+	private void registerGemMaterialBlockStates(GemMaterial material)
+	{
+		if (material.hasOre)
+		{		
+			simpleBlock(material.ore.get());
+			makeBlockItemFromExistingModel(material.ore.get());
+		}
+		
+		simpleBlock(material.block.get());
+		makeBlockItemFromExistingModel(material.block.get());
+		
+		simpleBlock(material.tile.get());
+		makeBlockItemFromExistingModel(material.tile.get());
+		
+		stairsBlock((StairsBlock) material.stairs.get(), modLoc("block/" + material.name + "_tile"));
+		makeBlockItemFromExistingModel(material.stairs.get());
+		
+		slabBlock((SlabBlock) material.slab.get(), material.tile.get().getRegistryName(), modLoc("block/" + material.name + "_tile"));
+		makeBlockItemFromExistingModel(material.slab.get());
 		
 	}
 	
@@ -240,8 +301,23 @@ public class ModBlockStates extends BlockStateProvider
     	for (int i = 0; i < contents.length; i++)
     		getMultipartBuilder(block).part().modelFile(contents[i]).addModel().condition(ComposterBlock.LEVEL, i + 1).end();
 		getMultipartBuilder(block).part().modelFile(composterReady).addModel().condition(ComposterBlock.LEVEL, 8).end();
-    }
+    }    
     
+    private void sandstoneBlock(Block block, String material, String addon)
+    {
+    	ResourceLocation Side = modLoc("block/" + material + addon);
+    	
+		ModelFile model = models()
+				.cube(material + addon, modLoc("block/" + material + "_bottom"),
+						modLoc("block/" + material + "_top"),
+						Side,
+						Side,
+						Side,
+						Side)
+				.texture("particle", Side);
+		simpleBlock(block, model);
+    }
+   
     private void craftingTableBlock(CraftingTableBlock block, String material)
     {
 		ModelFile model = models()

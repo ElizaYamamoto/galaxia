@@ -15,17 +15,6 @@ import io.github.elizayami.galaxia.common.abstracts.furnace.FurnaceZoneContents;
 import io.github.elizayami.galaxia.common.tileentity.TileEntityDragonfireFurnace;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 
-/**
- * User: brandon3055 Date: 06/01/2015
- *
- * ContainerFurnace is used to link the client side gui to the server side
- * inventory. It collates the various different inventories into one place
- * (using Slots) It is also used to send server side data such as progress bars
- * to the client for use in guis
- *
- * Vanilla automatically detects changes in the server side Container (the Slots
- * and the trackedInts) and sends them to the client container.
- */
 public class ContainerDFF extends Container
 {
 
@@ -40,19 +29,11 @@ public class ContainerDFF extends Container
 	public static ContainerDFF createContainerClientSide(int windowID, PlayerInventory playerInventory,
 			net.minecraft.network.PacketBuffer extraData)
 	{
-		// don't need extraData for this example; if you want you can use it to provide
-		// extra information from the server, that you can use
-		// when creating the client container
-		// eg String detailedDescription = extraData.readString(128);
 		FurnaceZoneContents inputZoneContents = FurnaceZoneContents.createForClientSideContainer(INPUT_SLOTS_COUNT);
 		FurnaceZoneContents outputZoneContents = FurnaceZoneContents.createForClientSideContainer(OUTPUT_SLOTS_COUNT);
 		FurnaceZoneContents fuelZoneContents = FurnaceZoneContents.createForClientSideContainer(FUEL_SLOTS_COUNT);
 		FurnaceStateData furnaceStateData = new FurnaceStateData();
 
-		// on the client side there is no parent TileEntity to communicate with, so we:
-		// 1) use dummy inventories and furnace state data (tracked ints)
-		// 2) use "do nothing" lambda functions for canPlayerAccessInventory and
-		// markDirty
 		return new ContainerDFF(windowID, playerInventory, inputZoneContents, outputZoneContents, fuelZoneContents,
 				furnaceStateData);
 	}

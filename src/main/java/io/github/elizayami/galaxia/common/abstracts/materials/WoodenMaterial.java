@@ -17,7 +17,6 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ChestBlock;
-import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
@@ -67,7 +66,6 @@ public class WoodenMaterial
 	public final RegistryObject<Block> chest;
 	public final RegistryObject<Block> barrel;
 	public final RegistryObject<Block> shelf;
-	public final RegistryObject<Block> composter;
 
 	public final ITag.INamedTag<Block> logBlockTag;
 	public final ITag.INamedTag<Item> logItemTag;
@@ -107,8 +105,6 @@ public class WoodenMaterial
 				() -> new TrapDoorBlock(materialPlanksNotSolid));
 		door = BlockInit.registerBlockWithDefaultItem(name + "_door", () -> new DoorBlock(materialPlanksNotSolid));
 
-		composter = registerBlockWithBurnItem(name + "_composter", () -> new ComposterBlock(materialPlanksNotSolid),
-				300);
 		craftingTable = registerBlockWithBurnItem(name + "_crafting_table",
 				() -> new GalaxiaCraftingTableBlock(materialPlanks), 300);
 		ladder = registerBlockWithBurnItem(name + "_ladder", () -> new LadderBlock(materialPlanksNotSolid), 300);

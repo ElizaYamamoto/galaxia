@@ -1,7 +1,9 @@
 package io.github.elizayami.galaxia.common.data;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
@@ -33,11 +35,15 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		
 		// WOODEN MATERIALS
 		
-		//registerWoodenMaterialTags(BlockInit.WOOD);
+		registerWoodenMaterialTags(BlockInit.SHADOWSPIKE);
 		
 		// STONE MATERIALS
 		
-		//registerStoneMaterialTags(BlockInit.STONE);
+		registerStoneMaterialTags(BlockInit.DRAGONSTONE);
+		
+		// SANDSTONE MATERIALS
+		
+		registerSandstoneMaterialTags(BlockInit.SOULSANDSTONE);
 
 		// METAL MATERIALS
 		
@@ -106,6 +112,23 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		return new ResourceLocation(ForgeVersion.MOD_ID, tag);
 	}
 	
+	private void registerSandstoneMaterialTags(SandstoneMaterial material)
+	{
+		getOrCreateBuilder(BlockTags.WALLS).add(material.wall.get());
+		getOrCreateBuilder(BlockTags.WALLS).add(material.smooth_wall.get());
+		
+		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
+		getOrCreateBuilder(BlockTags.SLABS).add(material.smooth_slab.get());
+		
+		getOrCreateBuilder(BlockTags.STAIRS).add(material.stairs.get());
+		getOrCreateBuilder(BlockTags.STAIRS).add(material.smooth_stairs.get());
+		
+		
+		// Forge Tags
+		getOrCreateBuilder(Tags.Blocks.SANDSTONE).add(material.stone.get());
+		getOrCreateBuilder(Tags.Blocks.SANDSTONE).add(material.smooth.get());
+	}
+
 	private void registerStoneMaterialTags(StoneMaterial material)
 	{
 		getOrCreateBuilder(BlockTags.STONE_BRICKS).add(material.bricks.get());
@@ -138,6 +161,25 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		
 		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
 		
+		
+		// Forge Tags
+		if (material.hasOre)
+		{
+			getOrCreateBuilder(Tags.Blocks.ORES).add(material.ore.get());
+		}
+		
+		getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).add(material.block.get());
+		getOrCreateBuilder(BlockTags.BEACON_BASE_BLOCKS).add(material.block.get());
+	}
+	
+	private void registerGemMaterialTags(GemMaterial material)
+	{	
+		getOrCreateBuilder(BlockTags.BEACON_BASE_BLOCKS).add(material.block.get());
+		
+		
+		getOrCreateBuilder(BlockTags.STAIRS).add(material.stairs.get());
+		
+		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
 		
 		// Forge Tags
 		if (material.hasOre)

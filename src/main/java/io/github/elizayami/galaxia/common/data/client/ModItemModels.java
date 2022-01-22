@@ -1,7 +1,9 @@
 package io.github.elizayami.galaxia.common.data.client;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
@@ -23,17 +25,28 @@ public class ModItemModels extends ItemModelProvider
 	@Override
 	protected void registerModels() 
 	{
+        getBuilder("comet_trail_dust").parent(new ModelFile.UncheckedModelFile("item/generated")).
+        texture("layer0", modLoc("item/comet_trail_dust"));
+        
         // WOODEN MATERIALS
 		
-		//registerWoodenMaterialItemModels(BlockInit.WOOD);
+		registerWoodenMaterialItemModels(BlockInit.SHADOWSPIKE);
 		
 		// STONE MATERIALS
 		
-		//registerStoneMaterialItemModels(BlockInit.STONE);
+		registerStoneMaterialItemModels(BlockInit.DRAGONSTONE);
+
+		// SANDSTONE MATERIALS
+		
+		registerSandstoneMaterialItemModels(BlockInit.SOULSANDSTONE);
+		registerSandstoneMaterialItemModels(BlockInit.IMPACTSANDSTONE);
 		
 		// METAL MATERIALS
 		registerMetalMaterialItemModels(BlockInit.METEOR);
 		registerMetalMaterialItemModels(BlockInit.COMETSTEEL);
+		
+		// Gem Materials
+		registerGemMaterialItemModels(BlockInit.GALAXIUM);
 	}
 	
 	private ItemModelBuilder simpleItem(Item item) {
@@ -66,6 +79,14 @@ public class ModItemModels extends ItemModelProvider
 		
 		buttonInventory(material.name, modLoc("block/" + material.name));
 	}
+	
+	private void registerSandstoneMaterialItemModels(SandstoneMaterial material)
+	{
+		wallInventory(material.name + "_wall", modLoc("block/" + material.name));
+		
+		wallInventory(material.name + "_smooth_wall", modLoc("block/" + material.name + "_smooth"));
+	}
+	
 	
 	private void registerMetalMaterialItemModels(MetalMaterial material)
 	{
@@ -107,6 +128,38 @@ public class ModItemModels extends ItemModelProvider
                 texture("layer0", modLoc("item/" + material.name + "_boots"));
 	}
 	
+
+	private void registerGemMaterialItemModels(GemMaterial material)
+	{
+        // Tools and armor
+        getBuilder(material.name + "_shovel").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_shovel"));
+        
+        getBuilder(material.name + "_sword").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_sword"));
+        
+        getBuilder(material.name + "_pickaxe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_pickaxe"));
+        
+        getBuilder(material.name + "_axe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_axe"));
+        
+        getBuilder(material.name + "_hoe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_hoe"));
+
+        getBuilder(material.name + "_helmet").parent(new ModelFile.UncheckedModelFile("item/generated")).
+                texture("layer0", modLoc("item/" + material.name + "_helmet"));
+        
+        getBuilder(material.name + "_chestplate").parent(new ModelFile.UncheckedModelFile("item/generated")).
+                texture("layer0", modLoc("item/" + material.name + "_chestplate"));
+        
+        getBuilder(material.name + "_leggings").parent(new ModelFile.UncheckedModelFile("item/generated")).
+                texture("layer0", modLoc("item/" + material.name + "_leggings"));
+       
+        getBuilder(material.name + "_boots").parent(new ModelFile.UncheckedModelFile("item/generated")).
+                texture("layer0", modLoc("item/" + material.name + "_boots"));
+	}
+
 	private void buttonInventory(String material, ResourceLocation texture)
 	{
         singleTexture(material + "_button", mcLoc(BLOCK_FOLDER + "/button_inventory"), texture);

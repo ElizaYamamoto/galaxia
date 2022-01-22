@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_wall",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:soul_sandstone"
+    }
+  },
+  "result": {
+    "item": "galaxia:soul_sandstone_wall",
+    "count": 6
+  }
+}

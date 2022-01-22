@@ -1,17 +1,28 @@
 {
 	"itemGroup.galaxiatab": "Galaxia",
 
-	//Blocks
+//Blocks
 	"block.galaxia.dragonfire_furnace": "Dragonfire Furnace",
 	"block.galaxia.soul_furnace": "Soul Furnace",
+	
+	//Meteor
+	
 	"block.galaxia.meteor_ore": "Meteorite",
 	"block.galaxia.meteor_block": "Meteor Block",
+	
+	//Cometsteel
 	"block.galaxia.cometsteel_ore": "Cometstone",
 	"block.galaxia.cometsteel_block": "Cometsteel Block",
+	
+	//Soal
 	"block.galaxia.soal_ore": "Soal Ore",
 	"block.galaxia.soal_block": "Soal Block",
 	
-	//Items
+//Items
 	"item.galaxia.soal": "Soal", 
-	"item.galaxia.stardust": "Stardust"  
+	"item.galaxia.stardust": "Stardust" , 
+	
+//UI
+	"container.galaxia.dragonfire_furnace": "Dragonfire Furnace",
+	"container.galaxia.soul_furnace": "Soul Furnace"
 }

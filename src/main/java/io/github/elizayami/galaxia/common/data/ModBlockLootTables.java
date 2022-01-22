@@ -4,7 +4,9 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
@@ -14,6 +16,7 @@ import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantRange;
+import net.minecraft.loot.RandomValueRange;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBlockLootTables extends BlockLootTables {
@@ -31,8 +34,16 @@ public class ModBlockLootTables extends BlockLootTables {
 		registerDropSelfLootTable(TileEntityInit.blockSF);
 		registerDropSelfLootTable(TileEntityInit.blockDFF);
 		registerDropSelfLootTable(BlockInit.SOAL_BLOCK.get());
+		
+		registerDropSelfLootTable(BlockInit.IMPACT_SAND.get());
 
 		// MATERIALS
+		registerDropSelfLootTable(BlockInit.GALAXIUM_STAR);
+		
+		registerLootTable(BlockInit.GALAXIUM_STAR2, (block) -> {
+			return droppingRandomly(BlockInit.GALAXIUM.gem.get(), RandomValueRange.of(1, 2));
+		});
+		
 
 		// ORES
 		registerLootTable(BlockInit.SOAL_ORE.get(), (block) -> {
@@ -43,16 +54,24 @@ public class ModBlockLootTables extends BlockLootTables {
 		
 		// WOODEN_MATERIALS
 		
-		//registerWoodenMaterialLootTables(BlockInit.WOOD);
+		registerWoodenMaterialLootTables(BlockInit.SHADOWSPIKE);
 
 		// STONE MATERIALS
 		
-		//registerStoneMaterialLootTables(BlockInit.STONE);
+		registerStoneMaterialLootTables(BlockInit.DRAGONSTONE);
+		
+		// SANDSTONE MATERIALS
+		
+		registerSandstoneMaterialLootTables(BlockInit.SOULSANDSTONE);
+		registerSandstoneMaterialLootTables(BlockInit.IMPACTSANDSTONE);
 
 		// METAL MATERIALS
 		
 		registerMetalMaterialLootTables(BlockInit.METEOR);
 		registerMetalMaterialLootTables(BlockInit.COMETSTEEL);
+		
+		// Gem Materials
+		registerGemMaterialLootTables(BlockInit.GALAXIUM);
 
 	}
 
@@ -70,7 +89,6 @@ public class ModBlockLootTables extends BlockLootTables {
 		registerDropSelfLootTable(material.pressurePlate.get());
 		registerDropSelfLootTable(material.trapdoor.get());
 		registerLootTable(material.door.get(), BlockLootTables::registerDoor);
-		registerDropSelfLootTable(material.composter.get());
 		registerDropSelfLootTable(material.craftingTable.get());
 		registerDropSelfLootTable(material.ladder.get());
 		registerDropSelfLootTable(material.chest.get());
@@ -95,6 +113,18 @@ public class ModBlockLootTables extends BlockLootTables {
 		registerDropSelfLootTable(material.brick_wall.get());
 	}
 
+	private void registerSandstoneMaterialLootTables(SandstoneMaterial material) {
+		registerDropSelfLootTable(material.stone.get());
+		registerDropSelfLootTable(material.stairs.get());
+		registerLootTable(material.slab.get(), BlockLootTables::droppingSlab);
+		registerDropSelfLootTable(material.chiseled.get());
+		registerDropSelfLootTable(material.wall.get());
+		registerDropSelfLootTable(material.smooth.get());
+		registerDropSelfLootTable(material.smooth_stairs.get());
+		registerLootTable(material.smooth_slab.get(), BlockLootTables::droppingSlab);
+		registerDropSelfLootTable(material.smooth_wall.get());
+	}
+
 	private void registerMetalMaterialLootTables(MetalMaterial material) {
 		if (material.hasOre) {
 			registerDropSelfLootTable(material.ore.get());
@@ -106,5 +136,16 @@ public class ModBlockLootTables extends BlockLootTables {
 		registerLootTable(material.door.get(), BlockLootTables::registerDoor);
 		registerDropSelfLootTable(material.trapdoor.get());
 	}
-
+	
+	private void registerGemMaterialLootTables(GemMaterial material) 
+	{
+		if (material.hasOre) 
+		{
+			registerDropSelfLootTable(material.ore.get());
+		}
+		registerDropSelfLootTable(material.block.get());
+		registerDropSelfLootTable(material.tile.get());
+		registerDropSelfLootTable(material.stairs.get());
+		registerLootTable(material.slab.get(), BlockLootTables::droppingSlab);
+	}
 }

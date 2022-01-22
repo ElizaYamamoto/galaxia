@@ -2,6 +2,7 @@ package io.github.elizayami.galaxia.common.data;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
@@ -31,9 +32,15 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		
 		
 		// WOODEN MATERIALS
+
+		registerWoodenMaterialTags(BlockInit.SHADOWSPIKE);
 		
 		// STONE MATERIALS
+		registerStoneMaterialTags(BlockInit.DRAGONSTONE);
 
+		// SANDSTONE MATERIALS
+		registerSandstoneMaterialTags(BlockInit.SOULSANDSTONE);
+		registerSandstoneMaterialTags(BlockInit.IMPACTSANDSTONE);
 		
 		// METAL MATERIALS
 		registerMetalMaterialTags(BlockInit.METEOR);
@@ -112,16 +119,32 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		// Forge Tags
 		getOrCreateBuilder(Tags.Items.STONE).add(material.stone.get().asItem());
 	}
+
+	private void registerSandstoneMaterialTags(SandstoneMaterial material)
+	{
+		getOrCreateBuilder(ItemTags.WALLS).add(material.wall.get().asItem());
+		getOrCreateBuilder(ItemTags.WALLS).add(material.smooth_wall.get().asItem());
+		
+		getOrCreateBuilder(ItemTags.SLABS).add(material.slab.get().asItem());
+		getOrCreateBuilder(ItemTags.SLABS).add(material.smooth_slab.get().asItem());
+		
+		getOrCreateBuilder(ItemTags.STAIRS).add(material.stairs.get().asItem());
+		getOrCreateBuilder(ItemTags.STAIRS).add(material.smooth_stairs.get().asItem());
+		
+		// Forge Tags
+		getOrCreateBuilder(Tags.Items.STONE).add(material.stone.get().asItem());
+		getOrCreateBuilder(Tags.Items.STONE).add(material.smooth.get().asItem());
+	}
 	
 	private void registerMetalMaterialTags(MetalMaterial material)
 	{
-		getOrCreateBuilder(ItemTags.DOORS).add(material.door.get().asItem());
+		getOrCreateBuilder(ItemTags.WOODEN_DOORS).add(material.door.get().asItem());
 		
 		getOrCreateBuilder(ItemTags.SLABS).add(material.slab.get().asItem());
 		
 		getOrCreateBuilder(ItemTags.STAIRS).add(material.stairs.get().asItem());
 		
-		getOrCreateBuilder(ItemTags.TRAPDOORS).add(material.trapdoor.get().asItem());
+		getOrCreateBuilder(ItemTags.WOODEN_TRAPDOORS).add(material.trapdoor.get().asItem());
 		
 		getOrCreateBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(material.ingot.get());
 		

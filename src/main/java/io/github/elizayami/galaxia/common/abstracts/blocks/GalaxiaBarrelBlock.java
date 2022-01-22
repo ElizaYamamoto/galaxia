@@ -23,24 +23,32 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
-public class GalaxiaBarrelBlock extends BarrelBlock {
-	public GalaxiaBarrelBlock(AbstractBlock.Properties properties) {
+public class GalaxiaBarrelBlock extends BarrelBlock
+{
+	public GalaxiaBarrelBlock(AbstractBlock.Properties properties)
+	{
 		super(properties);
 	}
 
 	@Override
-	public TileEntity createNewTileEntity(IBlockReader worldIn) {
+	public TileEntity createNewTileEntity(IBlockReader worldIn)
+	{
 		return new GalaxiaBarrelTileEntity();
 	}
 
 	@Override
 	public ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player,
-			Hand handIn, BlockRayTraceResult hit) {
-		if (world.isRemote) {
+			Hand handIn, BlockRayTraceResult hit)
+	{
+		if (world.isRemote)
+		{
 			return ActionResultType.SUCCESS;
-		} else {
+		}
+		else
+		{
 			TileEntity blockEntity = world.getTileEntity(pos);
-			if (blockEntity instanceof GalaxiaBarrelTileEntity) {
+			if (blockEntity instanceof GalaxiaBarrelTileEntity)
+			{
 				player.openContainer((GalaxiaBarrelTileEntity) blockEntity);
 				player.addStat(Stats.OPEN_BARREL);
 				PiglinTasks.func_234478_a_(player, true);
@@ -51,24 +59,30 @@ public class GalaxiaBarrelBlock extends BarrelBlock {
 	}
 
 	@Override
-	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand) {
+	public void tick(BlockState state, ServerWorld world, BlockPos pos, Random rand)
+	{
 		TileEntity blockEntity = world.getTileEntity(pos);
-		if (blockEntity instanceof GalaxiaBarrelTileEntity) {
+		if (blockEntity instanceof GalaxiaBarrelTileEntity)
+		{
 			((GalaxiaBarrelTileEntity) blockEntity).tick();
 		}
 	}
 
 	@Override
-	public BlockRenderType getRenderType(BlockState state) {
+	public BlockRenderType getRenderType(BlockState state)
+	{
 		return BlockRenderType.MODEL;
 	}
 
 	@Override
 	public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer,
-			ItemStack stack) {
-		if (stack.hasDisplayName()) {
+			ItemStack stack)
+	{
+		if (stack.hasDisplayName())
+		{
 			TileEntity blockEntity = world.getTileEntity(pos);
-			if (blockEntity instanceof GalaxiaBarrelTileEntity) {
+			if (blockEntity instanceof GalaxiaBarrelTileEntity)
+			{
 				((GalaxiaBarrelTileEntity) blockEntity).setCustomName(stack.getDisplayName());
 			}
 		}

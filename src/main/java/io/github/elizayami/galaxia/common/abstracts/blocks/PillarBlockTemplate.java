@@ -4,7 +4,7 @@ import net.minecraft.block.RotatedPillarBlock;
 
 public class PillarBlockTemplate extends RotatedPillarBlock
 {
-	public PillarBlockTemplate(Properties properties) 
+	public PillarBlockTemplate(Properties properties)
 	{
 		super(properties);
 	}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "galaxia:block/galaxium_slab_top"
+    },
+    "type=bottom": {
+      "model": "galaxia:block/galaxium_slab"
+    },
+    "type=double": {
+      "model": "galaxia:block/galaxium_tile"
+    }
+  }
+}

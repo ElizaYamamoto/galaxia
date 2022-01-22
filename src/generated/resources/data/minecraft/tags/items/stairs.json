@@ -1,6 +1,12 @@
 {
   "replace": false,
   "values": [
+    "galaxia:dragonstone_stairs",
+    "galaxia:dragonstone_bricks_stairs",
+    "galaxia:soul_sandstone_stairs",
+    "galaxia:soul_sandstone_smooth_stairs",
+    "galaxia:impact_sandstone_stairs",
+    "galaxia:impact_sandstone_smooth_stairs",
     "galaxia:meteor_stairs",
     "galaxia:cometsteel_stairs"
   ]

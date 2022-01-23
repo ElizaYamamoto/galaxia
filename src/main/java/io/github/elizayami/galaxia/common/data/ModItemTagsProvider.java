@@ -7,7 +7,6 @@ import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.TagInit;
-import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;

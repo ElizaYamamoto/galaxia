@@ -9,7 +9,7 @@ import io.github.elizayami.galaxia.common.abstracts.furnace.FurnaceZoneContents;
 import io.github.elizayami.galaxia.common.block.dragonfire_furnace.Dragonfire_Furnace;
 import io.github.elizayami.galaxia.common.block.soul_furnace.ContainerSF;
 import io.github.elizayami.galaxia.common.block.soul_furnace.Soul_Furnace;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.FurnaceInit;
 import io.github.elizayami.galaxia.core.enums.SetBlockStateFlag;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,7 +48,7 @@ public class TileEntitySoulFurnace extends TileEntity implements INamedContainer
 
 	public TileEntitySoulFurnace()
 	{
-		super(TileEntityInit.tileEntityTypeSF);
+		super(FurnaceInit.tileEntityTypeSF);
 		fuelZoneContents = FurnaceZoneContents.createForTileEntity(FUEL_SLOTS_COUNT, this::canPlayerAccessInventory,
 				this::markDirty);
 		inputZoneContents = FurnaceZoneContents.createForTileEntity(INPUT_SLOTS_COUNT, this::canPlayerAccessInventory,

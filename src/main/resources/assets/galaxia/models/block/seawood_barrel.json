@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "galaxia:block/seawood_barrel_top",
+    "bottom": "galaxia:block/seawood_barrel_bottom",
+    "side": "galaxia:block/seawood_barrel_side"
+  }
+}

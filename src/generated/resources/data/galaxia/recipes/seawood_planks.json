@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "galaxia_planks",
+  "ingredients": [
+    {
+      "tag": "galaxia:seawood_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxia:seawood_planks",
+    "count": 4
+  }
+}

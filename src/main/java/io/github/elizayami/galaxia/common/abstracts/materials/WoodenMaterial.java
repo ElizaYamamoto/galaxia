@@ -37,7 +37,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.fml.RegistryObject;
 
-// TO DO? Make all wooden blocks flammable so they can take and spread fire
 public class WoodenMaterial
 {
 	public final String name;

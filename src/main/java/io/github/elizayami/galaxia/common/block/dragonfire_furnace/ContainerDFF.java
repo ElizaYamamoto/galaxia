@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import io.github.elizayami.galaxia.common.abstracts.furnace.FurnaceZoneContents;
 import io.github.elizayami.galaxia.common.tileentity.TileEntityDragonfireFurnace;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.FurnaceInit;
 
 public class ContainerDFF extends Container
 {
@@ -83,8 +83,8 @@ public class ContainerDFF extends Container
 			FurnaceZoneContents outputZoneContents, FurnaceZoneContents fuelZoneContents,
 			FurnaceStateData furnaceStateData)
 	{
-		super(TileEntityInit.containerTypeDFF, windowID);
-		if (TileEntityInit.containerTypeDFF == null)
+		super(FurnaceInit.containerTypeDFF, windowID);
+		if (FurnaceInit.containerTypeDFF == null)
 			throw new IllegalStateException(
 					"Must initialise containerTypeDFF before constructing a Dragonfire Furnace!");
 		this.inputZoneContents = inputZoneContents;

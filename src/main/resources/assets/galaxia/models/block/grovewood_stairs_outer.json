@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "side": "galaxia:block/grovewood_planks",
+    "bottom": "galaxia:block/grovewood_planks",
+    "top": "galaxia:block/grovewood_planks"
+  }
+}

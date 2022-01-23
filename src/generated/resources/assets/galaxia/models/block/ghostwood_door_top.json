@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top",
+  "textures": {
+    "bottom": "galaxia:block/ghostwood_door_bottom",
+    "top": "galaxia:block/ghostwood_door_top"
+  }
+}

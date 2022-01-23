@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/chest",
+  "textures": {
+    "particle": "galaxia:block/ghostwood_planks"
+  }
+}

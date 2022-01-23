@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "galaxia:block/ghostwood_planks",
+    "up": "galaxia:block/ghostwood_crafting_table_top",
+    "north": "galaxia:block/ghostwood_crafting_table_front",
+    "south": "galaxia:block/ghostwood_crafting_table_side",
+    "east": "galaxia:block/ghostwood_crafting_table_side",
+    "west": "galaxia:block/ghostwood_crafting_table_front",
+    "particle": "galaxia:block/ghostwood_crafting_table_top"
+  }
+}

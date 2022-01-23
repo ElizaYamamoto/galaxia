@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_bookshelf",
+    "galaxia:groundstalk_bookshelf",
+    "galaxia:seawood_bookshelf",
+    "galaxia:scorchwood_bookshelf",
+    "galaxia:ghostwood_bookshelf",
+    "galaxia:grovewood_bookshelf"
+  ]
+}

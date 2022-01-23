@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/ladder",
+  "textures": {
+    "texture": "galaxia:block/scorchwood_ladder"
+  }
+}

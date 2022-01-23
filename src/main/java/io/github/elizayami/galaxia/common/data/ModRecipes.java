@@ -64,6 +64,11 @@ public class ModRecipes extends RecipeProvider
 		// WOODEN MATERIALS
 
 		makeWoodenMaterialRecipes(BlockInit.SHADOWSPIKE, consumer);
+		makeWoodenMaterialRecipes(BlockInit.GROUNDSTALK, consumer);
+		makeWoodenMaterialRecipes(BlockInit.SEAWOOD, consumer);
+		makeWoodenMaterialRecipes(BlockInit.SCORCHWOOD, consumer);
+		makeWoodenMaterialRecipes(BlockInit.GHOSTWOOD, consumer);
+		makeWoodenMaterialRecipes(BlockInit.GROVEWOOD, consumer);
 		
 		// STONE MATERIALS
 		

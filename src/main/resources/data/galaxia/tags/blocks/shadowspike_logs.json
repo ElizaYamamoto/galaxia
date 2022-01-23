@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_log",
+    "galaxia:shadowspike_bark",
+    "galaxia:shadowspike_stripped_log",
+    "galaxia:shadowspike_stripped_bark"
+  ]
+}

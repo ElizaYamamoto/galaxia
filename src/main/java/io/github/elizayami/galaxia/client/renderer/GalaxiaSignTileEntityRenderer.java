@@ -31,17 +31,20 @@ import net.minecraft.util.IReorderingProcessor;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
 
-public class GalaxiaSignTileEntityRenderer extends TileEntityRenderer<GalaxiaSignTileEntity> {
+public class GalaxiaSignTileEntityRenderer extends TileEntityRenderer<GalaxiaSignTileEntity>
+{
 	private static final HashMap<Block, RenderType> LAYERS = Maps.newHashMap();
 	private static RenderType defaultLayer;
 	private final SignModel model = new SignTileEntityRenderer.SignModel();
 
-	public GalaxiaSignTileEntityRenderer(TileEntityRendererDispatcher dispatcher) {
+	public GalaxiaSignTileEntityRenderer(TileEntityRendererDispatcher dispatcher)
+	{
 		super(dispatcher);
 	}
 
 	public void render(GalaxiaSignTileEntity signBlockEntity, float tickDelta, MatrixStack matrixStack,
-			IRenderTypeBuffer provider, int light, int overlay) {
+			IRenderTypeBuffer provider, int light, int overlay)
+	{
 		BlockState state = signBlockEntity.getBlockState();
 		matrixStack.push();
 
@@ -49,10 +52,13 @@ public class GalaxiaSignTileEntityRenderer extends TileEntityRenderer<GalaxiaSig
 		float angle = -((float) ((Integer) state.get(StandingSignBlock.ROTATION) * 360) / 16.0F);
 
 		BlockState blockState = signBlockEntity.getBlockState();
-		if (blockState.get(GalaxiaSignBlock.FLOOR)) {
+		if (blockState.get(GalaxiaSignBlock.FLOOR))
+		{
 			matrixStack.rotate(Vector3f.YP.rotationDegrees(angle));
 			this.model.signStick.showModel = true;
-		} else {
+		}
+		else
+		{
 			matrixStack.rotate(Vector3f.YP.rotationDegrees(angle + 180));
 			matrixStack.translate(0.0D, -0.3125D, -0.4375D);
 			this.model.signStick.showModel = false;
@@ -73,12 +79,15 @@ public class GalaxiaSignTileEntityRenderer extends TileEntityRenderer<GalaxiaSig
 		int p = (int) (NativeImage.getBlue(m) * 0.4D);
 		int q = NativeImage.getCombined(0, p, o, n);
 
-		for (int s = 0; s < 4; ++s) {
-			IReorderingProcessor orderedText = signBlockEntity.getTextBeingEditedOnRow(s, (text) -> {
+		for (int s = 0; s < 4; ++s)
+		{
+			IReorderingProcessor orderedText = signBlockEntity.getTextBeingEditedOnRow(s, (text) ->
+			{
 				List<IReorderingProcessor> list = textRenderer.trimStringToWidth(text, 90);
 				return list.isEmpty() ? IReorderingProcessor.field_242232_a : (IReorderingProcessor) list.get(0);
 			});
-			if (orderedText != null) {
+			if (orderedText != null)
+			{
 				float t = (float) (-textRenderer.func_243245_a(orderedText) / 2);
 				textRenderer.func_238416_a_((IReorderingProcessor) orderedText, t, (float) (s * 10 - 20), q, false,
 						matrixStack.getLast().getMatrix(), provider, false, 0, light);
@@ -88,28 +97,37 @@ public class GalaxiaSignTileEntityRenderer extends TileEntityRenderer<GalaxiaSig
 		matrixStack.pop();
 	}
 
-	public static RenderMaterial getModelTexture(Block block) {
+	public static RenderMaterial getModelTexture(Block block)
+	{
 		WoodType signType2;
-		if (block instanceof AbstractSignBlock) {
+		if (block instanceof AbstractSignBlock)
+		{
 			signType2 = ((AbstractSignBlock) block).getWoodType();
-		} else {
+		}
+		else
+		{
 			signType2 = WoodType.OAK;
 		}
 
 		return Atlases.getSignMaterial(signType2);
 	}
 
-	public static IVertexBuilder getConsumer(IRenderTypeBuffer provider, Block block) {
+	public static IVertexBuilder getConsumer(IRenderTypeBuffer provider, Block block)
+	{
 		return provider.getBuffer(LAYERS.getOrDefault(block, defaultLayer));
 	}
 
-	static {
+	static
+	{
 		defaultLayer = RenderType.getEntitySolid(new ResourceLocation("textures/entity/sign/oak.png"));
 
-		ItemInit.ITEMS.getEntries().forEach((item) -> {
-			if (item.get() instanceof BlockItem) {
+		ItemInit.ITEMS.getEntries().forEach((item) ->
+		{
+			if (item.get() instanceof BlockItem)
+			{
 				Block block = ((BlockItem) item.get()).getBlock();
-				if (block instanceof GalaxiaSignBlock) {
+				if (block instanceof GalaxiaSignBlock)
+				{
 					String name = block.getRegistryName().getPath();
 					RenderType layer = RenderType.getEntitySolid(
 							new ResourceLocation(Galaxia.MOD_ID, "textures/entity/sign/" + name + ".png"));

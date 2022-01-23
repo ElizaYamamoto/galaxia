@@ -9,6 +9,7 @@ import io.github.elizayami.galaxia.common.PhysicalServerSide;
 import io.github.elizayami.galaxia.common.biome.GalaxiaBiomes;
 import io.github.elizayami.galaxia.common.biome.GalaxiaSurfaceBuilders;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.FurnaceInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.usefultools.IPhysicalSide;
@@ -33,6 +34,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+
 @Mod("galaxia")
 public class Galaxia 
 {
@@ -43,12 +45,7 @@ public class Galaxia
 	public static final IPhysicalSide SIDE = 
 			DistExecutor.safeRunForDist(() -> PhysicalClientSide::new, () -> PhysicalServerSide::new);
 
-	public static final ItemGroup galaxiaGroup = new GalaxiaGroup("galaxiatab");
 	
-    public static final SimpleChannel NETWORK_WRAPPER;
-    
-    private static final String PROTOCOL_VERSION = Integer.toString(1);
-
     
     public Galaxia() 
     {
@@ -61,8 +58,10 @@ public class Galaxia
 
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
+		TileEntityInit.TILE_ENTITY_TYPES.register(bus);
 		
-	    bus.register(TileEntityInit.class);
+		
+	    bus.register(FurnaceInit.class);
 	    
         PROXY.init();
 		
@@ -100,6 +99,10 @@ public class Galaxia
 	{
 		return new ResourceLocation(MOD_ID, path);
 	}
+	
+    public static final SimpleChannel NETWORK_WRAPPER;
+    
+    private static final String PROTOCOL_VERSION = Integer.toString(1);
     
     public static CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
     private static int packetsRegistered = 0;
@@ -122,6 +125,8 @@ public class Galaxia
     private void setupClient(FMLClientSetupEvent event) {
         PROXY.setupClient();
     }
+
+	public static final ItemGroup galaxiaGroup = new GalaxiaGroup("galaxiatab");
 
 	public static class GalaxiaGroup extends ItemGroup 
 	{

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "galaxia:block/groundstalk_pressure_plate"
+    },
+    "powered=true": {
+      "model": "galaxia:block/groundstalk_pressure_plate_down"
+    }
+  }
+}

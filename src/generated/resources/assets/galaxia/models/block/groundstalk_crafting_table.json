@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "galaxia:block/groundstalk_planks",
+    "up": "galaxia:block/groundstalk_crafting_table_top",
+    "north": "galaxia:block/groundstalk_crafting_table_front",
+    "south": "galaxia:block/groundstalk_crafting_table_side",
+    "east": "galaxia:block/groundstalk_crafting_table_side",
+    "west": "galaxia:block/groundstalk_crafting_table_front",
+    "particle": "galaxia:block/groundstalk_crafting_table_top"
+  }
+}

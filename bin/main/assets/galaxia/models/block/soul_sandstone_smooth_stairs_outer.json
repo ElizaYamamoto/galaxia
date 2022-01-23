@@ -2,7 +2,7 @@
   "parent": "minecraft:block/outer_stairs",
   "textures": {
     "side": "galaxia:block/soul_sandstone_smooth",
-    "bottom": "galaxia:block/soul_sandstone_smooth",
-    "top": "galaxia:block/soul_sandstone_smooth"
+    "bottom": "galaxia:block/soul_sandstone_bottom",
+    "top": "galaxia:block/soul_sandstone_top"
   }
 }

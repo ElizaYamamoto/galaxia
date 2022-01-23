@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "galaxia:block/scorchwood_planks"
+  }
+}

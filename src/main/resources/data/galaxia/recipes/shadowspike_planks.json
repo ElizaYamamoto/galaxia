@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "galaxia_planks",
+  "ingredients": [
+    {
+      "tag": "galaxia:shadowspike_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxia:shadowspike_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_chests",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:ghostwood_planks"
+    }
+  },
+  "result": {
+    "item": "galaxia:ghostwood_chest"
+  }
+}

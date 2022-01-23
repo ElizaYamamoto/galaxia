@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_bookshelves",
+  "pattern": [
+    "###",
+    "PPP",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:scorchwood_planks"
+    },
+    "P": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "item": "galaxia:scorchwood_bookshelf"
+  }
+}

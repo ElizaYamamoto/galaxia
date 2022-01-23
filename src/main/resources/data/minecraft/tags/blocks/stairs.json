@@ -1,6 +1,12 @@
 {
   "replace": false,
   "values": [
+    "galaxia:shadowspike_stairs",
+    "galaxia:groundstalk_stairs",
+    "galaxia:seawood_stairs",
+    "galaxia:scorchwood_stairs",
+    "galaxia:ghostwood_stairs",
+    "galaxia:grovewood_stairs",
     "galaxia:dragonstone_stairs",
     "galaxia:dragonstone_bricks_stairs",
     "galaxia:soul_sandstone_stairs",

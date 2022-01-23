@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:grovewood_log",
+    "galaxia:grovewood_bark",
+    "galaxia:grovewood_stripped_log",
+    "galaxia:grovewood_stripped_bark"
+  ]
+}

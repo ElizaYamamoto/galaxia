@@ -2,7 +2,7 @@
   "parent": "minecraft:block/slab_top",
   "textures": {
     "side": "galaxia:block/impact_sandstone_smooth",
-    "bottom": "galaxia:block/impact_sandstone_smooth",
-    "top": "galaxia:block/impact_sandstone_smooth"
+    "bottom": "galaxia:block/impact_sandstone_bottom",
+    "top": "galaxia:block/impact_sandstone_top"
   }
 }

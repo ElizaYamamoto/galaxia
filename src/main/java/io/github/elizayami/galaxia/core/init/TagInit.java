@@ -8,34 +8,34 @@ import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 
-public class TagInit 
+public class TagInit
 {
-	// MOD BLOCK TAGS	
+	// MOD BLOCK TAGS
 	public static final ITag.INamedTag<Block> END_STONE = makeModBlockTag("endstone");
 
-	public static final ITag.INamedTag<Block> GALAXIA_BARRELS = makeModBlockTag("galaxia_barrels");
-	
-	// MOD ITEM TAGS
+	public static final ITag.INamedTag<Block> BLOCK_BARRELS = makeBlockTag("forge", "barrels/wooden");
 
-	public static final ITag.INamedTag<Item> GALAXIA_BARRELS_ITEM = makeModItemTag("galaxia_barrels");
-	
-	
-	public static ITag.INamedTag<Block> makeModBlockTag(final String name) 
+	// CUSTOM FORGE ITEM TAGS
+
+	// Used by the Metal Barrels mod
+	public static final ITag.INamedTag<Item> ITEM_BARRELS = makeItemTag("forge", "barrels/wooden");
+
+	public static ITag.INamedTag<Block> makeModBlockTag(final String name)
 	{
 		return BlockTags.makeWrapperTag(new ResourceLocation(Galaxia.MOD_ID, name).toString());
 	}
-	
-	public static ITag.INamedTag<Item> makeModItemTag(final String name) 
+
+	public static ITag.INamedTag<Item> makeModItemTag(final String name)
 	{
 		return ItemTags.makeWrapperTag(new ResourceLocation(Galaxia.MOD_ID, name).toString());
 	}
-	
-	public static ITag.INamedTag<Block> makeBlockTag(String namespace, String name) 
+
+	public static ITag.INamedTag<Block> makeBlockTag(String namespace, String name)
 	{
 		return BlockTags.makeWrapperTag(new ResourceLocation(namespace, name).toString());
 	}
-	
-	public static ITag.INamedTag<Item> makeItemTag(String namespace, String name) 
+
+	public static ITag.INamedTag<Item> makeItemTag(String namespace, String name)
 	{
 		return ItemTags.makeWrapperTag(new ResourceLocation(namespace, name).toString());
 	}

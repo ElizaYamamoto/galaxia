@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "galaxia:block/shadowspike_planks",
+    "bottom": "galaxia:block/shadowspike_planks",
+    "top": "galaxia:block/shadowspike_planks"
+  }
+}

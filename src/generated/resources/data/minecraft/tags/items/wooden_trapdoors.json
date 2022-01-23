@@ -1,6 +1,12 @@
 {
   "replace": false,
   "values": [
+    "galaxia:shadowspike_trapdoor",
+    "galaxia:groundstalk_trapdoor",
+    "galaxia:seawood_trapdoor",
+    "galaxia:scorchwood_trapdoor",
+    "galaxia:ghostwood_trapdoor",
+    "galaxia:grovewood_trapdoor",
     "galaxia:meteor_trapdoor",
     "galaxia:cometsteel_trapdoor"
   ]

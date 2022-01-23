@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_planks_stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:ghostwood_planks"
+    }
+  },
+  "result": {
+    "item": "galaxia:ghostwood_stairs",
+    "count": 4
+  }
+}

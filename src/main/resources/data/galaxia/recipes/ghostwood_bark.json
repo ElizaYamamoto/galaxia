@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:ghostwood_log"
+    }
+  },
+  "result": {
+    "item": "galaxia:ghostwood_bark",
+    "count": 3
+  }
+}

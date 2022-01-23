@@ -124,6 +124,11 @@ public class BlockInit
 	//WOOD
 	
 	public static final WoodenMaterial SHADOWSPIKE = createWoodenMaterial("shadowspike", MaterialColor.OBSIDIAN, MaterialColor.GRAY_TERRACOTTA);
+	public static final WoodenMaterial GROUNDSTALK = createWoodenMaterial("groundstalk", MaterialColor.YELLOW, MaterialColor.YELLOW_TERRACOTTA);
+	public static final WoodenMaterial SEAWOOD = createWoodenMaterial("seawood", MaterialColor.LIGHT_BLUE, MaterialColor.CYAN);
+	public static final WoodenMaterial SCORCHWOOD = createWoodenMaterial("scorchwood", MaterialColor.ADOBE, MaterialColor.OBSIDIAN);
+	public static final WoodenMaterial GHOSTWOOD = createWoodenMaterial("ghostwood", MaterialColor.STONE, MaterialColor.SNOW);
+	public static final WoodenMaterial GROVEWOOD = createWoodenMaterial("grovewood", MaterialColor.GRASS, MaterialColor.GREEN);
 	
 	//STONE
 	

@@ -54,6 +54,11 @@ public class ModBlockStates extends BlockStateProvider
 		// WOODEN MATERIALS
 		
 		registerWoodenMaterialBlockStates(BlockInit.SHADOWSPIKE);
+		registerWoodenMaterialBlockStates(BlockInit.GROUNDSTALK);
+		registerWoodenMaterialBlockStates(BlockInit.SEAWOOD);
+		registerWoodenMaterialBlockStates(BlockInit.SCORCHWOOD);
+		registerWoodenMaterialBlockStates(BlockInit.GHOSTWOOD);
+		registerWoodenMaterialBlockStates(BlockInit.GROVEWOOD);
 		
 		// STONE MATERIALS
 		
@@ -321,7 +326,7 @@ public class ModBlockStates extends BlockStateProvider
     private void craftingTableBlock(CraftingTableBlock block, String material)
     {
 		ModelFile model = models()
-				.cube(material + "_crafting_table", modLoc("block/" + material + "_crafting_table_bottom"),
+				.cube(material + "_crafting_table", modLoc("block/" + material + "_planks"),
 						modLoc("block/" + material + "_crafting_table_top"),
 						modLoc("block/" + material + "_crafting_table_front"),
 						modLoc("block/" + material + "_crafting_table_side"),
@@ -333,7 +338,7 @@ public class ModBlockStates extends BlockStateProvider
     
     private void ladderBlock(LadderBlock block, String material)
     {
-    	ModelFile ladder = models().withExistingParent(material + "_ladder", modLoc("block/ladder"))
+    	ModelFile ladder = models().withExistingParent(material + "_ladder", mcLoc("block/ladder"))
     			.texture("texture", modLoc("block/" + material + "_ladder"));
     	horizontalBlock(block, ladder);
     }

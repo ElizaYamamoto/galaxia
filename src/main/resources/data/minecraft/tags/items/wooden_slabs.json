@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_slab",
+    "galaxia:groundstalk_slab",
+    "galaxia:seawood_slab",
+    "galaxia:scorchwood_slab",
+    "galaxia:ghostwood_slab",
+    "galaxia:grovewood_slab"
+  ]
+}

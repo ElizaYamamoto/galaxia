@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:groundstalk_log",
+    "galaxia:groundstalk_bark",
+    "galaxia:groundstalk_stripped_log",
+    "galaxia:groundstalk_stripped_bark"
+  ]
+}

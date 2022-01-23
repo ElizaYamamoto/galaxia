@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_chest",
+    "galaxia:shadowspike_barrel",
+    "galaxia:groundstalk_chest",
+    "galaxia:groundstalk_barrel",
+    "galaxia:seawood_chest",
+    "galaxia:seawood_barrel",
+    "galaxia:scorchwood_chest",
+    "galaxia:scorchwood_barrel",
+    "galaxia:ghostwood_chest",
+    "galaxia:ghostwood_barrel",
+    "galaxia:grovewood_chest",
+    "galaxia:grovewood_barrel"
+  ]
+}

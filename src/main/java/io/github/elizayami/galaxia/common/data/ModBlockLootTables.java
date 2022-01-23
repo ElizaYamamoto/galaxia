@@ -10,8 +10,8 @@ import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.FurnaceInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
 import net.minecraft.item.Items;
@@ -31,8 +31,8 @@ public class ModBlockLootTables extends BlockLootTables {
 	@Override
 	protected void addTables() {
 		// BLOCKS
-		registerDropSelfLootTable(TileEntityInit.blockSF);
-		registerDropSelfLootTable(TileEntityInit.blockDFF);
+		registerDropSelfLootTable(FurnaceInit.blockSF);
+		registerDropSelfLootTable(FurnaceInit.blockDFF);
 		registerDropSelfLootTable(BlockInit.SOAL_BLOCK.get());
 		
 		registerDropSelfLootTable(BlockInit.IMPACT_SAND.get());
@@ -53,8 +53,13 @@ public class ModBlockLootTables extends BlockLootTables {
 		// STONES
 		
 		// WOODEN_MATERIALS
-		
+
 		registerWoodenMaterialLootTables(BlockInit.SHADOWSPIKE);
+		registerWoodenMaterialLootTables(BlockInit.GROUNDSTALK);
+		registerWoodenMaterialLootTables(BlockInit.SEAWOOD);
+		registerWoodenMaterialLootTables(BlockInit.SCORCHWOOD);
+		registerWoodenMaterialLootTables(BlockInit.GHOSTWOOD);
+		registerWoodenMaterialLootTables(BlockInit.GROVEWOOD);
 
 		// STONE MATERIALS
 		

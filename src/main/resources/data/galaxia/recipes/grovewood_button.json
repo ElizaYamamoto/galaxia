@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "galaxia_planks_buttons",
+  "ingredients": [
+    {
+      "item": "galaxia:grovewood_planks"
+    }
+  ],
+  "result": {
+    "item": "galaxia:grovewood_button"
+  }
+}

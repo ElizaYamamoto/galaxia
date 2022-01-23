@@ -31,6 +31,11 @@ public class ModItemModels extends ItemModelProvider
         // WOODEN MATERIALS
 		
 		registerWoodenMaterialItemModels(BlockInit.SHADOWSPIKE);
+		registerWoodenMaterialItemModels(BlockInit.GROUNDSTALK);
+		registerWoodenMaterialItemModels(BlockInit.SEAWOOD);
+		registerWoodenMaterialItemModels(BlockInit.SCORCHWOOD);
+		registerWoodenMaterialItemModels(BlockInit.GHOSTWOOD);
+		registerWoodenMaterialItemModels(BlockInit.GROVEWOOD);
 		
 		// STONE MATERIALS
 		

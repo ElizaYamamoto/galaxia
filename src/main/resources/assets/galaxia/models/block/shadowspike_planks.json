@@ -1,12 +1,6 @@
 {
-  "parent": "block/cube",
+  "parent": "minecraft:block/cube_all",
   "textures": {
-    "down": "branchout:blocks/shadowspikeplank",
-    "up": "branchout:blocks/shadowspikeplank",
-    "north": "branchout:blocks/shadowspikeplank",
-    "east": "branchout:blocks/shadowspikeplank",
-    "south": "branchout:blocks/shadowspikeplank",
-    "west": "branchout:blocks/shadowspikeplank",
-    "particle": "branchout:blocks/shadowspikeplank"
+    "all": "galaxia:block/shadowspike_planks"
   }
 }

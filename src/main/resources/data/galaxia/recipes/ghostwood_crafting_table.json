@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_crafting_tables",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:ghostwood_planks"
+    }
+  },
+  "result": {
+    "item": "galaxia:ghostwood_crafting_table"
+  }
+}

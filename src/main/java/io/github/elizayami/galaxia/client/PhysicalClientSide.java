@@ -1,12 +1,16 @@
 package io.github.elizayami.galaxia.client;
 
+import io.github.elizayami.galaxia.client.renderer.GalaxiaChestTileEntityRenderer;
+import io.github.elizayami.galaxia.client.renderer.GalaxiaSignTileEntityRenderer;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.usefultools.IPhysicalSide;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class PhysicalClientSide implements IPhysicalSide
@@ -23,10 +27,11 @@ public class PhysicalClientSide implements IPhysicalSide
 		registerGUIs();
 		setRenderLayers();
 	}
-		
+	
 	private void registerRenderers()
 	{
-		
+		ClientRegistry.bindTileEntityRenderer(TileEntityInit.CHEST.get(), GalaxiaChestTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(TileEntityInit.SIGN.get(), GalaxiaSignTileEntityRenderer::new);
 	}
 	
 	private void registerGUIs()
@@ -39,6 +44,11 @@ public class PhysicalClientSide implements IPhysicalSide
 		// WOODEN MATERIALS
 		
 		setWoodenMaterialRenderLayers(BlockInit.SHADOWSPIKE);
+		setWoodenMaterialRenderLayers(BlockInit.GROUNDSTALK);
+		setWoodenMaterialRenderLayers(BlockInit.SEAWOOD);
+		setWoodenMaterialRenderLayers(BlockInit.SCORCHWOOD);
+		setWoodenMaterialRenderLayers(BlockInit.GHOSTWOOD);
+		setWoodenMaterialRenderLayers(BlockInit.GROVEWOOD);
 		
 		// METAL MATERIALS
 

@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_log",
+    "galaxia:shadowspike_bark",
+    "galaxia:shadowspike_stripped_log",
+    "galaxia:shadowspike_stripped_bark",
+    "galaxia:groundstalk_log",
+    "galaxia:groundstalk_bark",
+    "galaxia:groundstalk_stripped_log",
+    "galaxia:groundstalk_stripped_bark",
+    "galaxia:seawood_log",
+    "galaxia:seawood_bark",
+    "galaxia:seawood_stripped_log",
+    "galaxia:seawood_stripped_bark",
+    "galaxia:scorchwood_log",
+    "galaxia:scorchwood_bark",
+    "galaxia:scorchwood_stripped_log",
+    "galaxia:scorchwood_stripped_bark",
+    "galaxia:ghostwood_log",
+    "galaxia:ghostwood_bark",
+    "galaxia:ghostwood_stripped_log",
+    "galaxia:ghostwood_stripped_bark",
+    "galaxia:grovewood_log",
+    "galaxia:grovewood_bark",
+    "galaxia:grovewood_stripped_log",
+    "galaxia:grovewood_stripped_bark"
+  ]
+}

@@ -7,6 +7,7 @@ import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.TagInit;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.BlockTagsProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.ItemTagsProvider;
@@ -32,8 +33,13 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		
 		
 		// WOODEN MATERIALS
-
+		
 		registerWoodenMaterialTags(BlockInit.SHADOWSPIKE);
+		registerWoodenMaterialTags(BlockInit.GROUNDSTALK);
+		registerWoodenMaterialTags(BlockInit.SEAWOOD);
+		registerWoodenMaterialTags(BlockInit.SCORCHWOOD);
+		registerWoodenMaterialTags(BlockInit.GHOSTWOOD);
+		registerWoodenMaterialTags(BlockInit.GROVEWOOD);
 		
 		// STONE MATERIALS
 		registerStoneMaterialTags(BlockInit.DRAGONSTONE);
@@ -97,7 +103,7 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		getOrCreateBuilder(ItemTags.createOptional(frl("workbench"))).add(material.craftingTable.get().asItem());
 		
 		// Used by the Metal Barrels mod
-		getOrCreateBuilder(TagInit.GALAXIA_BARRELS_ITEM).add(material.barrel.get().asItem());
+		getOrCreateBuilder(TagInit.ITEM_BARRELS).add(material.barrel.get().asItem());
 	}
 	
 	private void registerStoneMaterialTags(StoneMaterial material)

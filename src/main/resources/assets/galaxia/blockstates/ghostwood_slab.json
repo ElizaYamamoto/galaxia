@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "galaxia:block/ghostwood_slab_top"
+    },
+    "type=bottom": {
+      "model": "galaxia:block/ghostwood_slab"
+    },
+    "type=double": {
+      "model": "galaxia:block/ghostwood_planks"
+    }
+  }
+}

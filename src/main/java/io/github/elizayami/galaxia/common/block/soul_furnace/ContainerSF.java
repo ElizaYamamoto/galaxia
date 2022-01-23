@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import io.github.elizayami.galaxia.common.abstracts.furnace.FurnaceZoneContents;
 import io.github.elizayami.galaxia.common.tileentity.TileEntitySoulFurnace;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.FurnaceInit;
 
 public class ContainerSF extends Container {
 
@@ -59,8 +59,8 @@ public class ContainerSF extends Container {
 	public ContainerSF(int windowID, PlayerInventory invPlayer, FurnaceZoneContents inputZoneContents,
 			FurnaceZoneContents outputZoneContents, FurnaceZoneContents fuelZoneContents,
 			FurnaceStateData furnaceStateData) {
-		super(TileEntityInit.containerTypeSF, windowID);
-		if (TileEntityInit.containerTypeSF == null)
+		super(FurnaceInit.containerTypeSF, windowID);
+		if (FurnaceInit.containerTypeSF == null)
 			throw new IllegalStateException("Must initialise containerTypeSF before constructing a Soul Furnace!");
 		this.inputZoneContents = inputZoneContents;
 		this.outputZoneContents = outputZoneContents;

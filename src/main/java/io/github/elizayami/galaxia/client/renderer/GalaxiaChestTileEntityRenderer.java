@@ -32,7 +32,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.vector.Vector3f;
 import net.minecraft.world.World;
 
-public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaChestTileEntity> {
+public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaChestTileEntity>
+{
 	private static final HashMap<Block, RenderType[]> LAYERS = Maps.newHashMap();
 	private static RenderType[] defaultLayer;
 
@@ -50,7 +51,8 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 	private final ModelRenderer partLeftC;
 	private final ModelRenderer partLeftB;
 
-	public GalaxiaChestTileEntityRenderer(TileEntityRendererDispatcher blockEntityRenderDispatcher) {
+	public GalaxiaChestTileEntityRenderer(TileEntityRendererDispatcher blockEntityRenderDispatcher)
+	{
 		super(blockEntityRenderDispatcher);
 
 		this.partC = new ModelRenderer(64, 64, 0, 19);
@@ -82,15 +84,20 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 		this.partLeftB.rotationPointY = 8.0F;
 	}
 
-	public void render(GalaxiaChestTileEntity entity, float tickDelta, MatrixStack matrices, IRenderTypeBuffer vertexConsumers, int light, int overlay) {
+	public void render(GalaxiaChestTileEntity entity, float tickDelta, MatrixStack matrices,
+			IRenderTypeBuffer vertexConsumers, int light, int overlay)
+	{
 		World world = entity.getWorld();
 		boolean worldExists = world != null;
-		BlockState blockState = worldExists ? entity.getBlockState() : (BlockState) Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, Direction.SOUTH);
-		ChestType chestType = blockState.hasProperty(ChestBlock.TYPE) ? (ChestType) blockState.get(ChestBlock.TYPE) : ChestType.SINGLE;
+		BlockState blockState = worldExists ? entity.getBlockState()
+				: (BlockState) Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, Direction.SOUTH);
+		ChestType chestType = blockState.hasProperty(ChestBlock.TYPE) ? (ChestType) blockState.get(ChestBlock.TYPE)
+				: ChestType.SINGLE;
 		Block block = blockState.getBlock();
 		if (entity.hasChest())
 			block = entity.getChest();
-		if (block instanceof AbstractChestBlock) {
+		if (block instanceof AbstractChestBlock)
+		{
 			AbstractChestBlock<?> abstractChestBlock = (AbstractChestBlock<?>) block;
 			boolean isDouble = chestType != ChestType.SINGLE;
 			float f = ((Direction) blockState.get(ChestBlock.FACING)).getHorizontalAngle();
@@ -101,27 +108,40 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 			matrices.rotate(Vector3f.YP.rotationDegrees(-f));
 			matrices.translate(-0.5D, -0.5D, -0.5D);
 
-			if (worldExists) {
+			if (worldExists)
+			{
 				propertySource = abstractChestBlock.combine(blockState, world, entity.getPos(), true);
-			} else {
+			}
+			else
+			{
 				propertySource = TileEntityMerger.ICallback::func_225537_b_;
 			}
 
-			float pitch = ((Float2FloatFunction) propertySource.apply(ChestBlock.getLidRotationCallback((IChestLid) entity))).get(tickDelta);
+			float pitch = ((Float2FloatFunction) propertySource
+					.apply(ChestBlock.getLidRotationCallback((IChestLid) entity))).get(tickDelta);
 			pitch = 1.0F - pitch;
 			pitch = 1.0F - pitch * pitch * pitch;
-			@SuppressWarnings({ "rawtypes" })
+			@SuppressWarnings(
+			{ "rawtypes" })
 			int blockLight = ((Int2IntFunction) propertySource.apply(new DualBrightnessCallback())).applyAsInt(light);
 
 			IVertexBuilder vertexConsumer = getConsumer(vertexConsumers, block, chestType);
 
-			if (isDouble) {
-				if (chestType == ChestType.LEFT) {
-					renderParts(matrices, vertexConsumer, this.partLeftA, this.partLeftB, this.partLeftC, pitch, blockLight, overlay);
-				} else {
-					renderParts(matrices, vertexConsumer, this.partRightA, this.partRightB, this.partRightC, pitch, blockLight, overlay);
+			if (isDouble)
+			{
+				if (chestType == ChestType.LEFT)
+				{
+					renderParts(matrices, vertexConsumer, this.partLeftA, this.partLeftB, this.partLeftC, pitch,
+							blockLight, overlay);
 				}
-			} else {
+				else
+				{
+					renderParts(matrices, vertexConsumer, this.partRightA, this.partRightB, this.partRightC, pitch,
+							blockLight, overlay);
+				}
+			}
+			else
+			{
 				renderParts(matrices, vertexConsumer, this.partA, this.partB, this.partC, pitch, blockLight, overlay);
 			}
 
@@ -129,7 +149,9 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 		}
 	}
 
-	private void renderParts(MatrixStack matrices, IVertexBuilder vertices, ModelRenderer modelPart, ModelRenderer modelPart2, ModelRenderer modelPart3, float pitch, int light, int overlay) {
+	private void renderParts(MatrixStack matrices, IVertexBuilder vertices, ModelRenderer modelPart,
+			ModelRenderer modelPart2, ModelRenderer modelPart3, float pitch, int light, int overlay)
+	{
 		modelPart.rotateAngleX = -(pitch * 1.5707964F);
 		modelPart2.rotateAngleX = modelPart.rotateAngleX;
 		modelPart.render(matrices, vertices, light, overlay);
@@ -137,8 +159,10 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 		modelPart3.render(matrices, vertices, light, overlay);
 	}
 
-	private static RenderType getChestTexture(ChestType type, RenderType[] layers) {
-		switch (type) {
+	private static RenderType getChestTexture(ChestType type, RenderType[] layers)
+	{
+		switch (type)
+		{
 		case LEFT:
 			return layers[ID_LEFT];
 		case RIGHT:
@@ -149,28 +173,34 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 		}
 	}
 
-	public static IVertexBuilder getConsumer(IRenderTypeBuffer provider, Block block, ChestType chestType) {
+	public static IVertexBuilder getConsumer(IRenderTypeBuffer provider, Block block, ChestType chestType)
+	{
 		RenderType[] layers = LAYERS.getOrDefault(block, defaultLayer);
 		return provider.getBuffer(getChestTexture(chestType, layers));
 	}
 
-	static {
-		defaultLayer = new RenderType[] {
-				RenderType.getEntityCutout(new ResourceLocation("textures/entity/chest/normal.png")),
+	static
+	{
+		defaultLayer = new RenderType[]
+		{ RenderType.getEntityCutout(new ResourceLocation("textures/entity/chest/normal.png")),
 				RenderType.getEntityCutout(new ResourceLocation("textures/entity/chest/normal_left.png")),
-				RenderType.getEntityCutout(new ResourceLocation("textures/entity/chest/normal_right.png"))
-		};
-		
-		ItemInit.ITEMS.getEntries().forEach((item) -> {
-			if (item.get() instanceof BlockItem) {
+				RenderType.getEntityCutout(new ResourceLocation("textures/entity/chest/normal_right.png")) };
+
+		ItemInit.ITEMS.getEntries().forEach((item) ->
+		{
+			if (item.get() instanceof BlockItem)
+			{
 				Block block = ((BlockItem) item.get()).getBlock();
-				if (block instanceof ChestBlock) {
+				if (block instanceof ChestBlock)
+				{
 					String name = block.getRegistryName().getPath();
-					LAYERS.put(block, new RenderType[] {
-							RenderType.getEntityCutout(new ResourceLocation(Galaxia.MOD_ID, "textures/entity/chest/" + name + ".png")),
-							RenderType.getEntityCutout(new ResourceLocation(Galaxia.MOD_ID, "textures/entity/chest/" + name + "_left.png")),
-							RenderType.getEntityCutout(new ResourceLocation(Galaxia.MOD_ID, "textures/entity/chest/" + name + "_right.png"))
-					});
+					LAYERS.put(block, new RenderType[]
+					{ RenderType.getEntityCutout(
+							new ResourceLocation(Galaxia.MOD_ID, "textures/entity/chest/" + name + ".png")),
+							RenderType.getEntityCutout(new ResourceLocation(Galaxia.MOD_ID,
+									"textures/entity/chest/" + name + "_left.png")),
+							RenderType.getEntityCutout(new ResourceLocation(Galaxia.MOD_ID,
+									"textures/entity/chest/" + name + "_right.png")) });
 				}
 			}
 		});

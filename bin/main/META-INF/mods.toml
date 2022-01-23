@@ -10,7 +10,7 @@ credits="Massive thank you to TheGrayGhost for Minecraft By Example, which helpe
 displayURL="https://github.com/TheGreyGhost"
 authors="ElizaYami"
 
-[[dependencies.celestia]]
+[[dependencies.galaxia]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.16.5]"

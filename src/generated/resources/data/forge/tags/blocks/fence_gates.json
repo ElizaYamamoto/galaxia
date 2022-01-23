@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_gate",
+    "galaxia:groundstalk_gate",
+    "galaxia:seawood_gate",
+    "galaxia:scorchwood_gate",
+    "galaxia:ghostwood_gate",
+    "galaxia:grovewood_gate"
+  ]
+}

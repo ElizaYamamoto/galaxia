@@ -81,9 +81,9 @@ public class WoodenMaterial
 		AbstractBlock.Properties materialPlanksNotSolid = AbstractBlock.Properties.create(Material.WOOD, planksColor)
 				.hardnessAndResistance(2.0F, 3.0F).sound(SoundType.WOOD).notSolid();
 
-		log_stripped = BlockInit.registerBlockWithDefaultItem(name + "_stripped_log",
+		log_stripped = BlockInit.registerBlockWithDefaultItem(name + "_log_stripped",
 				() -> new BarkBlockTemplate(materialPlanks));
-		bark_stripped = BlockInit.registerBlockWithDefaultItem(name + "_stripped_bark",
+		bark_stripped = BlockInit.registerBlockWithDefaultItem(name + "_bark_stripped",
 				() -> new BarkBlockTemplate(materialPlanks));
 
 		log = BlockInit.registerBlockWithDefaultItem(name + "_log",

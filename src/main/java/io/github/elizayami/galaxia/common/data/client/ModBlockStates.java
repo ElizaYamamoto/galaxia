@@ -3,6 +3,7 @@ package io.github.elizayami.galaxia.common.data.client;
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
+import io.github.elizayami.galaxia.common.abstracts.blocks.BarkBlockTemplate;
 import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
@@ -83,6 +84,18 @@ public class ModBlockStates extends BlockStateProvider
 		
 		simpleBlock(material.planks.get());
 		makeBlockItemFromExistingModel(material.planks.get());
+		
+		logBlock((RotatedPillarBlock) material.log.get());
+		makeBlockItemFromExistingModel(material.log.get());
+
+		logBlock((RotatedPillarBlock) material.log_stripped.get());
+		makeBlockItemFromExistingModel(material.log_stripped.get());
+
+		simpleBlock((BarkBlockTemplate)material.bark.get());
+		makeBlockItemFromExistingModel(material.bark.get());
+		
+		simpleBlock((BarkBlockTemplate)material.bark_stripped.get());
+		makeBlockItemFromExistingModel(material.bark_stripped.get());
 		
 		stairsBlock((StairsBlock) material.stairs.get(), planksTexture);
 		makeBlockItemFromExistingModel(material.stairs.get());
@@ -335,6 +348,19 @@ public class ModBlockStates extends BlockStateProvider
 				.texture("particle", modLoc("block/" + material + "_crafting_table_top"));
 		simpleBlock(block, model);
     }
+   
+    private void PillarBlock(Block block, String material)
+    {
+		ModelFile model = models()
+				.cube(material + "_crafting_table", modLoc("block/" + material + "_planks"),
+						modLoc("block/" + material + "_crafting_table_top"),
+						modLoc("block/" + material + "_crafting_table_front"),
+						modLoc("block/" + material + "_crafting_table_side"),
+						modLoc("block/" + material + "_crafting_table_side"),
+						modLoc("block/" + material + "_crafting_table_front"))
+				.texture("particle", modLoc("block/" + material + "_crafting_table_top"));
+		simpleBlock(block, model);
+    }
     
     private void ladderBlock(LadderBlock block, String material)
     {
@@ -396,6 +422,50 @@ public class ModBlockStates extends BlockStateProvider
            
            return ConfiguredModel.builder()
            .modelFile(opened ? open : closed)
+           .rotationX(x)
+           .rotationY(y)
+           .build();
+        });
+    }
+    
+    private void LogBlock(Block block, String material)
+    {
+    	ModelFile open = models().withExistingParent(material + "_barrel_open", mcLoc("block/cube_bottom_top"))
+    			.texture("top", modLoc("block/" + material + "_barrel_top_open"))
+    			.texture("bottom", modLoc("block/" + material + "_barrel_bottom"))
+    			.texture("side", modLoc("block/" + material + "_barrel_side"));
+    	ModelFile closed = models().withExistingParent(material + "_barrel", mcLoc("block/cube_bottom_top"))
+    			.texture("top", modLoc("block/" + material + "_barrel_top"))
+    			.texture("bottom", modLoc("block/" + material + "_barrel_bottom"))
+    			.texture("side", modLoc("block/" + material + "_barrel_side"));
+        getVariantBuilder(block)
+        .forAllStates(state -> {
+           Direction dir = state.get(BarrelBlock.PROPERTY_FACING);
+           int x = 0;
+           int y = 0;
+           switch (dir) {
+           case DOWN:
+        	   x = 180;
+        	   break;
+           case EAST:
+        	   x = 90;
+        	   y = 90;
+        	   break;
+           case NORTH:
+        	   x = 90;
+        	   break;
+           case SOUTH:
+        	   x = 90;
+        	   y = 180;
+        	   break;
+           case UP:
+        	   break;
+           case WEST:
+        	   x = 90;
+        	   y = 270;
+        	   break;
+           }
+           return ConfiguredModel.builder()
            .rotationX(x)
            .rotationY(y)
            .build();

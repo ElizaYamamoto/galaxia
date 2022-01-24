@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:groundstalk_log_stripped"
+    }
+  },
+  "result": {
+    "item": "galaxia:groundstalk_bark_stripped",
+    "count": 3
+  }
+}

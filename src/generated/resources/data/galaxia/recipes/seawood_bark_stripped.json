@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:seawood_log_stripped"
+    }
+  },
+  "result": {
+    "item": "galaxia:seawood_bark_stripped",
+    "count": 3
+  }
+}

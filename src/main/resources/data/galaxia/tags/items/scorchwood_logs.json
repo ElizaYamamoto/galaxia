@@ -3,7 +3,7 @@
   "values": [
     "galaxia:scorchwood_log",
     "galaxia:scorchwood_bark",
-    "galaxia:scorchwood_stripped_log",
-    "galaxia:scorchwood_stripped_bark"
+    "galaxia:scorchwood_log_stripped",
+    "galaxia:scorchwood_bark_stripped"
   ]
 }

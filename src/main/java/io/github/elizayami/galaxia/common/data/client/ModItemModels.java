@@ -119,6 +119,9 @@ public class ModItemModels extends ItemModelProvider
         
         getBuilder(material.name + "_hoe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
                 texture("layer0", modLoc("item/" + material.name + "_hoe"));
+        
+        getBuilder(material.name + "_paxel").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+        texture("layer0", modLoc("item/" + material.name + "_paxel"));
 
         getBuilder(material.name + "_helmet").parent(new ModelFile.UncheckedModelFile("item/generated")).
                 texture("layer0", modLoc("item/" + material.name + "_helmet"));
@@ -151,6 +154,9 @@ public class ModItemModels extends ItemModelProvider
         
         getBuilder(material.name + "_hoe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
                 texture("layer0", modLoc("item/" + material.name + "_hoe"));
+
+        getBuilder(material.name + "_paxel").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_paxel"));
 
         getBuilder(material.name + "_helmet").parent(new ModelFile.UncheckedModelFile("item/generated")).
                 texture("layer0", modLoc("item/" + material.name + "_helmet"));

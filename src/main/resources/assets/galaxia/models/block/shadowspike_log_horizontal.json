@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "galaxia:block/shadowspike_log",
+    "end": "galaxia:block/shadowspike_log_top"
+  }
+}

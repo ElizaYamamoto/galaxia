@@ -3,7 +3,7 @@
   "values": [
     "galaxia:grovewood_log",
     "galaxia:grovewood_bark",
-    "galaxia:grovewood_stripped_log",
-    "galaxia:grovewood_stripped_bark"
+    "galaxia:grovewood_log_stripped",
+    "galaxia:grovewood_bark_stripped"
   ]
 }

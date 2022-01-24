@@ -3,7 +3,7 @@
   "values": [
     "galaxia:shadowspike_log",
     "galaxia:shadowspike_bark",
-    "galaxia:shadowspike_stripped_log",
-    "galaxia:shadowspike_stripped_bark"
+    "galaxia:shadowspike_log_stripped",
+    "galaxia:shadowspike_bark_stripped"
   ]
 }

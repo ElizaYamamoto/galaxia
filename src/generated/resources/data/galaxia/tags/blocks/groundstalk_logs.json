@@ -3,7 +3,7 @@
   "values": [
     "galaxia:groundstalk_log",
     "galaxia:groundstalk_bark",
-    "galaxia:groundstalk_stripped_log",
-    "galaxia:groundstalk_stripped_bark"
+    "galaxia:groundstalk_log_stripped",
+    "galaxia:groundstalk_bark_stripped"
   ]
 }

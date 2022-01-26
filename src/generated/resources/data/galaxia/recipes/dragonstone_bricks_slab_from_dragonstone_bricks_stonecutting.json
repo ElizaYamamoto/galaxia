@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "galaxia:dragonstone_bricks"
-  },
-  "result": "galaxia:dragonstone_bricks_slab",
-  "count": 2
-}

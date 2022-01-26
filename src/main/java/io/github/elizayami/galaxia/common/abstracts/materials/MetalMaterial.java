@@ -94,8 +94,6 @@ public class MetalMaterial
 		nugget = ItemInit.registerItem(name + "_nugget", () -> new Item(itemSettings));
 		ingot = ItemInit.registerItem(name + "_ingot", () -> new Item(itemSettings));
 		
-		// FIX: cannot use the same item settings instance for every tool type here, 
-		// because in each tool's constructor the respective tool type is added to the same Item.Properties
 		shovel = ItemInit.registerItem(name + "_shovel", () -> new ShovelItem(material, 1.5F, -3.0F, new Item.Properties().group(Galaxia.galaxiaGroup)));
 		sword = ItemInit.registerItem(name + "_sword", () -> new SwordItem(material, 3, -2.4F, new Item.Properties().group(Galaxia.galaxiaGroup)));
 		pickaxe = ItemInit.registerItem(name + "_pickaxe", () -> new PickaxeItem(material, 1, -2.8F, new Item.Properties().group(Galaxia.galaxiaGroup)));

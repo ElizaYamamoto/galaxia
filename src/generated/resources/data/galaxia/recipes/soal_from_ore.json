@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "galaxia:soal_ore"
-  },
-  "result": "galaxia:soal",
-  "experience": 0.35,
-  "cookingtime": 200
-}

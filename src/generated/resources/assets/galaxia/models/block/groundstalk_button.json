@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/button",
-  "textures": {
-    "texture": "galaxia:block/groundstalk_planks"
-  }
-}

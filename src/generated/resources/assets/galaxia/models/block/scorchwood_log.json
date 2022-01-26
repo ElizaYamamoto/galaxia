@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "galaxia:block/scorchwood_log",
-    "end": "galaxia:block/scorchwood_log_top"
-  }
-}

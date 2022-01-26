@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "side": "galaxia:block/dragonstone_bricks",
-    "bottom": "galaxia:block/dragonstone_bricks",
-    "top": "galaxia:block/dragonstone_bricks"
-  }
-}

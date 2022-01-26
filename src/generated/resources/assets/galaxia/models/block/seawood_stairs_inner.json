@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "side": "galaxia:block/seawood_planks",
-    "bottom": "galaxia:block/seawood_planks",
-    "top": "galaxia:block/seawood_planks"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "galaxia:block/impact_sandstone",
-    "bottom": "galaxia:block/impact_sandstone_bottom",
-    "top": "galaxia:block/impact_sandstone_top"
-  }
-}

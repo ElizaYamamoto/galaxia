@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "side": "galaxia:block/scorchwood_planks",
-    "bottom": "galaxia:block/scorchwood_planks",
-    "top": "galaxia:block/scorchwood_planks"
-  }
-}

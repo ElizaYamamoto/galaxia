@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "galaxia:block/shadowspike_bookshelf",
-    "end": "galaxia:block/shadowspike_planks"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "side": "galaxia:block/meteor_tile",
-    "bottom": "galaxia:block/meteor_tile",
-    "top": "galaxia:block/meteor_tile"
-  }
-}

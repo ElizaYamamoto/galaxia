@@ -491,6 +491,7 @@ ed6f552d4e91c2f1ed0b9101512326f9d98cfe3b assets/galaxia/models/item/cometsteel_h
 009b8b9309395361acf0cd4517bdc95682542aff assets/galaxia/models/item/cometsteel_leggings.json
 5696066b5aabcd0fc684a231d064d92e64fb184a assets/galaxia/models/item/cometsteel_nugget.json
 ff2605a7bafc926befc330867470bfb15a8fab3f assets/galaxia/models/item/cometsteel_ore.json
+6aae9bfd886a017d19587046a021c92d2d19def6 assets/galaxia/models/item/cometsteel_paxel.json
 d3f6b927a83539381a10c44d7e2e5d82c076de22 assets/galaxia/models/item/cometsteel_pickaxe.json
 92f9da23d418d92895ae77ca11c3a301c0412dcc assets/galaxia/models/item/cometsteel_shovel.json
 5804aae14512512cd6290a55c78a182fcd7f5ccb assets/galaxia/models/item/cometsteel_slab.json
@@ -518,6 +519,7 @@ a112a09ef759da45f1a3b35bcdd0f22ee688a4c9 assets/galaxia/models/item/galaxium_boo
 dce8830bda2916277b4d017b97a0b959be04b0d3 assets/galaxia/models/item/galaxium_hoe.json
 150b17c63a3e7fe1316dfeeedaec95a88af92305 assets/galaxia/models/item/galaxium_leggings.json
 3e1c32cb5ea18fd032c85d4a82cc1d2ddc43b5e6 assets/galaxia/models/item/galaxium_ore.json
+11a114e127fcb00c93db79f45f53257db1d53b04 assets/galaxia/models/item/galaxium_paxel.json
 d63d554330d8c353eae447cfe3581c31c16f9ef5 assets/galaxia/models/item/galaxium_pickaxe.json
 0d9037898b225ede61a6102917589b16c7a7255c assets/galaxia/models/item/galaxium_shovel.json
 edb229f7d368725c59193a02db1d1a45b5d0d0c0 assets/galaxia/models/item/galaxium_slab.json
@@ -602,6 +604,7 @@ a10baff78008ff70ed65eff2b8a860393f0e5523 assets/galaxia/models/item/meteor_hoe.j
 945855df302ecf26f9dda5795c280394aa81606b assets/galaxia/models/item/meteor_leggings.json
 8b352a26340b2e3eb9df0cc3f926f58216abaa43 assets/galaxia/models/item/meteor_nugget.json
 fdb6475da511a1807463223163f5db3a6afa0518 assets/galaxia/models/item/meteor_ore.json
+f698c86887e9d9bb984a0278beaa19a436bd0045 assets/galaxia/models/item/meteor_paxel.json
 f92688d38dab037acf9f950f26591f5eb9109dbd assets/galaxia/models/item/meteor_pickaxe.json
 2add99baf9a5717b0dd77d2c2497e240083eef65 assets/galaxia/models/item/meteor_shovel.json
 c76056891a9eb46bc77c94a8d6a2b8301348a5de assets/galaxia/models/item/meteor_slab.json

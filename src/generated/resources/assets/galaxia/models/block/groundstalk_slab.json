@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "galaxia:block/groundstalk_planks",
-    "bottom": "galaxia:block/groundstalk_planks",
-    "top": "galaxia:block/groundstalk_planks"
-  }
-}

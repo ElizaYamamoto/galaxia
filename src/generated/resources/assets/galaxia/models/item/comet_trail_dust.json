@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "galaxia:item/comet_trail_dust"
-  }
-}

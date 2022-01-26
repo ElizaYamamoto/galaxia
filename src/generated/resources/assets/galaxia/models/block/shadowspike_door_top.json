@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_top",
-  "textures": {
-    "bottom": "galaxia:block/shadowspike_door_bottom",
-    "top": "galaxia:block/shadowspike_door_top"
-  }
-}

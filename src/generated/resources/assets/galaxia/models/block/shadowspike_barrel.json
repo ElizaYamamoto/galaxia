@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/cube_bottom_top",
-  "textures": {
-    "top": "galaxia:block/shadowspike_barrel_top",
-    "bottom": "galaxia:block/shadowspike_barrel_bottom",
-    "side": "galaxia:block/shadowspike_barrel_side"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "galaxia:block/seawood_log",
-    "end": "galaxia:block/seawood_log_top"
-  }
-}

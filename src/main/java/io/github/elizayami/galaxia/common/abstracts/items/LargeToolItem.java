@@ -28,16 +28,17 @@ import java.util.Set;
 
 public class LargeToolItem extends ToolItem
 {
-	private static final Set<Material> WOODS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS, Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
-	
+	private static final Set<Material> WOODS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS,
+			Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
+
 	private static final Set<Material> STONES = Sets.newHashSet(Material.IRON, Material.ANVIL, Material.ROCK);
-	
+
 	private static final Set<Material> PLANTS = Sets.newHashSet(Material.ORGANIC, Material.SPONGE, Material.LEAVES);
-	
+
 	private static final Set<Material> SOILS = Sets.newHashSet(Material.CLAY, Material.EARTH, Material.SAND);
 
 	private Set<Material> EFFECTIVE;
-	
+
 	public LargeToolItem(float attackDamageIn, float attackSpeedIn, IItemTier tier, Item.Properties apply)
 	{
 		super(attackDamageIn, attackSpeedIn, tier, new HashSet<>(), apply);
@@ -57,12 +58,12 @@ public class LargeToolItem extends ToolItem
 		{
 			return i >= blockIn.getHarvestLevel();
 		}
-		
+
 		Material material = blockIn.getMaterial();
 		return material == Material.ROCK || material == Material.IRON || material == Material.ANVIL
 				|| blockIn.isIn(Blocks.SNOW) || blockIn.isIn(Blocks.SNOW_BLOCK);
 	}
-	
+
 	public float getDestroySpeed(ItemStack stack, BlockState state)
 	{
 		if (stack.getToolTypes().contains(ToolType.AXE))
@@ -82,9 +83,8 @@ public class LargeToolItem extends ToolItem
 			EFFECTIVE.addAll(WOODS);
 		}
 		Material material = state.getMaterial();
-		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK && !EFFECTIVE.contains(material)
-				? super.getDestroySpeed(stack, state)
-				: this.efficiency;
+		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK
+				&& !EFFECTIVE.contains(material) ? super.getDestroySpeed(stack, state) : this.efficiency;
 	}
 
 	@Override
@@ -108,24 +108,55 @@ public class LargeToolItem extends ToolItem
 		if (strippable != null && stack.getToolTypes().contains(ToolType.AXE))
 		{
 			world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			world.setBlockState(pos, strippable, 11);
+			rightClick(world, strippable, pos, player);
 			success = true;
 		}
 		else if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up()))
 		{
-			if (tillable != null)
+			boolean hoe = stack.getToolTypes().contains(ToolType.HOE);
+			boolean shovel = stack.getToolTypes().contains(ToolType.SHOVEL);
+			
+			if (hoe && shovel)
 			{
-				if (stack.getToolTypes().contains(ToolType.HOE))
+				if (player.isSneaking())
+				{
+					if (tillable != null)
+					{
+						world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						if (!world.isRemote)
+						{
+							rightClick(world, tillable, pos, player);
+							success = true;
+						}
+					}
+				}
+				else
+				{
+					if (pathable != null)
+					{
+						world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+						if (!world.isRemote())
+						{
+							rightClick(world, pathable, pos, player);
+							success = true;
+						}
+					}
+				}
+			}
+			else if (hoe && !shovel)
+			{
+				if (tillable != null)
 				{
 					world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 					if (!world.isRemote)
 					{
-						world.setBlockState(pos, tillable, 11);
+						rightClick(world, tillable, pos, player);
 						success = true;
 					}
 				}
 			}
-			else if (stack.getToolTypes().contains(ToolType.SHOVEL))
+			else if (shovel && !hoe)
 			{
 				if (pathable != null)
 				{
@@ -133,7 +164,7 @@ public class LargeToolItem extends ToolItem
 
 					if (!world.isRemote())
 					{
-						world.setBlockState(pos, pathable, 11);
+						rightClick(world, pathable, pos, player);
 						success = true;
 					}
 				}
@@ -150,8 +181,57 @@ public class LargeToolItem extends ToolItem
 				return ActionResultType.func_233537_a_(world.isRemote);
 			}
 		}
-
 		return ActionResultType.PASS;
+	}
+	
+	public void rightClick (World world, BlockState state, BlockPos pos, LivingEntity entity)
+	{
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
+
+		double sx = -1;
+		double sy = -1;
+		double sz = -1;
+		if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
+		{
+			for (int loopsX = 0; loopsX < 3; loopsX++)
+			{
+				sz = -1;
+				for (int loopsZ = 0; loopsZ < 3; loopsZ++)
+				{
+					world.setBlockState(pos, state, 11);
+					sz++;
+				}
+				sx++;
+			}
+		}
+		else if (entity.getHorizontalFacing() == Direction.NORTH || entity.getHorizontalFacing() == Direction.SOUTH)
+		{
+			for (int loopsX = 0; loopsX < 3; loopsX++)
+			{
+				sy = -1;
+				for (int loopsY = 0; loopsY < 3; loopsY++)
+				{
+					world.setBlockState(pos, state, 11);
+					sy++;
+				}
+				sx++;
+			}
+		}
+		else if (entity.getHorizontalFacing() == Direction.WEST || entity.getHorizontalFacing() == Direction.EAST)
+		{
+			for (int loopsZ = 0; loopsZ < 3; loopsZ++)
+			{
+				sy = -1;
+				for (int loopsY = 0; loopsY < 3; loopsY++)
+				{
+					world.setBlockState(pos, state, 11);
+					sy++;
+				}
+				sz++;
+			}
+		}
 	}
 
 	@Override

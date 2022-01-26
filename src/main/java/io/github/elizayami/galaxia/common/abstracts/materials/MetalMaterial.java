@@ -1,7 +1,12 @@
 package io.github.elizayami.galaxia.common.abstracts.materials;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.items.BackhawItem;
+import io.github.elizayami.galaxia.common.abstracts.items.BackhoeItem;
+import io.github.elizayami.galaxia.common.abstracts.items.HammerItem;
 import io.github.elizayami.galaxia.common.abstracts.items.PaxelItem;
+import io.github.elizayami.galaxia.common.abstracts.items.SawItem;
+import io.github.elizayami.galaxia.common.abstracts.items.TillerItem;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.block.AbstractBlock;
@@ -45,7 +50,12 @@ public class MetalMaterial
 	public final RegistryObject<Item> axe;
 	public final RegistryObject<Item> hoe;
 	public final RegistryObject<Item> paxel;
-	
+
+	public final RegistryObject<Item> hammer;
+	public final RegistryObject<Item> saw;
+	public final RegistryObject<Item> backhoe;
+	public final RegistryObject<Item> tiller;
+	public final RegistryObject<Item> backhaw;
 	
 	public final RegistryObject<Item> helmet;
 	public final RegistryObject<Item> chestplate;
@@ -100,6 +110,12 @@ public class MetalMaterial
 		axe = ItemInit.registerItem(name + "_axe", () -> new AxeItem(material, 6.0F, -3.0F, new Item.Properties().group(Galaxia.galaxiaGroup)));
 		hoe = ItemInit.registerItem(name + "_hoe", () -> new HoeItem(material, -3, 0.0F, new Item.Properties().group(Galaxia.galaxiaGroup)));
 		paxel = ItemInit.registerItem(name + "_paxel", () -> new PaxelItem(material,  1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
+		
+		hammer = ItemInit.registerItem(name + "_hammer", () -> new HammerItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
+		saw = ItemInit.registerItem(name + "_saw", () -> new SawItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
+		backhoe = ItemInit.registerItem(name + "_backhoe", () -> new BackhoeItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
+		tiller = ItemInit.registerItem(name + "_tiller", () -> new TillerItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
+		backhaw = ItemInit.registerItem(name + "_backhaw", () -> new BackhawItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 		
 		helmet = ItemInit.registerItem(name + "_helmet", () -> new ArmorItem(armor, EquipmentSlotType.HEAD, itemSettings));
 		chestplate = ItemInit.registerItem(name + "_chestplate", () -> new ArmorItem(armor, EquipmentSlotType.CHEST, itemSettings));

@@ -7,7 +7,7 @@ import net.minecraftforge.common.ToolType;
 
 public class BackhawItem extends LargeToolItem
 {
-	public BackhawItem(float attackDamageIn, float attackSpeedIn, IItemTier tier,  Function<Properties, Properties> properties)
+	public BackhawItem(IItemTier tier, float attackDamageIn, float attackSpeedIn, Function<Properties, Properties> properties)
 	{
 		super(attackDamageIn, 
 				attackSpeedIn, 

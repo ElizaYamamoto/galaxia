@@ -7,7 +7,7 @@ import net.minecraftforge.common.ToolType;
 
 public class TillerItem extends LargeToolItem
 { 
-	public TillerItem(float attackDamageIn, float attackSpeedIn, IItemTier tier,  Function<Properties, Properties> properties)
+	public TillerItem(IItemTier tier, float attackDamageIn, float attackSpeedIn, Function<Properties, Properties> properties)
 	{
 		super(attackDamageIn, 
 				attackSpeedIn, 

@@ -7,7 +7,7 @@ import net.minecraftforge.common.ToolType;
 
 public class BackhoeItem extends LargeToolItem
 {
-	public BackhoeItem(float attackDamageIn, float attackSpeedIn, IItemTier tier,  Function<Properties, Properties> properties)
+	public BackhoeItem(IItemTier tier, float attackDamageIn, float attackSpeedIn, Function<Properties, Properties> properties)
 	{
 		super(attackDamageIn, 
 				attackSpeedIn, 

@@ -121,8 +121,6 @@ public class GalaxiaChestTileEntityRenderer extends TileEntityRenderer<GalaxiaCh
 					.apply(ChestBlock.getLidRotationCallback((IChestLid) entity))).get(tickDelta);
 			pitch = 1.0F - pitch;
 			pitch = 1.0F - pitch * pitch * pitch;
-			@SuppressWarnings(
-			{ "rawtypes" })
 			int blockLight = ((Int2IntFunction) propertySource.apply(new DualBrightnessCallback())).applyAsInt(light);
 
 			IVertexBuilder vertexConsumer = getConsumer(vertexConsumers, block, chestType);

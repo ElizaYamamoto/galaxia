@@ -7,7 +7,7 @@ import net.minecraftforge.common.ToolType;
 
 public class SawItem extends LargeToolItem
 {
-	public SawItem(float attackDamageIn, float attackSpeedIn, IItemTier tier,  Function<Properties, Properties> properties)
+	public SawItem(IItemTier tier, float attackDamageIn, float attackSpeedIn, Function<Properties, Properties> properties)
 	{
 		super(attackDamageIn, 
 				attackSpeedIn, 

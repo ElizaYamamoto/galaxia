@@ -5,7 +5,7 @@ import io.github.elizayami.galaxia.client.renderer.GalaxiaSignTileEntityRenderer
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
 import io.github.elizayami.galaxia.usefultools.IPhysicalSide;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
@@ -30,8 +30,8 @@ public class PhysicalClientSide implements IPhysicalSide
 	
 	private void registerRenderers()
 	{
-		ClientRegistry.bindTileEntityRenderer(TileEntityInit.CHEST.get(), GalaxiaChestTileEntityRenderer::new);
-		ClientRegistry.bindTileEntityRenderer(TileEntityInit.SIGN.get(), GalaxiaSignTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(WoodTileEntityInit.CHEST.get(), GalaxiaChestTileEntityRenderer::new);
+		ClientRegistry.bindTileEntityRenderer(WoodTileEntityInit.SIGN.get(), GalaxiaSignTileEntityRenderer::new);
 	}
 	
 	private void registerGUIs()

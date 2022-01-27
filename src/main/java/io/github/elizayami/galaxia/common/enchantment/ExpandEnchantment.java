@@ -15,12 +15,12 @@ public class ExpandEnchantment extends GalaxiaEnchantment
 
     @Override
     public int getMinEnchantability(int level) {
-        return 15;
+        return 10;
     }
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -29,7 +29,8 @@ public class ExpandEnchantment extends GalaxiaEnchantment
     }
 
     @Override
-    public boolean canApply(ItemStack stack) {
+    public boolean canApply(ItemStack stack) 
+    {
         return stack.getItem() instanceof LargeToolItem;
     }
 }

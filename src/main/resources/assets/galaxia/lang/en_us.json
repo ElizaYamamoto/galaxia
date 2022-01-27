@@ -4,15 +4,49 @@
 //Blocks
 	"block.galaxia.dragonfire_furnace": "Dragonfire Furnace",
 	"block.galaxia.soul_furnace": "Soul Furnace",
+	"block.galaxia.boltstone": "Boltstone",
+	"block.galaxia.boltstone_brick": "Bolt Brick",
+	"block.galaxia.boltstone_brick_yellow": "Yellow Bolt Brick",
+	"block.galaxia.sparkash": "Sparkash",
 	
 	//Meteor
-	
 	"block.galaxia.meteor_ore": "Meteorite",
 	"block.galaxia.meteor_block": "Meteor Block",
 	
 	//Cometsteel
 	"block.galaxia.cometsteel_ore": "Cometstone",
 	"block.galaxia.cometsteel_block": "Cometsteel Block",
+	"block.galaxia.cometsteel_tile": "Cometsteel Tile",
+	
+	//Shadowspike
+	"block.galaxia.shadowspike_log": "Shadowspike Log",
+	"block.galaxia.shadowspike_bark": "Shadowspike Bark",
+	"block.galaxia.shadowspike_log_stripped": "Stripped Shadowspike Log",
+	"block.galaxia.shadowspike_bark_stripped": "Stripped Shadowspike Bark",
+	"block.galaxia.shadowspike_planks": "Shadowspike Planks",
+	"block.galaxia.shadowspike_stairs": "Shadowspike Stairs",
+	"block.galaxia.shadowspike_fence": "Shadowspike Fence",
+	"block.galaxia.shadowspike_gate": "Shadowspike Gate",
+	"block.galaxia.shadowspike_button": "Shadowspike Button",
+	"block.galaxia.shadowspike_pressure_plate": "Shadowspike Pressure Plate",
+	"block.galaxia.shadowspike_trapdoor": "Shadowspike Trap Door",
+	"block.galaxia.shadowspike_door": "Shadowspike Door",
+	"block.galaxia.shadowspike_crafting_table": "Shadowspike Crafting Table",
+	"block.galaxia.shadowspike_ladder": "Shadowspike Ladder",
+	"block.galaxia.shadowspike_chest": "Shadowspike Chest",
+	"block.galaxia.shadowspike_sign": "Shadowspike Sign",
+	"block.galaxia.shadowspike_barrel": "Shadowspike Barrel",
+	"block.galaxia.shadowspike_bookshelf": "Shadowspike Bookshelf",
+	
+	//Groundstalk
+	
+	//Seawood
+	
+	//Scorchwood
+	
+	//Ghostwood
+	
+	//Grovewood
 	
 	//Soal
 	"block.galaxia.soal_ore": "Soal Ore",
@@ -20,8 +54,68 @@
 	
 //Items
 	"item.galaxia.soal": "Soal", 
+	"item.galaxia.comet_trail_dust": "Comet Trail Dust" , 
 	"item.galaxia.stardust": "Stardust" , 
 	
+	//Tools
+	"item.galaxia.cometsteel_ingot": "Cometsteel Ingot", 
+	"item.galaxia.cometsteel_nugget": "Cometsteel Nugget", 
+	"item.galaxia.cometsteel_pickaxe": "Cometsteel Pickaxe", 
+	"item.galaxia.cometsteel_axe": "Cometsteel Axe", 
+	"item.galaxia.cometsteel_shovel": "Cometsteel Shovel", 
+	"item.galaxia.cometsteel_hoe": "Cometsteel Hoe", 
+	"item.galaxia.cometsteel_sword": "Cometsteel Sword", 
+	"item.galaxia.cometsteel_paxel": "Cometsteel Paxel", 
+	"item.galaxia.cometsteel_hammer": "Cometsteel Hammer",
+	"item.galaxia.cometsteel_saw": "Cometsteel Saw",
+	"item.galaxia.cometsteel_backhoe": "Cometsteel Backhoe",
+	"item.galaxia.cometsteel_tiller": "Cometsteel Tiller",
+	"item.galaxia.cometsteel_backhaw": "Cometsteel Backhaw",
+	"item.galaxia.cometsteel_helmet": "Cometsteel Helmet",
+	"item.galaxia.cometsteel_chestplate": "Cometsteel Chestplate",
+	"item.galaxia.cometsteel_leggings": "Cometsteel Leggings",
+	"item.galaxia.cometsteel_boots": "Cometsteel Boots",
+	
+	"item.galaxia.meteor_ingot": "Meteor Ingot", 
+	"item.galaxia.meteor_nugget": "Meteor Nugget", 
+	"item.galaxia.meteor_pickaxe": "Meteor Pickaxe", 
+	"item.galaxia.meteor_axe": "Meteor Axe", 
+	"item.galaxia.meteor_shovel": "Meteor Shovel", 
+	"item.galaxia.meteor_hoe": "Meteor Hoe", 
+	"item.galaxia.meteor_sword": "Meteor Sword", 
+	"item.galaxia.meteor_paxel": "Meteor Paxel", 
+	"item.galaxia.meteor_hammer": "Meteor Hammer",
+	"item.galaxia.meteor_saw": "Meteor Saw",
+	"item.galaxia.meteor_backhoe": "Meteor Backhoe",
+	"item.galaxia.meteor_tiller": "Meteor Tiller",
+	"item.galaxia.meteor_backhaw": "Meteor Backhaw",
+	"item.galaxia.meteor_helmet": "Meteor Helmet",
+	"item.galaxia.meteor_chestplate": "Meteor Chestplate",
+	"item.galaxia.meteor_leggings": "Meteor Leggings",
+	"item.galaxia.meteor_boots": "Meteor Boots",
+	
+	"item.galaxia.galaxium_star": "Galaxium Star", 
+	"item.galaxia.galaxium_pickaxe": "Galaxium Pickaxe", 
+	"item.galaxia.galaxium_axe": "Galaxium Axe", 
+	"item.galaxia.galaxium_shovel": "Galaxium Shovel", 
+	"item.galaxia.galaxium_hoe": "Galaxium Hoe", 
+	"item.galaxia.galaxium_sword": "Galaxium Sword", 
+	"item.galaxia.galaxium_paxel": "Galaxium Paxel", 
+	"item.galaxia.galaxium_hammer": "Galaxium Hammer",
+	"item.galaxia.galaxium_saw": "Galaxium Saw",
+	"item.galaxia.galaxium_backhoe": "Galaxium Backhoe",
+	"item.galaxia.galaxium_tiller": "Galaxium Tiller",
+	"item.galaxia.galaxium_backhaw": "Galaxium Backhaw",
+	"item.galaxia.galaxium_helmet": "Galaxium Helmet",
+	"item.galaxia.galaxium_chestplate": "Galaxium Chestplate",
+	"item.galaxia.galaxium_leggings": "Galaxium Leggings",
+	"item.galaxia.galaxium_boots": "Galaxium Boots",
+	
+//Descriptions
+  "block.galaxia.soal_block_description": "A block of flaming hatred. Works great for cookin'!",
+  "item.galaxia.soal_description": "A chunk of flaming hatred. Works great for cookin'!",
+ 
+  
 //UI
 	"container.galaxia.dragonfire_furnace": "Dragonfire Furnace",
 	"container.galaxia.soul_furnace": "Soul Furnace"

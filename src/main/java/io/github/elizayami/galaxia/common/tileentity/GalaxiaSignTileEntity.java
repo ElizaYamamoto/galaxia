@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.command.CommandSource;
 import net.minecraft.command.ICommandSource;
@@ -36,7 +36,7 @@ public class GalaxiaSignTileEntity extends TileEntity {
 	private DyeColor textColor = DyeColor.BLACK;
 
 	public GalaxiaSignTileEntity() {
-		super(TileEntityInit.SIGN.get());
+		super(WoodTileEntityInit.SIGN.get());
 	}
 
 	@Override

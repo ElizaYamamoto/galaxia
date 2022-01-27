@@ -13,8 +13,8 @@ public class ClientInit
 	@SubscribeEvent
 	public static void onClientSetupEvent(FMLClientSetupEvent event) 
 	{
-		ScreenManager.registerFactory(FurnaceInit.containerTypeDFF, ContainerScreenDFF::new);
-		ScreenManager.registerFactory(FurnaceInit.containerTypeSF, ContainerScreenSF::new);
+		ScreenManager.registerFactory(TileEntityInit.containerTypeDFF, ContainerScreenDFF::new);
+		ScreenManager.registerFactory(TileEntityInit.containerTypeSF, ContainerScreenSF::new);
 
         ClientRegistry.bindTileEntityRenderer(BlockInit.galaxium_star_tile, o -> new StarRenderer(o, BlockInit.GALAXIUM_STAR, true));
 	}

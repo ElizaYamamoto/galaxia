@@ -10,7 +10,7 @@ import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
-import io.github.elizayami.galaxia.core.init.FurnaceInit;
+import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
@@ -31,12 +31,14 @@ public class ModBlockLootTables extends BlockLootTables {
 	@Override
 	protected void addTables() {
 		// BLOCKS
-		registerDropSelfLootTable(FurnaceInit.blockSF);
-		registerDropSelfLootTable(FurnaceInit.blockDFF);
+		registerDropSelfLootTable(TileEntityInit.blockSF);
+		registerDropSelfLootTable(TileEntityInit.blockDFF);
+		registerDropSelfLootTable(TileEntityInit.blockTF);
+		
 		registerDropSelfLootTable(BlockInit.SOAL_BLOCK.get());
 		
 		registerDropSelfLootTable(BlockInit.IMPACT_SAND.get());
-
+		
 		// MATERIALS
 		registerDropSelfLootTable(BlockInit.GALAXIUM_STAR);
 		
@@ -86,6 +88,7 @@ public class ModBlockLootTables extends BlockLootTables {
 		registerDropSelfLootTable(material.log_stripped.get());
 		registerDropSelfLootTable(material.bark_stripped.get());
 		registerDropSelfLootTable(material.planks.get());
+		registerDropSelfLootTable(material.panel.get());
 		registerDropSelfLootTable(material.stairs.get());
 		registerLootTable(material.slab.get(), BlockLootTables::droppingSlab);
 		registerDropSelfLootTable(material.fence.get());

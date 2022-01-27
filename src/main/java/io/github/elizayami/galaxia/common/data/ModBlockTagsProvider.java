@@ -32,6 +32,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		getOrCreateBuilder(Tags.Blocks.END_STONES).add(Blocks.END_STONE);
 		
 		// Misc Forge tags
+
+		
 		getOrCreateBuilder(Tags.Blocks.ORES).add(BlockInit.SOAL_ORE.get());
 		
 		getOrCreateBuilder(Tags.Blocks.STORAGE_BLOCKS).add(BlockInit.SOAL_BLOCK.get());
@@ -66,6 +68,8 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		getOrCreateBuilder(material.logBlockTag).add(material.log.get(), material.bark.get(), material.log_stripped.get(), material.bark_stripped.get());
 		
 		getOrCreateBuilder(BlockTags.PLANKS).add(material.planks.get());
+		
+		getOrCreateBuilder(BlockTags.PLANKS).add(material.panel.get());
 		
 		getOrCreateBuilder(BlockTags.LOGS).add(material.log.get(), material.bark.get(), material.log_stripped.get(), material.bark_stripped.get());
 		
@@ -170,7 +174,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		getOrCreateBuilder(BlockTags.TRAPDOORS).add(material.trapdoor.get());
 		
 		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
-		
 		
 		// Forge Tags
 		if (material.hasOre)

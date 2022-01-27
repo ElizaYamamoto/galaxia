@@ -1,7 +1,7 @@
 package io.github.elizayami.galaxia.common.tileentity;
 
 import io.github.elizayami.galaxia.common.abstracts.blocks.GalaxiaBarrelBlock;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
 import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -33,7 +33,7 @@ public class GalaxiaBarrelTileEntity extends LockableLootTileEntity {
 	}
 	
 	public GalaxiaBarrelTileEntity() {
-		this(TileEntityInit.BARREL.get());
+		this(WoodTileEntityInit.BARREL.get());
 	}
 
 	@Override

@@ -11,9 +11,9 @@ import net.minecraft.world.World;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import io.github.elizayami.galaxia.common.abstracts.furnace.FurnaceZoneContents;
+import io.github.elizayami.galaxia.common.abstracts.tileentities.FurnaceZoneContents;
 import io.github.elizayami.galaxia.common.tileentity.TileEntityDragonfireFurnace;
-import io.github.elizayami.galaxia.core.init.FurnaceInit;
+import io.github.elizayami.galaxia.core.init.TileEntityInit;
 
 public class ContainerDFF extends Container
 {
@@ -83,8 +83,8 @@ public class ContainerDFF extends Container
 			FurnaceZoneContents outputZoneContents, FurnaceZoneContents fuelZoneContents,
 			FurnaceStateData furnaceStateData)
 	{
-		super(FurnaceInit.containerTypeDFF, windowID);
-		if (FurnaceInit.containerTypeDFF == null)
+		super(TileEntityInit.containerTypeDFF, windowID);
+		if (TileEntityInit.containerTypeDFF == null)
 			throw new IllegalStateException(
 					"Must initialise containerTypeDFF before constructing a Dragonfire Furnace!");
 		this.inputZoneContents = inputZoneContents;

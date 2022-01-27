@@ -16,6 +16,7 @@ public class TagInit
 	public static final ITag.INamedTag<Block> BLOCK_BARRELS = makeBlockTag("forge", "barrels/wooden");
 
 	// CUSTOM FORGE ITEM TAGS
+	public static final ITag.INamedTag<Item> ITEM_WORKBENCH = makeItemTag("forge", "workbench");
 
 	// Used by the Metal Barrels mod
 	public static final ITag.INamedTag<Item> ITEM_BARRELS = makeItemTag("forge", "barrels/wooden");

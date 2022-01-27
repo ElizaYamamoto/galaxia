@@ -1,4 +1,4 @@
-package io.github.elizayami.galaxia.common.abstracts.furnace;
+package io.github.elizayami.galaxia.common.abstracts.tileentities;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.IInventory;
@@ -8,18 +8,18 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import java.util.function.Predicate;
 
-public class FurnaceZoneContents implements IInventory
+public class FuserZoneContents implements IInventory
 {
 
-	public static FurnaceZoneContents createForTileEntity(int size,
+	public static FuserZoneContents createForTileEntity(int size,
 			Predicate<PlayerEntity> canPlayerAccessInventoryLambda, Notify markDirtyNotificationLambda)
 	{
-		return new FurnaceZoneContents(size, canPlayerAccessInventoryLambda, markDirtyNotificationLambda);
+		return new FuserZoneContents(size, canPlayerAccessInventoryLambda, markDirtyNotificationLambda);
 	}
 
-	public static FurnaceZoneContents createForClientSideContainer(int size)
+	public static FuserZoneContents createForClientSideContainer(int size)
 	{
-		return new FurnaceZoneContents(size);
+		return new FuserZoneContents(size);
 	}
 
 	public CompoundNBT serializeNBT()
@@ -153,12 +153,12 @@ public class FurnaceZoneContents implements IInventory
 		return leftoverItemStack.isEmpty();
 	}
 
-	private FurnaceZoneContents(int size)
+	private FuserZoneContents(int size)
 	{
 		this.furnaceComponentContents = new ItemStackHandler(size);
 	}
 
-	private FurnaceZoneContents(int size, Predicate<PlayerEntity> canPlayerAccessInventoryLambda,
+	private FuserZoneContents(int size, Predicate<PlayerEntity> canPlayerAccessInventoryLambda,
 			Notify markDirtyNotificationLambda)
 	{
 		this.furnaceComponentContents = new ItemStackHandler(size);

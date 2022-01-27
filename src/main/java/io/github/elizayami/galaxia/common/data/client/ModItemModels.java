@@ -122,6 +122,23 @@ public class ModItemModels extends ItemModelProvider
         
         getBuilder(material.name + "_paxel").parent(new ModelFile.UncheckedModelFile("item/handheld")).
         texture("layer0", modLoc("item/" + material.name + "_paxel"));
+        
+
+        getBuilder(material.name + "_hammer").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_hammer"));
+        
+        getBuilder(material.name + "_saw").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_saw"));
+        
+        getBuilder(material.name + "_backhoe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_backhoe"));
+        
+        getBuilder(material.name + "_tiller").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_tiller"));
+        
+        getBuilder(material.name + "_backhaw").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+        texture("layer0", modLoc("item/" + material.name + "_backhaw"));
+        
 
         getBuilder(material.name + "_helmet").parent(new ModelFile.UncheckedModelFile("item/generated")).
                 texture("layer0", modLoc("item/" + material.name + "_helmet"));
@@ -157,6 +174,23 @@ public class ModItemModels extends ItemModelProvider
 
         getBuilder(material.name + "_paxel").parent(new ModelFile.UncheckedModelFile("item/handheld")).
                 texture("layer0", modLoc("item/" + material.name + "_paxel"));
+        
+        
+        getBuilder(material.name + "_hammer").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_hammer"));
+        
+        getBuilder(material.name + "_saw").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_saw"));
+        
+        getBuilder(material.name + "_backhoe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_backhoe"));
+        
+        getBuilder(material.name + "_tiller").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + material.name + "_tiller"));
+        
+        getBuilder(material.name + "_backhaw").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+        texture("layer0", modLoc("item/" + material.name + "_backhaw"));
+        
 
         getBuilder(material.name + "_helmet").parent(new ModelFile.UncheckedModelFile("item/generated")).
                 texture("layer0", modLoc("item/" + material.name + "_helmet"));

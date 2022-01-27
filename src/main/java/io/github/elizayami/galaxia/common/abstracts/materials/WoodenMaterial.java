@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import io.github.elizayami.galaxia.core.init.TagInit;
-import io.github.elizayami.galaxia.core.init.TileEntityInit;
+import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.client.renderer.ChestItemTileEntityRenderer;
 import io.github.elizayami.galaxia.common.abstracts.blocks.BarkBlockTemplate;
@@ -48,6 +48,7 @@ public class WoodenMaterial
 	public final RegistryObject<Block> bark_stripped;
 
 	public final RegistryObject<Block> planks;
+	public final RegistryObject<Block> panel;
 
 	public final RegistryObject<Block> stairs;
 	public final RegistryObject<Block> slab;
@@ -92,6 +93,7 @@ public class WoodenMaterial
 				() -> new StripableLogBlockTemplate(woodColor, bark_stripped.get()));
 
 		planks = BlockInit.registerBlockWithDefaultItem(name + "_planks", () -> new Block(materialPlanks));
+		panel = BlockInit.registerBlockWithDefaultItem(name + "_panel", () -> new Block(materialPlanks));
 		stairs = BlockInit.registerBlockWithDefaultItem(name + "_stairs",
 				() -> new StairsBlock(() -> planks.get().getDefaultState(), materialPlanks));
 		slab = BlockInit.registerBlockWithDefaultItem(name + "_slab", () -> new SlabBlock(materialPlanks));
@@ -108,12 +110,12 @@ public class WoodenMaterial
 				() -> new GalaxiaCraftingTableBlock(materialPlanks), 300);
 		ladder = registerBlockWithBurnItem(name + "_ladder", () -> new LadderBlock(materialPlanksNotSolid), 300);
 		chest = BlockInit.registerBlock(name + "_chest",
-				() -> new ChestBlock(materialPlanksNotSolid, () -> TileEntityInit.CHEST.get())
+				() -> new ChestBlock(materialPlanksNotSolid, () -> WoodTileEntityInit.CHEST.get())
 				{
 					public net.minecraft.tileentity.TileEntity createTileEntity(BlockState state,
 							net.minecraft.world.IBlockReader world)
 					{
-						return TileEntityInit.CHEST.get().create();
+						return WoodTileEntityInit.CHEST.get().create();
 					};
 				});
 		ItemInit.ITEMS.register(name + "_chest", () -> new BlockItem(chest.get(), new Item.Properties()

@@ -15,7 +15,7 @@ public class EnchantmentInit
 	
 	public static final RegistryObject<Enchantment> EXPAND = 
 			ENCHANTMENTS.register("expand", 
-					() -> new ExpandEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentType.DIGGER, 
+					() -> new ExpandEnchantment(Enchantment.Rarity.RARE, EnchantmentType.DIGGER, 
 							new EquipmentSlotType[] { EquipmentSlotType.MAINHAND }));
 
 

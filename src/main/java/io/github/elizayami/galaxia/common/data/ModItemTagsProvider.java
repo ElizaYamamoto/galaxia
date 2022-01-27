@@ -99,7 +99,7 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		getOrCreateBuilder(Tags.Items.CHESTS_WOODEN).add(material.chest.get().asItem());
 		
 		getOrCreateBuilder(Tags.Items.BOOKSHELVES).add(material.shelf.get().asItem());
-		getOrCreateBuilder(ItemTags.createOptional(frl("workbench"))).add(material.craftingTable.get().asItem());
+		getOrCreateBuilder(TagInit.ITEM_WORKBENCH).add(material.craftingTable.get().asItem());
 		
 		// Used by the Metal Barrels mod
 		getOrCreateBuilder(TagInit.ITEM_BARRELS).add(material.barrel.get().asItem());

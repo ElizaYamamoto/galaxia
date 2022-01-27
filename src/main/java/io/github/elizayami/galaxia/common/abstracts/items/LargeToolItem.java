@@ -2,10 +2,13 @@ package io.github.elizayami.galaxia.common.abstracts.items;
 
 import com.google.common.collect.Sets;
 
+import io.github.elizayami.galaxia.core.init.enchantments.EnchantmentInit;
+import io.github.elizayami.galaxia.core.util.ItemUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.material.Material;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.IItemTier;
@@ -108,7 +111,7 @@ public class LargeToolItem extends ToolItem
 		if (strippable != null && stack.getToolTypes().contains(ToolType.AXE))
 		{
 			world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			rightClick(world, strippable, pos, player);
+			rightClick(stack, world, strippable, pos, player);
 			success = true;
 		}
 		else if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up()))
@@ -125,7 +128,7 @@ public class LargeToolItem extends ToolItem
 						world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 						if (!world.isRemote)
 						{
-							rightClick(world, tillable, pos, player);
+							rightClick(stack, world, tillable, pos, player);
 							success = true;
 						}
 					}
@@ -138,7 +141,7 @@ public class LargeToolItem extends ToolItem
 
 						if (!world.isRemote())
 						{
-							rightClick(world, pathable, pos, player);
+							rightClick(stack, world, pathable, pos, player);
 							success = true;
 						}
 					}
@@ -151,7 +154,7 @@ public class LargeToolItem extends ToolItem
 					world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
 					if (!world.isRemote)
 					{
-						rightClick(world, tillable, pos, player);
+						rightClick(stack, world, tillable, pos, player);
 						success = true;
 					}
 				}
@@ -164,7 +167,7 @@ public class LargeToolItem extends ToolItem
 
 					if (!world.isRemote())
 					{
-						rightClick(world, pathable, pos, player);
+						rightClick(stack, world, pathable, pos, player);
 						success = true;
 					}
 				}
@@ -184,21 +187,32 @@ public class LargeToolItem extends ToolItem
 		return ActionResultType.PASS;
 	}
 	
-	public void rightClick (World world, BlockState state, BlockPos pos, LivingEntity entity)
+	public void rightClick (ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entity)
 	{
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
 
+		int expandLevel = 0;
+
+		if (ItemUtils.hasEnchantment(stack, EnchantmentInit.EXPAND.get()))
+		{
+			expandLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPAND.get(), stack);
+		}
+		
+		int size = 3 + expandLevel;
+
+		double start = -1 - expandLevel;
 		double sx = -1;
 		double sy = -1;
 		double sz = -1;
+		
 		if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
 		{
-			for (int loopsX = 0; loopsX < 3; loopsX++)
+			for (int loopsX = 0; loopsX < start; loopsX++)
 			{
 				sz = -1;
-				for (int loopsZ = 0; loopsZ < 3; loopsZ++)
+				for (int loopsZ = 0; loopsZ < start; loopsZ++)
 				{
 					world.setBlockState(pos, state, 11);
 					sz++;
@@ -208,10 +222,10 @@ public class LargeToolItem extends ToolItem
 		}
 		else if (entity.getHorizontalFacing() == Direction.NORTH || entity.getHorizontalFacing() == Direction.SOUTH)
 		{
-			for (int loopsX = 0; loopsX < 3; loopsX++)
+			for (int loopsX = 0; loopsX < start; loopsX++)
 			{
 				sy = -1;
-				for (int loopsY = 0; loopsY < 3; loopsY++)
+				for (int loopsY = 0; loopsY < start; loopsY++)
 				{
 					world.setBlockState(pos, state, 11);
 					sy++;
@@ -221,10 +235,10 @@ public class LargeToolItem extends ToolItem
 		}
 		else if (entity.getHorizontalFacing() == Direction.WEST || entity.getHorizontalFacing() == Direction.EAST)
 		{
-			for (int loopsZ = 0; loopsZ < 3; loopsZ++)
+			for (int loopsZ = 0; loopsZ < start; loopsZ++)
 			{
 				sy = -1;
-				for (int loopsY = 0; loopsY < 3; loopsY++)
+				for (int loopsY = 0; loopsY < start; loopsY++)
 				{
 					world.setBlockState(pos, state, 11);
 					sy++;
@@ -235,75 +249,83 @@ public class LargeToolItem extends ToolItem
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack itemstack, World world, BlockState state, BlockPos pos,
-			LivingEntity entity)
+	public boolean onBlockDestroyed(ItemStack itemstack, World world, BlockState state, BlockPos pos, LivingEntity entity)
 	{
 		boolean retval = super.onBlockDestroyed(itemstack, world, state, pos, entity);
 
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
+		
+		int expandLevel = 0;
 
-		if (world instanceof World)
+		if (ItemUtils.hasEnchantment(itemstack, EnchantmentInit.EXPAND.get()))
 		{
-			double sx = -1;
-			double sy = -1;
-			double sz = -1;
-			if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
+			expandLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPAND.get(), itemstack);
+		}
+		
+		int size = 3 + expandLevel;
+
+		double start = -1 - expandLevel;
+		double sx = start;
+		double sy = start;
+		double sz = start;
+		
+		if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
+		{
+			for (int loopsX = 0; loopsX < size; loopsX++)
 			{
-				for (int loopsX = 0; loopsX < 3; loopsX++)
+				sz = start;
+				for (int loopsZ = 0; loopsZ < size; loopsZ++)
 				{
-					sz = -1;
-					for (int loopsZ = 0; loopsZ < 3; loopsZ++)
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y, z + sz))))
 					{
-						if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y, z + sz))))
-						{
-							Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y, z + sz)), world,
-									new BlockPos(x + sx, y, z + sz));
-							world.destroyBlock(new BlockPos(x + sx, y, z + sz), false);
-						}
-						sz++;
-					}
-					sx++;
-				}
-			}
-			else if (entity.getHorizontalFacing() == Direction.NORTH || entity.getHorizontalFacing() == Direction.SOUTH)
-			{
-				for (int loopsX = 0; loopsX < 3; loopsX++)
-				{
-					sy = -1;
-					for (int loopsY = 0; loopsY < 3; loopsY++)
-					{
-						if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y + sy, z))))
-						{
-							Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y + sy, z)), world,
-									new BlockPos(x + sx, y + sy, z));
-							world.destroyBlock(new BlockPos(x + sx, y + sy, z), false);
-						}
-						sy++;
-					}
-					sx++;
-				}
-			}
-			else if (entity.getHorizontalFacing() == Direction.WEST || entity.getHorizontalFacing() == Direction.EAST)
-			{
-				for (int loopsZ = 0; loopsZ < 3; loopsZ++)
-				{
-					sy = -1;
-					for (int loopsY = 0; loopsY < 3; loopsY++)
-					{
-						if (canHarvestBlock(world.getBlockState(new BlockPos(x, y + sy, z + sz))))
-						{
-							Block.spawnDrops(world.getBlockState(new BlockPos(x, y + sy, z + sz)), world,
-									new BlockPos(x, y + sy, z + sz));
-							world.destroyBlock(new BlockPos(x, y + sy, z + sz), false);
-						}
-						sy++;
+						Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y, z + sz)), world,
+								new BlockPos(x + sx, y, z + sz));
+						world.destroyBlock(new BlockPos(x + sx, y, z + sz), false);
 					}
 					sz++;
 				}
+				sx++;
 			}
 		}
+		else if (entity.getHorizontalFacing() == Direction.NORTH || entity.getHorizontalFacing() == Direction.SOUTH)
+		{
+			for (int loopsX = 0; loopsX < size; loopsX++)
+			{
+				sy = start;
+				for (int loopsY = 0; loopsY < size; loopsY++)
+				{
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y + sy, z))))
+					{
+						Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y + sy, z)), world,
+								new BlockPos(x + sx, y + sy, z));
+						world.destroyBlock(new BlockPos(x + sx, y + sy, z), false);
+					}
+					sy++;
+				}
+				sx++;
+			}
+		}
+		else if (entity.getHorizontalFacing() == Direction.WEST || entity.getHorizontalFacing() == Direction.EAST)
+		{
+			for (int loopsZ = 0; loopsZ < size; loopsZ++)
+			{
+				sy = start;
+				for (int loopsY = 0; loopsY < size; loopsY++)
+				{
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x, y + sy, z + sz))))
+					{
+						Block.spawnDrops(world.getBlockState(new BlockPos(x, y + sy, z + sz)), world,
+								new BlockPos(x, y + sy, z + sz));
+						world.destroyBlock(new BlockPos(x, y + sy, z + sz), false);
+					}
+					sy++;
+				}
+				sz++;
+			}
+		}
+		
 		return retval;
 	}
 }

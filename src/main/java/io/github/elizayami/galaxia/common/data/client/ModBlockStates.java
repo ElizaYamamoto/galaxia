@@ -7,6 +7,7 @@ import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import net.minecraft.block.AbstractButtonBlock;
 import net.minecraft.block.BarrelBlock;
 import net.minecraft.block.Block;
@@ -49,6 +50,8 @@ public class ModBlockStates extends BlockStateProvider
 		simpleBlock(BlockInit.IMPACT_SAND.get());
 		makeBlockItemFromExistingModel(BlockInit.IMPACT_SAND.get());
 		
+		tableBlock(TileEntityInit.blockTF, "tool_fuser");
+		
 		// BLOCKS
 		
 		// WOODEN MATERIALS
@@ -83,6 +86,9 @@ public class ModBlockStates extends BlockStateProvider
 		
 		simpleBlock(material.planks.get());
 		makeBlockItemFromExistingModel(material.planks.get());
+		
+		simpleBlock(material.panel.get());
+		makeBlockItemFromExistingModel(material.panel.get());
 		
 		logBlock((RotatedPillarBlock) material.log.get());
 		makeBlockItemFromExistingModel(material.log.get());
@@ -348,6 +354,19 @@ public class ModBlockStates extends BlockStateProvider
 						modLoc("block/" + material + "_crafting_table_side"),
 						modLoc("block/" + material + "_crafting_table_front"))
 				.texture("particle", modLoc("block/" + material + "_crafting_table_top"));
+		simpleBlock(block, model);
+    }
+    
+    private void tableBlock(Block block, String name)
+    {
+		ModelFile model = models()
+				.cube(name, modLoc("block/" + name + "_planks"),
+						modLoc("block/" + name + "_top"),
+						modLoc("block/" + name + "_front"),
+						modLoc("block/" + name + "_side"),
+						modLoc("block/" + name + "_side"),
+						modLoc("block/" + name + "_front"))
+				.texture("particle", modLoc("block/" + name + "_top"));
 		simpleBlock(block, model);
     }
    

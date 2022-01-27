@@ -5,11 +5,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 import io.github.elizayami.galaxia.common.block.soul_furnace.FurnaceStateData;
-import io.github.elizayami.galaxia.common.abstracts.furnace.FurnaceZoneContents;
-import io.github.elizayami.galaxia.common.block.dragonfire_furnace.Dragonfire_Furnace;
+import io.github.elizayami.galaxia.common.abstracts.tileentities.FurnaceZoneContents;
 import io.github.elizayami.galaxia.common.block.soul_furnace.ContainerSF;
 import io.github.elizayami.galaxia.common.block.soul_furnace.Soul_Furnace;
-import io.github.elizayami.galaxia.core.init.FurnaceInit;
+import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.enums.SetBlockStateFlag;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -48,7 +47,7 @@ public class TileEntitySoulFurnace extends TileEntity implements INamedContainer
 
 	public TileEntitySoulFurnace()
 	{
-		super(FurnaceInit.tileEntityTypeSF);
+		super(TileEntityInit.tileEntityTypeSF);
 		fuelZoneContents = FurnaceZoneContents.createForTileEntity(FUEL_SLOTS_COUNT, this::canPlayerAccessInventory,
 				this::markDirty);
 		inputZoneContents = FurnaceZoneContents.createForTileEntity(INPUT_SLOTS_COUNT, this::canPlayerAccessInventory,
@@ -164,7 +163,7 @@ public class TileEntitySoulFurnace extends TileEntity implements INamedContainer
 		}
 		
 		BlockState currentBlockState = world.getBlockState(this.pos);
-		BlockState burnBlockState = currentBlockState.with(Dragonfire_Furnace.IS_BURNING, isBurning);
+		BlockState burnBlockState = currentBlockState.with(Soul_Furnace.IS_BURNING, isBurning);
 		if (burnBlockState != currentBlockState)
 		{
 			final int FLAGS = SetBlockStateFlag.get(SetBlockStateFlag.BLOCK_UPDATE, SetBlockStateFlag.SEND_TO_CLIENTS);

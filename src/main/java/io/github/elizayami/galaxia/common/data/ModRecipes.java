@@ -8,7 +8,9 @@ import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
+import io.github.elizayami.galaxia.core.init.TagInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.CookingRecipeBuilder;
@@ -47,13 +49,42 @@ public class ModRecipes extends RecipeProvider
 		
 		// BLOCKS
 		
+		ShapedRecipeBuilder.shapedRecipe(TileEntityInit.itemBlockSF)
+		.key('1', Blocks.BLAST_FURNACE.asItem())
+		.key('2', Blocks.NETHERITE_BLOCK.asItem())
+		.key('3', BlockInit.SOAL_BLOCK.get())
+		.key('4', Blocks.CHISELED_NETHER_BRICKS.asItem())
+		.patternLine("444")
+		.patternLine("212")
+		.patternLine("434")
+		.setGroup("galaxia_soul_furnace").addCriterion("has_netherite", hasItem(Items.NETHERITE_INGOT)).build(consumer, rl("soul_furnace_recipe"));
+
+		ShapedRecipeBuilder.shapedRecipe(TileEntityInit.itemBlockDFF)
+		.key('1', TileEntityInit.itemBlockSF)
+		.key('2', BlockInit.DRAGONSTONE.bricks.get())
+		.key('3', ItemInit.DRAGON_CHARGE.get())
+		.key('4', BlockInit.DRAGONSTONE.tiles.get())
+		.patternLine("444")
+		.patternLine("212")
+		.patternLine("434")
+		.setGroup("galaxia_soul_furnace").addCriterion("has_netherite", hasItem(Items.NETHERITE_INGOT)).build(consumer, rl("dragon_fire_furnace_recipe"));
+
+		ShapedRecipeBuilder.shapedRecipe(TileEntityInit.itemBlockTF)
+		.key('1', Blocks.BLAST_FURNACE.asItem())
+		.key('2', Blocks.POLISHED_BASALT.asItem())
+		.key('3', TagInit.ITEM_WORKBENCH)
+		.patternLine("232")
+		.patternLine("212")
+		.patternLine("222")
+		.setGroup("galaxia_tool_fuser").addCriterion("has_basalt", hasItem(Blocks.BASALT.asItem())).build(consumer, rl("tool_fuser_recipe"));
+		
 		// ITEMS
 		
-		ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COMETSTEEL.ingot.get(), 1).addIngredient(ItemInit.COMET_TRAIL_DUST.get(), 4).addIngredient(ItemInit.COMET_TRAIL_DUST.get(), 4).addCriterion("has_item", hasItem(BlockInit.METEOR.ingot.get())).addCriterion("has_comet_trail_dust", hasItem(ItemInit.COMET_TRAIL_DUST.get())).build(consumer, rl("cometsteel_ingot_from_stardust"));
-		
-	    // LANTERNS
-	    
-	    // PEDESTALS
+		ShapelessRecipeBuilder.shapelessRecipe(BlockInit.COMETSTEEL.ingot.get(), 1).addIngredient(ItemInit.COMET_TRAIL_DUST.get(), 4).addIngredient(BlockInit.METEOR.ingot.get(), 4).addCriterion("has_item", hasItem(BlockInit.METEOR.ingot.get())).addCriterion("has_comet_trail_dust", hasItem(ItemInit.COMET_TRAIL_DUST.get())).build(consumer, rl("cometsteel_ingot_from_stardust"));
+		ShapelessRecipeBuilder.shapelessRecipe(ItemInit.DRAGON_CHARGE.get(), 1)
+		.addIngredient(Items.DRAGON_BREATH, 9)
+		.addCriterion("has_item", hasItem(Items.DRAGON_BREATH.asItem()))
+		.build(consumer, rl("dragon_charge_from_breath"));
 	    
 		// FURNACE
 		
@@ -90,7 +121,7 @@ public class ModRecipes extends RecipeProvider
 		ShapelessRecipeBuilder.shapelessRecipe(material.planks.get(), 4).addIngredient(material.logItemTag).setGroup("galaxia_planks").addCriterion("has_logs", hasItem(material.logItemTag)).build(consumer);
 		ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.planks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_planks_stairs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 		ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.planks.get()).patternLine("###").setGroup("galaxia_planks_slabs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
-	    ShapedRecipeBuilder.shapedRecipe(material.fence.get(), 3).key('#', Items.STICK).key('W', material.planks.get()).patternLine("W#W").patternLine("W#W").setGroup("galaxia__planks_fences").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.fence.get(), 3).key('#', Items.STICK).key('W', material.planks.get()).patternLine("W#W").patternLine("W#W").setGroup("galaxia_planks_fences").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.gate.get()).key('#', Items.STICK).key('W', material.planks.get()).patternLine("#W#").patternLine("#W#").setGroup("galaxia_planks_gates").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	    ShapelessRecipeBuilder.shapelessRecipe(material.button.get()).addIngredient(material.planks.get()).setGroup("galaxia_planks_buttons").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.pressurePlate.get()).key('#', material.planks.get()).patternLine("##").setGroup("galaxia_planks_plates").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
@@ -105,6 +136,9 @@ public class ModRecipes extends RecipeProvider
 	    ShapedRecipeBuilder.shapedRecipe(material.sign.get(), 3).key('#', material.planks.get()).key('I', Items.STICK).patternLine("###").patternLine("###").patternLine(" I ").setGroup("galaxia_signs").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.barrel.get(), 1).key('#', material.planks.get()).key('S', material.slab.get()).patternLine("#S#").patternLine("# #").patternLine("#S#").setGroup("galaxia_barrels").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
 	    ShapedRecipeBuilder.shapedRecipe(material.shelf.get(), 1).key('#', material.planks.get()).key('P', Items.BOOK).patternLine("###").patternLine("PPP").patternLine("###").setGroup("galaxia_bookshelves").addCriterion("has_planks", hasItem(material.planks.get())).build(consumer);
+	   
+	    SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.planks.get()), material.panel.get()).addCriterion("has_" + material.planks.get().getRegistryName().getPath(), hasItem(material.planks.get())).build(consumer, rl(material.name + "_panel_from_" + material.name + "_stonecutting"));
+		
 	}
 	
 	private void makeStoneMaterialRecipes(StoneMaterial material, Consumer<IFinishedRecipe> consumer)
@@ -165,44 +199,6 @@ public class ModRecipes extends RecipeProvider
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.smooth.get()), material.smooth_wall.get()).addCriterion("has_" + material.smooth.get().getRegistryName().getPath(), hasItem(material.smooth.get())).build(consumer, rl(material.name + "_smooth_wall_from_" + material.name + "_stonecutting"));
 	}
 	
-	private void makeToolsetRecipes(MetalMaterial material, Consumer<IFinishedRecipe> consumer)
-	{
-	    makeIngotAndBlockRecipes(material.block.get(), material.ingot.get(), consumer, material.name);
-	    ShapedRecipeBuilder.shapedRecipe(material.ingot.get()).key('#', material.nugget.get()).patternLine("###").patternLine("###").patternLine("###").addCriterion("has_" + material.name + "_nugget", hasItem(material.nugget.get())).build(consumer, rl(material.name + "_ingot_from_" + material.name + "_nuggets"));
-	    
-	    // Furnace & blast furnace
-	    float exp = 0.35f;
-	    int smeltTime = 200;
-	    int blastTime = smeltTime / 2;
-	    if (material.hasOre)
-	    {
-	    	Item result = material.ingot.get();
-	    	
-	    	if (material == BlockInit.COMETSTEEL)
-	    	{
-	    		result = ItemInit.COMET_TRAIL_DUST.get();
-	    	}
-	    	
-	    	CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, smeltTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_smelting"));
-	    	CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, blastTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_blasting"));
-	 	}
-	    Item[] nuggetables = new Item[] { material.axe.get(), material.pickaxe.get(), material.shovel.get(), material.hoe.get(),material.sword.get(), material.helmet.get(), material.chestplate.get(), material.leggings.get(), material.boots.get() };
-	    CookingRecipeBuilder nuggetSmeltingRecipes = CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(nuggetables), material.nugget.get(), exp, smeltTime);
-	    CookingRecipeBuilder nuggetBlastingRecipes = CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(nuggetables), material.nugget.get(), exp, blastTime);
-	    for (Item nuggetable : nuggetables) {
-	    	nuggetSmeltingRecipes.addCriterion("has_" + nuggetable.getRegistryName().getPath(), hasItem(nuggetable));
-	    	nuggetBlastingRecipes.addCriterion("has_" + nuggetable.getRegistryName().getPath(), hasItem(nuggetable));
-	    }
-	    nuggetSmeltingRecipes.build(consumer, rl(material.name + "_nugget_from_smelting"));
-	    nuggetBlastingRecipes.build(consumer, rl(material.name + "_nugget_from_blasting"));
-
-		// Armor
-	    makeHelmetRecipe(material.helmet.get(), material.ingot.get(), consumer, material.name);
-		makeChestplateRecipe(material.chestplate.get(), material.ingot.get(), consumer, material.name);
-		makeLeggingsRecipe(material.leggings.get(), material.ingot.get(), consumer, material.name);
-		makeBootsRecipe(material.boots.get(), material.ingot.get(), consumer, material.name);
-	}
-	
 	private void makeMetalMaterialRecipes(MetalMaterial material, Consumer<IFinishedRecipe> consumer)
 	{
 		// Base
@@ -223,9 +219,16 @@ public class ModRecipes extends RecipeProvider
 	    int blastTime = smeltTime / 2;
 	    if (material.hasOre)
 	    {
-	    	CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, smeltTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_smelting"));
-	    	CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(material.ore.get()), material.ingot.get(), exp, blastTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_blasting"));
-	    }
+	    	Item result = material.ingot.get();
+	    	
+	    	if (material == BlockInit.COMETSTEEL)
+	    	{
+	    		result = ItemInit.COMET_TRAIL_DUST.get();
+	    	}
+	    	
+	    	CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.ore.get()), result, exp, smeltTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_smelting"));
+	    	CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(material.ore.get()), result, exp, blastTime).addCriterion("has_" + material.name + "_ore", hasItem(material.ore.get())).build(consumer, rl(material.name + "_ingot_from_blasting"));
+	 	}
 	    Item[] nuggetables = new Item[] { material.axe.get(), material.pickaxe.get(), material.shovel.get(), material.hoe.get(),material.sword.get(), material.helmet.get(), material.chestplate.get(), material.leggings.get(), material.boots.get() };
 	    CookingRecipeBuilder nuggetSmeltingRecipes = CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(nuggetables), material.nugget.get(), exp, smeltTime);
 	    CookingRecipeBuilder nuggetBlastingRecipes = CookingRecipeBuilder.blastingRecipe(Ingredient.fromItems(nuggetables), material.nugget.get(), exp, blastTime);
@@ -235,6 +238,17 @@ public class ModRecipes extends RecipeProvider
 	    }
 	    nuggetSmeltingRecipes.build(consumer, rl(material.name + "_nugget_from_smelting"));
 	    nuggetBlastingRecipes.build(consumer, rl(material.name + "_nugget_from_blasting"));
+	    
+	    // Item
+	    makePickaxeRecipe(material.pickaxe.get(), material.ingot.get(), consumer, material.name);
+	    makeAxeRecipe(material.axe.get(), material.ingot.get(), consumer, material.name);
+	    makeShovelRecipe(material.shovel.get(), material.ingot.get(), consumer, material.name);
+	    makeHoeRecipe(material.hoe.get(), material.ingot.get(), consumer, material.name);
+
+	    makePickaxeRecipe(material.hammer.get(), material.block.get().asItem(), consumer, material.name);
+	    makeAxeRecipe(material.saw.get(), material.block.get().asItem(), consumer, material.name);
+	    makeShovelRecipe(material.backhoe.get(), material.block.get().asItem(), consumer, material.name);
+	    makeHoeRecipe(material.tiller.get(), material.block.get().asItem(), consumer, material.name);
 
 		// Armor
 	    makeHelmetRecipe(material.helmet.get(), material.ingot.get(), consumer, material.name);

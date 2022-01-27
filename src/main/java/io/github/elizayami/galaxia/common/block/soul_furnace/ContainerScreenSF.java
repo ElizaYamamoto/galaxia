@@ -7,11 +7,8 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ContainerScreenSF extends ContainerScreen<ContainerSF> {
 
@@ -26,13 +23,13 @@ public class ContainerScreenSF extends ContainerScreen<ContainerSF> {
 	}
 
 	final static int COOK_BAR_XPOS = 49;
-	final static int COOK_BAR_YPOS = 30;
+	final static int COOK_BAR_YPOS = 42;
 	final static int COOK_BAR_ICON_U = 0;
 	final static int COOK_BAR_ICON_V = 207;
 	final static int COOK_BAR_WIDTH = 80;
 	final static int COOK_BAR_HEIGHT = 17;
 
-	final static int FLAME_XPOS = 64;
+	final static int FLAME_XPOS = 71;
 	final static int FLAME_YPOS = 60;
 	final static int FLAME_ICON_U = 176;
 	final static int FLAME_ICON_V = 0;
@@ -49,35 +46,6 @@ public class ContainerScreenSF extends ContainerScreen<ContainerSF> {
 		this.renderBackground(matrixStack);
 		super.render(matrixStack, mouseX, mouseY, partialTicks);
 		this.renderHoveredTooltip(matrixStack, mouseX, mouseY);
-	}
-
-	@Override
-	protected void renderHoveredTooltip(MatrixStack matrixStack, int mouseX, int mouseY) {
-		if (!this.minecraft.player.inventory.getItemStack().isEmpty())
-			return;
-
-		List<ITextComponent> hoveringText = new ArrayList<ITextComponent>();
-
-		if (isInRect(guiLeft + COOK_BAR_XPOS, guiTop + COOK_BAR_YPOS, COOK_BAR_WIDTH, COOK_BAR_HEIGHT, mouseX,
-				mouseY)) {
-			hoveringText.add(new StringTextComponent("Progress:"));
-			int cookPercentage = (int) (containerFurnace.fractionOfCookTimeComplete() * 100);
-			hoveringText.add(new StringTextComponent(cookPercentage + "%"));
-		}
-
-		for (int i = 0; i < containerFurnace.FUEL_SLOTS_COUNT; ++i) {
-			if (isInRect(guiLeft + FLAME_XPOS + FLAME_X_SPACING * i, guiTop + FLAME_YPOS, FLAME_WIDTH, FLAME_HEIGHT,
-					mouseX, mouseY)) {
-				hoveringText.add(new StringTextComponent("Fuel Time:"));
-				hoveringText.add(new StringTextComponent(containerFurnace.secondsOfFuelRemaining(i) + "s"));
-			}
-		}
-
-		if (!hoveringText.isEmpty()) {
-			func_243308_b(matrixStack, hoveringText, mouseX, mouseY); // renderToolTip
-		} else {
-			super.renderHoveredTooltip(matrixStack, mouseX, mouseY);
-		}
 	}
 
 	@Override

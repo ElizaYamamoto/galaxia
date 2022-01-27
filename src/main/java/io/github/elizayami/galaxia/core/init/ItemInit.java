@@ -3,9 +3,11 @@ package io.github.elizayami.galaxia.core.init;
 import java.util.function.Supplier;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.items.ModBoatItem;
 import io.github.elizayami.galaxia.common.item.DragonCharge;
 import io.github.elizayami.galaxia.common.item.Soal;
 import io.github.elizayami.galaxia.common.item.SoalBlock;
+import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
@@ -39,18 +41,25 @@ public class ItemInit
 			() -> new SoalBlock(BlockInit.SOAL_BLOCK.get(), new Item.Properties().group(Galaxia.galaxiaGroup)));
 	
 	// Boats
-
-	public static final RegistryHelper RH = Galaxia.BOAT_HELPER.getItemHelper();
-
-	public static final RegistryObject<Item> SHADOWSPIKE_BOAT = RH.createBoatItem("shadowspike", BlockInit.SHADOWSPIKE.planks);
-	public static final RegistryObject<Item> GROUNDSTALK_BOAT = RH.createBoatItem("groundstalk", BlockInit.SHADOWSPIKE.planks);
-	public static final RegistryObject<Item> SEAWOOD_BOAT = RH.createBoatItem("seawood", BlockInit.SHADOWSPIKE.planks);
-	public static final RegistryObject<Item> SCORCHWOOD_BOAT = RH.createBoatItem("scorchwood", BlockInit.SHADOWSPIKE.planks);
-	public static final RegistryObject<Item> GHOSTWOOD_BOAT = RH.createBoatItem("ghostwood", BlockInit.SHADOWSPIKE.planks);
-	public static final RegistryObject<Item> GROVEWOOD_BOAT = RH.createBoatItem("grovewood", BlockInit.SHADOWSPIKE.planks);
+	
+	public static final RegistryObject<Item> SHADOWSPIKE_BOAT = createBoatItem("shadowspike", BlockInit.SHADOWSPIKE.planks);
+	public static final RegistryObject<Item> GROUNDSTALK_BOAT = createBoatItem("groundstalk", BlockInit.SHADOWSPIKE.planks);
+	public static final RegistryObject<Item> SEAWOOD_BOAT = createBoatItem("seawood", BlockInit.SHADOWSPIKE.planks);
+	public static final RegistryObject<Item> SCORCHWOOD_BOAT = createBoatItem("scorchwood", BlockInit.SHADOWSPIKE.planks);
+	public static final RegistryObject<Item> GHOSTWOOD_BOAT = createBoatItem("ghostwood", BlockInit.SHADOWSPIKE.planks);
+	public static final RegistryObject<Item> GROVEWOOD_BOAT = createBoatItem("grovewood", BlockInit.SHADOWSPIKE.planks);
 
 	// helper
 
+	public static RegistryObject<Item> createBoatItem(String wood, RegistryObject<Block> block)
+	{
+		String type = "galaxia:" + wood;
+		RegistryObject<Item> boat = ITEMS.register(wood + "_boat",
+				() -> new ModBoatItem(type, new Item.Properties().group(Galaxia.galaxiaGroup).maxStackSize(1)));
+		BoatInit.registerBoat(type, boat, block);
+		return boat;
+	}
+	
 	public static <T extends Item> RegistryObject<T> registerItem(String name, Supplier<? extends T> itemSupplier)
 	{
 		return ITEMS.register(name, itemSupplier);

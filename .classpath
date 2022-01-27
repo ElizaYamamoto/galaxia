@@ -44,6 +44,11 @@
 			<attribute name="gradle_used_by_scope" value=""/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/Alpha/.gradle/caches/forge_gradle/deobf_dependencies/software/bernie/geckolib/geckolib-forge-1.16.5/3.0.63_mapped_snapshot_20201028-1.16.3/geckolib-forge-1.16.5-3.0.63_mapped_snapshot_20201028-1.16.3-sources.jar" kind="lib" path="C:/Users/Alpha/.gradle/caches/forge_gradle/deobf_dependencies/software/bernie/geckolib/geckolib-forge-1.16.5/3.0.63_mapped_snapshot_20201028-1.16.3/geckolib-forge-1.16.5-3.0.63_mapped_snapshot_20201028-1.16.3.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/Alpha/Desktop/Mod Sources/galaxia/build/fg_cache/net/minecraftforge/forge/1.16.5-36.1.0_mapped_snapshot_20201028-1.16.3/forge-1.16.5-36.1.0_mapped_snapshot_20201028-1.16.3-sources.jar" kind="lib" path="C:/Users/Alpha/Desktop/Mod Sources/galaxia/build/fg_cache/net/minecraftforge/forge/1.16.5-36.1.0_mapped_snapshot_20201028-1.16.3/forge-1.16.5-36.1.0_mapped_snapshot_20201028-1.16.3-recomp.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>

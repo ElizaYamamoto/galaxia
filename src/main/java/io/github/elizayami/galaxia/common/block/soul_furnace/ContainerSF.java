@@ -89,8 +89,8 @@ public class ContainerSF extends Container {
 			}
 		}
 
-		final int FUEL_SLOTS_XPOS = 53;
-		final int FUEL_SLOTS_YPOS = 96;
+		final int FUEL_SLOTS_XPOS = 71;
+		final int FUEL_SLOTS_YPOS = 77;
 
 		for (int x = 0; x < FUEL_SLOTS_COUNT; x++) {
 			int slotNumber = x;
@@ -98,7 +98,7 @@ public class ContainerSF extends Container {
 		}
 
 		final int INPUT_SLOTS_XPOS = 26;
-		final int INPUT_SLOTS_YPOS = 24;
+		final int INPUT_SLOTS_YPOS = 34;
 
 		for (int y = 0; y < INPUT_SLOTS_COUNT; y++) {
 			int slotNumber = y;
@@ -107,7 +107,7 @@ public class ContainerSF extends Container {
 		}
 
 		final int OUTPUT_SLOTS_XPOS = 134;
-		final int OUTPUT_SLOTS_YPOS = 24;
+		final int OUTPUT_SLOTS_YPOS = 34;
 
 		for (int y = 0; y < OUTPUT_SLOTS_COUNT; y++) {
 			int slotNumber = y;
@@ -205,7 +205,7 @@ public class ContainerSF extends Container {
 	public int secondsOfFuelRemaining(int fuelSlot) {
 		if (furnaceStateData.burnTimeRemainings[fuelSlot] <= 0)
 			return 0;
-		return furnaceStateData.burnTimeRemainings[fuelSlot] / 20; // 20 ticks per second
+		return furnaceStateData.burnTimeRemainings[fuelSlot] / 20;
 	}
 
 	public double fractionOfCookTimeComplete() {

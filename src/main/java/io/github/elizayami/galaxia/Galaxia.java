@@ -11,9 +11,7 @@ import io.github.elizayami.galaxia.common.biome.GalaxiaSurfaceBuilders;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
-import io.github.elizayami.galaxia.core.init.RegistryHelper;
 import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
-import io.github.elizayami.galaxia.core.util.Registrar;
 import io.github.elizayami.galaxia.usefultools.IPhysicalSide;
 
 import org.apache.logging.log4j.LogManager;
@@ -22,9 +20,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import software.bernie.geckolib3.GeckoLib;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -47,14 +45,11 @@ public class Galaxia
     
 	public static final IPhysicalSide SIDE = 
 			DistExecutor.safeRunForDist(() -> PhysicalClientSide::new, () -> PhysicalServerSide::new);
-
-	public static final Registrar BOAT_HELPER = Registrar.create(MOD_ID, helper -> {
-		helper.setHelper(ForgeRegistries.ITEMS, new RegistryHelper(helper));
-	});
 	
-    
     public Galaxia() 
     {
+    	GeckoLib.initialize();
+    	
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
     	IEventBus forgeBus = MinecraftForge.EVENT_BUS;
     	
@@ -65,8 +60,6 @@ public class Galaxia
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
 		WoodTileEntityInit.TILE_ENTITY_TYPES.register(bus);
-		BOAT_HELPER.register(bus);
-		
 		
 	    bus.register(TileEntityInit.class);
 	    

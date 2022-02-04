@@ -269,6 +269,14 @@ public class ModRecipes extends RecipeProvider
 
 	private void makeVanillaMaterialRecipes(VanillaMaterial material, Item item, Consumer<IFinishedRecipe> consumer)
 	{
+		if (material == BlockInit.NETHERITE)
+		{
+			makeSmithingRecipe(BlockInit.DIAMOND.hammer.get(), Items.NETHERITE_BRICKS, material.hammer.get(), consumer);
+			makeSmithingRecipe(BlockInit.DIAMOND.saw.get(), Items.NETHERITE_BRICKS, material.saw.get(), consumer);
+			makeSmithingRecipe(BlockInit.DIAMOND.backhoe.get(), Items.NETHERITE_BRICKS, material.backhoe.get(), consumer);
+			makeSmithingRecipe(BlockInit.DIAMOND.tiller.get(), Items.NETHERITE_BRICKS, material.tiller.get(), consumer);
+			return;
+		}
 	    makePickaxeRecipe(material.hammer.get(), item, consumer, material.name);
 	    makeAxeRecipe(material.saw.get(), item, consumer, material.name);
 	    makeShovelRecipe(material.backhoe.get(), item, consumer, material.name);

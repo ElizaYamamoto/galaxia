@@ -88,7 +88,6 @@ public class ModBoatItem extends Item
 			this.type = type;
 		}
 
-		@SuppressWarnings("deprecation")
 		public ItemStack execute(IBlockSource iBlockSource, ItemStack stack) {
 			Direction direction = iBlockSource.getBlockState().get(DispenserBlock.FACING);
 			World world = iBlockSource.getWorld();

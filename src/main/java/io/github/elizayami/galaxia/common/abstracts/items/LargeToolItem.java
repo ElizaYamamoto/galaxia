@@ -243,6 +243,8 @@ public class LargeToolItem extends ToolItem
 		int z = pos.getZ();
 		
 		int expandLevel = 0;
+		
+		Material material = state.getMaterial();
 
 		if (ItemUtils.hasEnchantment(itemstack, EnchantmentInit.EXPAND.get()))
 		{
@@ -263,7 +265,7 @@ public class LargeToolItem extends ToolItem
 				sz = start;
 				for (int loopsZ = 0; loopsZ < size; loopsZ++)
 				{
-					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y, z + sz))))
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y, z + sz))) || EFFECTIVE.contains(material))
 					{
 						Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y, z + sz)), world,
 								new BlockPos(x + sx, y, z + sz));
@@ -281,7 +283,7 @@ public class LargeToolItem extends ToolItem
 				sy = start;
 				for (int loopsY = 0; loopsY < size; loopsY++)
 				{
-					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y + sy, z))))
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y + sy, z))) || EFFECTIVE.contains(material))
 					{
 						Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y + sy, z)), world,
 								new BlockPos(x + sx, y + sy, z));
@@ -299,7 +301,7 @@ public class LargeToolItem extends ToolItem
 				sy = start;
 				for (int loopsY = 0; loopsY < size; loopsY++)
 				{
-					if (canHarvestBlock(world.getBlockState(new BlockPos(x, y + sy, z + sz))))
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x, y + sy, z + sz))) || EFFECTIVE.contains(material))
 					{
 						Block.spawnDrops(world.getBlockState(new BlockPos(x, y + sy, z + sz)), world,
 								new BlockPos(x, y + sy, z + sz));

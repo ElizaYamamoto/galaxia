@@ -68,7 +68,7 @@ public class ModelGalaxiumArmor extends BipedModel<LivingEntity>
 		LeftHorn.setTextureOffset(9, 45).addBox(4.0F, -11.0F, -3.0F, 1.0F, 1.0F, 6.0F, 0.0F, false);
 
 		RightHorn = new ModelRenderer(this);
-		RightHorn.setRotationPoint(-1.0F, 3.0F, 0.0F);
+		RightHorn.setRotationPoint(0F, 3.0F, 0.0F);
 		RightHorn.setTextureOffset(19, 39).addBox(-5.0F, -12.0F, -1.0F, 1.0F, 1.0F, 6.0F, 0.0F, false);
 		RightHorn.setTextureOffset(9, 45).addBox(-5.0F, -11.0F, -3.0F, 1.0F, 1.0F, 6.0F, 0.0F, false);
 

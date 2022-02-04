@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_soul_furnace",
+  "pattern": [
+    "444",
+    "212",
+    "434"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:blast_furnace"
+    },
+    "2": {
+      "item": "minecraft:netherite_block"
+    },
+    "3": {
+      "item": "galaxia:soal_block"
+    },
+    "4": {
+      "item": "minecraft:chiseled_nether_bricks"
+    }
+  },
+  "result": {
+    "item": "galaxia:soul_furnace"
+  }
+}

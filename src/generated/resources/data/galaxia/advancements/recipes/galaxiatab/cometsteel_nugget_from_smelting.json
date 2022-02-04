@@ -1,0 +1,120 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:cometsteel_nugget_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_cometsteel_axe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_axe"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_pickaxe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_pickaxe"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_shovel": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_shovel"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_hoe": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_hoe"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_sword"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_helmet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_helmet"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_chestplate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_chestplate"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_leggings": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_leggings"
+          }
+        ]
+      }
+    },
+    "has_cometsteel_boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_boots"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:cometsteel_nugget_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cometsteel_axe",
+      "has_cometsteel_pickaxe",
+      "has_cometsteel_shovel",
+      "has_cometsteel_hoe",
+      "has_cometsteel_sword",
+      "has_cometsteel_helmet",
+      "has_cometsteel_chestplate",
+      "has_cometsteel_leggings",
+      "has_cometsteel_boots",
+      "has_the_recipe"
+    ]
+  ]
+}

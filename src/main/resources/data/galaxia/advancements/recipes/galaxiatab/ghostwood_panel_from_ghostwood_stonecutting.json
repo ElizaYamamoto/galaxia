@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:ghostwood_panel_from_ghostwood_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_ghostwood_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:ghostwood_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:ghostwood_panel_from_ghostwood_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ghostwood_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

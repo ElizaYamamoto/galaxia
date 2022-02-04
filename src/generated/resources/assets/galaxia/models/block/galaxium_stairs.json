@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "side": "galaxia:block/galaxium_tile",
+    "bottom": "galaxia:block/galaxium_tile",
+    "top": "galaxia:block/galaxium_tile"
+  }
+}

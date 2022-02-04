@@ -6,11 +6,15 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
+import net.minecraftforge.common.ForgeHooks;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.github.elizayami.galaxia.common.abstracts.tileentities.FuserZoneContents;
+import io.github.elizayami.galaxia.common.recipes.FuserRecipe;
 import io.github.elizayami.galaxia.common.tileentity.TileEntityToolFuser;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 
@@ -22,8 +26,7 @@ public class ContainerTF extends Container
 			FuserZoneContents AxeZoneContents,
 			FuserZoneContents ShovelZoneContents,
 			FuserZoneContents HoeZoneContents, 
-			FuserZoneContents OutputZoneContents, 
-			FuserStateData fuserStateData)
+			FuserZoneContents OutputZoneContents)
 	{
 		return new ContainerTF(windowID, 
 				playerInventory, 
@@ -31,8 +34,7 @@ public class ContainerTF extends Container
 				AxeZoneContents, 
 				ShovelZoneContents, 
 				HoeZoneContents, 
-				OutputZoneContents,
-				fuserStateData);
+				OutputZoneContents);
 	}
 
 	public static ContainerTF createContainerClientSide(int windowID, PlayerInventory playerInventory,
@@ -43,7 +45,6 @@ public class ContainerTF extends Container
 		FuserZoneContents ShovelZoneContents = FuserZoneContents.createForClientSideContainer(1);
 		FuserZoneContents HoeZoneContents = FuserZoneContents.createForClientSideContainer(1);
 		FuserZoneContents outputZoneContents = FuserZoneContents.createForClientSideContainer(1);
-		FuserStateData furnaceStateData = new FuserStateData();
 
 		return new ContainerTF(windowID, 
 				playerInventory,
@@ -51,17 +52,8 @@ public class ContainerTF extends Container
 				AxeZoneContents, 
 				ShovelZoneContents, 
 				HoeZoneContents, 
-				outputZoneContents,
-				furnaceStateData);
+				outputZoneContents);
 	}
-
-	// 0 - 8 = hotbar slots (which will map to the InventoryPlayer slot numbers 0 -
-	// 8)
-	// 9 - 35 = player inventory slots (which map to the InventoryPlayer slot
-	// numbers 9 - 35)
-	// 36 - 39 = fuel slots (furnaceStateData 0 - 3)
-	// 40 - 44 = input slots (furnaceStateData 4 - 8)
-	// 45 - 49 = output slots (furnaceStateData 9 - 13)
 
 	private static final int HOTBAR_SLOT_COUNT = 9;
 	private static final int PLAYER_INVENTORY_ROW_COUNT = 3;
@@ -71,8 +63,6 @@ public class ContainerTF extends Container
 
 	public static final int FUSER_SLOTS_COUNT = 5;
 
-	// slot index is the unique index for all slots in this container i.e. 0 - 35
-	// for invPlayer then 36 - 49 for furnaceContents
 	private static final int VANILLA_FIRST_SLOT_INDEX = 0;
 	private static final int HOTBAR_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX;
 	private static final int PLAYER_INVENTORY_FIRST_SLOT_INDEX = HOTBAR_FIRST_SLOT_INDEX + HOTBAR_SLOT_COUNT;
@@ -86,15 +76,12 @@ public class ContainerTF extends Container
 	public static final int PLAYER_INVENTORY_XPOS = 8;
 	public static final int PLAYER_INVENTORY_YPOS = 129;
 
-	// invPlayer slots 0 - 35 (hotbar 0 - 8 then main inventory 9 to 35)
-
 	public ContainerTF(int windowID, PlayerInventory invPlayer, 
 			FuserZoneContents pickZoneContents,
 			FuserZoneContents axeZoneContents, 
 			FuserZoneContents shovelZoneContents, 
 			FuserZoneContents hoeZoneContents, 
-			FuserZoneContents outputZoneContents,
-			FuserStateData fusereStateData)
+			FuserZoneContents outputZoneContents)
 	{
 		super(TileEntityInit.containerTypeDFF, windowID);
 		if (TileEntityInit.containerTypeDFF == null)
@@ -106,21 +93,18 @@ public class ContainerTF extends Container
 		this.hoeZoneContents = hoeZoneContents;
 		this.outputZoneContents = outputZoneContents;
 		this.world = invPlayer.player.world;
-
-		trackIntArray(fusereStateData);
-
+		
 		final int SLOT_X_SPACING = 18;
 		final int SLOT_Y_SPACING = 18;
 		final int HOTBAR_XPOS = 8;
 		final int HOTBAR_YPOS = 183;
-		// Add the players hotbar to the gui - the [xpos, ypos] location of each item
+
 		for (int x = 0; x < HOTBAR_SLOT_COUNT; x++)
 		{
 			int slotNumber = x;
 			addSlot(new Slot(invPlayer, slotNumber, HOTBAR_XPOS + SLOT_X_SPACING * x, HOTBAR_YPOS));
 		}
 
-		// Add the rest of the players inventory to the gui
 		for (int y = 0; y < PLAYER_INVENTORY_ROW_COUNT; y++)
 		{
 			for (int x = 0; x < PLAYER_INVENTORY_COLUMN_COUNT; x++)
@@ -337,6 +321,51 @@ public class ContainerTF extends Container
 		{
 			return TileEntityToolFuser.isItemValidForOutputSlot(stack);
 		}
+		
+		@Override
+		public ItemStack onTake(PlayerEntity thePlayer, ItemStack stack)
+		{
+			this.onCrafting(stack);
+			remove(pickZoneContents, thePlayer);
+			remove(axeZoneContents, thePlayer);
+			remove(shovelZoneContents, thePlayer);
+			remove(hoeZoneContents, thePlayer);
+			
+			return stack;
+		}
+		
+		public void remove(FuserZoneContents a, PlayerEntity thePlayer)
+		{
+			ForgeHooks.setCraftingPlayer(thePlayer);
+			NonNullList<ItemStack> nonnulllist = thePlayer.world.getRecipeManager().getRecipeNonNull(FuserRecipe.TYPE, a, thePlayer.world);
+			ForgeHooks.setCraftingPlayer(null);
+			
+			ItemStack itemstack = a.getStackInSlot(1);
+			ItemStack itemstack1 = nonnulllist.get(1);
+			
+			if (!itemstack.isEmpty())
+			{
+				a.decrStackSize(1, 1);
+				itemstack = a.getStackInSlot(1);
+			}
+
+			if (!itemstack1.isEmpty())
+			{
+				if (itemstack.isEmpty())
+				{
+					a.setInventorySlotContents(1, itemstack1);
+				}
+				else if (ItemStack.areItemsEqual(itemstack, itemstack1) && ItemStack.areItemStackTagsEqual(itemstack, itemstack1))
+				{
+					itemstack1.grow(itemstack.getCount());
+					a.setInventorySlotContents(1, itemstack1);
+				}
+				else if (!thePlayer.inventory.addItemStackToInventory(itemstack1))
+				{
+					thePlayer.dropItem(itemstack1, false);
+				}
+			}
+		}
 	}
 
 	private FuserZoneContents pickZoneContents;
@@ -344,14 +373,10 @@ public class ContainerTF extends Container
 	private FuserZoneContents shovelZoneContents;
 	private FuserZoneContents hoeZoneContents;
 	private FuserZoneContents outputZoneContents;
-	private FuserStateData fuserStateData;
-
+	
 	private World world;
 	private static final Logger LOGGER = LogManager.getLogger();
 
-	/**
-	 * Helper enum to make the code more readable
-	 */
 	private enum SlotZone
 	{
 		PICK_ZONE(PICK_SLOT_INDEX, 1), 

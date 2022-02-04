@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_tool_fuser",
+  "pattern": [
+    "232",
+    "212",
+    "222"
+  ],
+  "key": {
+    "1": {
+      "item": "minecraft:blast_furnace"
+    },
+    "2": {
+      "item": "minecraft:polished_basalt"
+    },
+    "3": {
+      "tag": "forge:workbench"
+    }
+  },
+  "result": {
+    "item": "galaxia:tool_fuser"
+  }
+}

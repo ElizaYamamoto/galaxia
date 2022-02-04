@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_soul_furnace",
+  "pattern": [
+    "444",
+    "212",
+    "434"
+  ],
+  "key": {
+    "1": {
+      "item": "galaxia:soul_furnace"
+    },
+    "2": {
+      "item": "galaxia:dragonstone_bricks"
+    },
+    "3": {
+      "item": "galaxia:dragon_charge"
+    },
+    "4": {
+      "item": "galaxia:dragonstone_tile"
+    }
+  },
+  "result": {
+    "item": "galaxia:dragonfire_furnace"
+  }
+}

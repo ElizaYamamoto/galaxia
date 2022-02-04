@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_chests",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:seawood_planks"
+    }
+  },
+  "result": {
+    "item": "galaxia:seawood_chest"
+  }
+}

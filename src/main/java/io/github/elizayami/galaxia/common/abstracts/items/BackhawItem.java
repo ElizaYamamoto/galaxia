@@ -17,5 +17,9 @@ public class BackhawItem extends LargeToolItem
 						.addToolType(ToolType.SHOVEL, tier.getMaxUses())
 						.addToolType(ToolType.AXE, tier.getMaxUses())
 						.addToolType(ToolType.HOE, tier.getMaxUses())));
+		EFFECTIVE = LargeToolItem.STONES;
+		EFFECTIVE = LargeToolItem.WOODS;
+		EFFECTIVE = LargeToolItem.SOILS;
+		EFFECTIVE = LargeToolItem.PLANTS;
 	}
 }

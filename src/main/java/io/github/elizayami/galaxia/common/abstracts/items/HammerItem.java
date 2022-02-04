@@ -14,5 +14,6 @@ public class HammerItem extends LargeToolItem
 				tier,
 				properties.apply(new Properties().defaultMaxDamage((int) (tier.getMaxUses() * 1.5)).addToolType(ToolType.PICKAXE, tier.getMaxUses()))
 			 );
+		EFFECTIVE = LargeToolItem.STONES;
 	}
 }

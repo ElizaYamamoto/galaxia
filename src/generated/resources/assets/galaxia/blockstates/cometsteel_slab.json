@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "galaxia:block/cometsteel_slab_top"
+    },
+    "type=bottom": {
+      "model": "galaxia:block/cometsteel_slab"
+    },
+    "type=double": {
+      "model": "galaxia:block/cometsteel_tile"
+    }
+  }
+}

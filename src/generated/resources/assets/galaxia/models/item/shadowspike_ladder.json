@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "galaxia:block/shadowspike_ladder"
+  }
+}

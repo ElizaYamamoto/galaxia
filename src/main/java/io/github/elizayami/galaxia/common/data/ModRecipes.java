@@ -6,6 +6,7 @@ import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.VanillaMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
@@ -25,6 +26,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.crafting.IRecipeSerializer;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.tags.ITag;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.ResourceLocation;
 
@@ -91,6 +93,13 @@ public class ModRecipes extends RecipeProvider
 		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(ItemInit.SOAL_ORE.get()), ItemInit.SOAL.get(), 0.35F, 200).addCriterion("has_soal_ore", hasItem(ItemInit.SOAL_ORE.get())).build(consumer, rl("soal_from_ore"));
 		
 		// ARMORS AND TOOLS
+		
+		makeVanillaMaterialRecipes(BlockInit.WOOD, ItemTags.LOGS, consumer);
+		makeVanillaMaterialRecipes(BlockInit.STONE, Items.STONE_BRICKS, consumer);
+		makeVanillaMaterialRecipes(BlockInit.IRON, Items.IRON_BLOCK, consumer);
+		makeVanillaMaterialRecipes(BlockInit.GOLD, Items.IRON_BLOCK, consumer);
+		makeVanillaMaterialRecipes(BlockInit.DIAMOND, Items.DIAMOND_BLOCK, consumer);
+		makeVanillaMaterialRecipes(BlockInit.NETHERITE, Items.NETHERITE_BRICKS, consumer);
 		
 		// WOODEN MATERIALS
 
@@ -257,6 +266,23 @@ public class ModRecipes extends RecipeProvider
 		makeBootsRecipe(material.boots.get(), material.ingot.get(), consumer, material.name);
 	}
 	
+
+	private void makeVanillaMaterialRecipes(VanillaMaterial material, Item item, Consumer<IFinishedRecipe> consumer)
+	{
+	    makePickaxeRecipe(material.hammer.get(), item, consumer, material.name);
+	    makeAxeRecipe(material.saw.get(), item, consumer, material.name);
+	    makeShovelRecipe(material.backhoe.get(), item, consumer, material.name);
+	    makeHoeRecipe(material.tiller.get(), item, consumer, material.name);
+	}
+
+	private void makeVanillaMaterialRecipes(VanillaMaterial material, ITag<Item> item, Consumer<IFinishedRecipe> consumer)
+	{
+	    makePickaxeRecipe(material.hammer.get(), item, consumer, material.name);
+	    makeAxeRecipe(material.saw.get(), item, consumer, material.name);
+	    makeShovelRecipe(material.backhoe.get(), item, consumer, material.name);
+	    makeHoeRecipe(material.tiller.get(), item, consumer, material.name);
+	}
+	
 	private void cookFood(Item in, Item out, float exp, int time, Consumer<IFinishedRecipe> consumer) {
 		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(in), out, exp, time).addCriterion("has_" + in.getRegistryName().getPath(), hasItem(in)).build(consumer);
 	    CookingRecipeBuilder.cookingRecipe(Ingredient.fromItems(in), out, exp, time / 2, IRecipeSerializer.SMOKING).addCriterion("has_" + in.getRegistryName().getPath(), hasItem(in)).build(consumer, new ResourceLocation(Galaxia.MOD_ID, out.getRegistryName().getPath() + "_from_smoking"));
@@ -315,6 +341,26 @@ public class ModRecipes extends RecipeProvider
 	}
 	
 	private void makeHoeRecipe(Item hoe, Item ingredient, Consumer<IFinishedRecipe> consumer, String material)
+	{
+		ShapedRecipeBuilder.shapedRecipe(hoe).key('#', Items.STICK).key('X', ingredient).patternLine("XX").patternLine(" #").patternLine(" #").addCriterion("has_" + material + "_ingot", hasItem(ingredient)).build(consumer);
+	}
+	
+	private void makePickaxeRecipe(Item pickaxe, ITag<Item> ingredient, Consumer<IFinishedRecipe> consumer, String material)
+	{
+		ShapedRecipeBuilder.shapedRecipe(pickaxe).key('#', Items.STICK).key('X', ingredient).patternLine("XXX").patternLine(" # ").patternLine(" # ").addCriterion("has_" + material + "_ingot", hasItem(ingredient)).build(consumer);
+	}
+	
+	private void makeAxeRecipe(Item axe, ITag<Item> ingredient, Consumer<IFinishedRecipe> consumer, String material)
+	{
+		ShapedRecipeBuilder.shapedRecipe(axe).key('#', Items.STICK).key('X', ingredient).patternLine("XX").patternLine("X#").patternLine(" #").addCriterion("has_" + material + "_ingot", hasItem(ingredient)).build(consumer);
+	}
+	
+	private void makeShovelRecipe(Item shovel, ITag<Item> ingredient, Consumer<IFinishedRecipe> consumer, String material)
+	{
+		ShapedRecipeBuilder.shapedRecipe(shovel).key('#', Items.STICK).key('X', ingredient).patternLine("X").patternLine("#").patternLine("#").addCriterion("has_" + material + "_ingot", hasItem(ingredient)).build(consumer);
+	}
+	
+	private void makeHoeRecipe(Item hoe, ITag<Item> ingredient, Consumer<IFinishedRecipe> consumer, String material)
 	{
 		ShapedRecipeBuilder.shapedRecipe(hoe).key('#', Items.STICK).key('X', ingredient).patternLine("XX").patternLine(" #").patternLine(" #").addCriterion("has_" + material + "_ingot", hasItem(ingredient)).build(consumer);
 	}

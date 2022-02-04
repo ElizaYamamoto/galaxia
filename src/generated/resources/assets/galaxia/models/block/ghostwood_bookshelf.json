@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "galaxia:block/ghostwood_bookshelf",
+    "end": "galaxia:block/ghostwood_planks"
+  }
+}

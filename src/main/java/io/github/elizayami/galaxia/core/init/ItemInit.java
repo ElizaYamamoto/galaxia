@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.items.ModBoatItem;
 import io.github.elizayami.galaxia.common.item.DragonCharge;
+import io.github.elizayami.galaxia.common.item.GalaxiumStarItem;
 import io.github.elizayami.galaxia.common.item.Soal;
 import io.github.elizayami.galaxia.common.item.SoalBlock;
 import net.minecraft.block.Block;
@@ -28,10 +29,11 @@ public class ItemInit
 			() -> new DragonCharge(new Item.Properties().group(Galaxia.galaxiaGroup)));
 
 	public static final RegistryObject<Item> GALAXIUM_STAR = ITEMS.register("galaxium_star",
-			() -> new BlockItem(BlockInit.GALAXIUM_STAR, new Item.Properties().group(Galaxia.galaxiaGroup)));
+			() -> new GalaxiumStarItem(BlockInit.GALAXIUM_STAR, new Item.Properties().group(Galaxia.galaxiaGroup).maxDamage(4)));
 
 	public static final RegistryObject<BlockItem> IMPACT_SAND = ITEMS.register("impact_sand",
 			() -> new BlockItem(BlockInit.IMPACT_SAND.get(), new Item.Properties().group(Galaxia.galaxiaGroup)));
+	
 	// Ores
 
 	public static final RegistryObject<BlockItem> SOAL_ORE = ITEMS.register("soal_ore",

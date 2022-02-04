@@ -11,8 +11,9 @@ import java.util.function.Predicate;
 public class FuserZoneContents implements IInventory
 {
 
-	public static FuserZoneContents createForTileEntity(int size,
-			Predicate<PlayerEntity> canPlayerAccessInventoryLambda, Notify markDirtyNotificationLambda)
+	public static FuserZoneContents 
+	
+	createForTileEntity(int size, Predicate<PlayerEntity> canPlayerAccessInventoryLambda, Notify markDirtyNotificationLambda)
 	{
 		return new FuserZoneContents(size, canPlayerAccessInventoryLambda, markDirtyNotificationLambda);
 	}

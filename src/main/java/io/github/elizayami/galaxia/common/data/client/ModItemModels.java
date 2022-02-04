@@ -5,6 +5,7 @@ import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.VanillaMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import net.minecraft.data.DataGenerator;
@@ -28,6 +29,15 @@ public class ModItemModels extends ItemModelProvider
         getBuilder("comet_trail_dust").parent(new ModelFile.UncheckedModelFile("item/generated")).
         texture("layer0", modLoc("item/comet_trail_dust"));
         
+        // VANILLA MATERIALS
+        
+		registerVanillaMaterialItemModels(BlockInit.WOOD);
+		registerVanillaMaterialItemModels(BlockInit.STONE);
+		registerVanillaMaterialItemModels(BlockInit.IRON);
+		registerVanillaMaterialItemModels(BlockInit.GOLD);
+		registerVanillaMaterialItemModels(BlockInit.DIAMOND);
+		registerVanillaMaterialItemModels(BlockInit.NETHERITE);
+		
         // WOODEN MATERIALS
 		
 		registerWoodenMaterialItemModels(BlockInit.SHADOWSPIKE);
@@ -63,6 +73,9 @@ public class ModItemModels extends ItemModelProvider
 	{
         getBuilder(material.name + "_door").parent(new ModelFile.UncheckedModelFile("item/generated")).
         		texture("layer0", modLoc("item/" + material.name + "_door"));
+        
+        getBuilder(material.name + "_boat").parent(new ModelFile.UncheckedModelFile("item/generated")).
+		texture("layer0", modLoc("item/" + material.name + "_boat"));
 
         fenceInventory(material.name + "_fence", modLoc("block/" + material.name + "_planks"));
         
@@ -153,7 +166,6 @@ public class ModItemModels extends ItemModelProvider
                 texture("layer0", modLoc("item/" + material.name + "_boots"));
 	}
 	
-
 	private void registerGemMaterialItemModels(GemMaterial material)
 	{
         // Tools and armor
@@ -203,6 +215,30 @@ public class ModItemModels extends ItemModelProvider
        
         getBuilder(material.name + "_boots").parent(new ModelFile.UncheckedModelFile("item/generated")).
                 texture("layer0", modLoc("item/" + material.name + "_boots"));
+	}
+
+
+	private void registerVanillaMaterialItemModels(VanillaMaterial wood)
+	{
+        // Tools and armor
+        getBuilder(wood.name + "_paxel").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + wood.name + "_paxel"));
+        
+        
+        getBuilder(wood.name + "_hammer").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + wood.name + "_hammer"));
+        
+        getBuilder(wood.name + "_saw").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + wood.name + "_saw"));
+        
+        getBuilder(wood.name + "_backhoe").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + wood.name + "_backhoe"));
+        
+        getBuilder(wood.name + "_tiller").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+                texture("layer0", modLoc("item/" + wood.name + "_tiller"));
+        
+        getBuilder(wood.name + "_backhaw").parent(new ModelFile.UncheckedModelFile("item/handheld")).
+        texture("layer0", modLoc("item/" + wood.name + "_backhaw"));
 	}
 
 	private void buttonInventory(String material, ResourceLocation texture)

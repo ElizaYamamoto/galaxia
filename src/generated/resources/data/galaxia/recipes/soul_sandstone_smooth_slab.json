@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_stone_slabs",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:soul_sandstone_smooth"
+    }
+  },
+  "result": {
+    "item": "galaxia:soul_sandstone_smooth_slab",
+    "count": 6
+  }
+}

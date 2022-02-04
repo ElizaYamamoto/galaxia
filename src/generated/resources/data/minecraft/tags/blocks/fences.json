@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_fence",
+    "galaxia:groundstalk_fence",
+    "galaxia:seawood_fence",
+    "galaxia:scorchwood_fence",
+    "galaxia:ghostwood_fence",
+    "galaxia:grovewood_fence"
+  ]
+}

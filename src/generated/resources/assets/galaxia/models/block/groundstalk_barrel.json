@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "galaxia:block/groundstalk_barrel_top",
+    "bottom": "galaxia:block/groundstalk_barrel_bottom",
+    "side": "galaxia:block/groundstalk_barrel_side"
+  }
+}

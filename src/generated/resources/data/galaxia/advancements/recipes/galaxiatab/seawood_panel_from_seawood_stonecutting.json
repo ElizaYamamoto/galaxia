@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:seawood_panel_from_seawood_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_seawood_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:seawood_planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:seawood_panel_from_seawood_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_seawood_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

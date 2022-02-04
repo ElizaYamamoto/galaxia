@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:soul_sandstone"
+  },
+  "result": "galaxia:soul_sandstone_stairs",
+  "count": 1
+}

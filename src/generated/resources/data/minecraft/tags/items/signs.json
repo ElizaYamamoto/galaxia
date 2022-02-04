@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_sign",
+    "galaxia:groundstalk_sign",
+    "galaxia:seawood_sign",
+    "galaxia:scorchwood_sign",
+    "galaxia:ghostwood_sign",
+    "galaxia:grovewood_sign"
+  ]
+}

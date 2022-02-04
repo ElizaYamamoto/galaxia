@@ -3,7 +3,7 @@
   "ingredient": {
     "item": "galaxia:cometsteel_ore"
   },
-  "result": "galaxia:cometsteel_ingot",
+  "result": "galaxia:comet_trail_dust",
   "experience": 0.35,
   "cookingtime": 200
 }

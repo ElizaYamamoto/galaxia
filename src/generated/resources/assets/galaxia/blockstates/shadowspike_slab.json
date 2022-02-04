@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=top": {
+      "model": "galaxia:block/shadowspike_slab_top"
+    },
+    "type=bottom": {
+      "model": "galaxia:block/shadowspike_slab"
+    },
+    "type=double": {
+      "model": "galaxia:block/shadowspike_planks"
+    }
+  }
+}

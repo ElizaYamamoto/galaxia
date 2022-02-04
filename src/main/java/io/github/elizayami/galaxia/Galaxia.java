@@ -2,6 +2,8 @@ package io.github.elizayami.galaxia;
 
 import org.apache.logging.log4j.Logger;
 
+import com.ibm.icu.impl.Pair;
+
 import io.github.elizayami.galaxia.client.ClientProxy;
 import io.github.elizayami.galaxia.client.PhysicalClientSide;
 import io.github.elizayami.galaxia.common.CommonProxy;
@@ -9,10 +11,15 @@ import io.github.elizayami.galaxia.common.PhysicalServerSide;
 import io.github.elizayami.galaxia.common.biome.GalaxiaBiomes;
 import io.github.elizayami.galaxia.common.biome.GalaxiaSurfaceBuilders;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.BoatInit;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
+import io.github.elizayami.galaxia.core.init.enchantments.EnchantmentInit;
 import io.github.elizayami.galaxia.usefultools.IPhysicalSide;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 
@@ -34,7 +41,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
 
 @Mod("galaxia")
 public class Galaxia 
@@ -45,6 +54,12 @@ public class Galaxia
     
 	public static final IPhysicalSide SIDE = 
 			DistExecutor.safeRunForDist(() -> PhysicalClientSide::new, () -> PhysicalServerSide::new);
+
+    public static ResourceLocation createID(String id) {
+        return new ResourceLocation(MOD_ID, id);
+    }
+    
+	public static Map<PlayerEntity, Pair<Direction, BlockPos>> clickedBlockFaces = new HashMap<PlayerEntity, Pair<Direction, BlockPos>>();
 	
     public Galaxia() 
     {
@@ -56,9 +71,14 @@ public class Galaxia
     	SIDE.setup(bus, forgeBus);
     	
 		bus.addListener(this::setup);
-
+		
+	    bus.register(BoatInit.class);
+	    
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
+		EnchantmentInit.ENCHANTMENTS.register(bus);
+
+		
 		WoodTileEntityInit.TILE_ENTITY_TYPES.register(bus);
 		
 	    bus.register(TileEntityInit.class);

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_small_tile",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:dragonstone_polished"
+    }
+  },
+  "result": {
+    "item": "galaxia:dragonstone_tile",
+    "count": 4
+  }
+}

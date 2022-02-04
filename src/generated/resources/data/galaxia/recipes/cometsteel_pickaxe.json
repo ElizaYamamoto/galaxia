@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "galaxia:cometsteel_ingot"
+    }
+  },
+  "result": {
+    "item": "galaxia:cometsteel_pickaxe"
+  }
+}

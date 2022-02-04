@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:cometsteel_ingot_from_cometsteel_block"
+    ]
+  },
+  "criteria": {
+    "has_cometsteel_block": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:cometsteel_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:cometsteel_ingot_from_cometsteel_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_cometsteel_block",
+      "has_the_recipe"
+    ]
+  ]
+}

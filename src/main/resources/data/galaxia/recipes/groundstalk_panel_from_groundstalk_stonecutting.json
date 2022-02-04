@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:groundstalk_planks"
+  },
+  "result": "galaxia:groundstalk_panel",
+  "count": 1
+}

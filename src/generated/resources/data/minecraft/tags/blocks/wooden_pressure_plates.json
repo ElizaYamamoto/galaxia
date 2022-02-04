@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "galaxia:shadowspike_pressure_plate",
+    "galaxia:groundstalk_pressure_plate",
+    "galaxia:seawood_pressure_plate",
+    "galaxia:scorchwood_pressure_plate",
+    "galaxia:ghostwood_pressure_plate",
+    "galaxia:grovewood_pressure_plate"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "galaxia:astrolabe",
+  "result": {
+    "item": "galaxia:galaxium_saw"
+  },
+  "ingredients": {
+    "star": {
+      "item": "galaxia:galaxium_star"
+    },
+    "nether": {
+      "item": "minecraft:netherite_saw"
+    },
+    "comet": {
+      "item": "galaxia:cometsteel_saw"
+    }
+  }
+}

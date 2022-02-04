@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:dragonstone_bricks"
+  },
+  "result": "galaxia:dragonstone_bricks_stairs",
+  "count": 1
+}

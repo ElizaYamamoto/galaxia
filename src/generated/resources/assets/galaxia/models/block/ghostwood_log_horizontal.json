@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "side": "galaxia:block/ghostwood_log",
+    "end": "galaxia:block/ghostwood_log_top"
+  }
+}

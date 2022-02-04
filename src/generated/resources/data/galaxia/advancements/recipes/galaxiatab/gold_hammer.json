@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:gold_hammer"
+    ]
+  },
+  "criteria": {
+    "has_gold_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "minecraft:iron_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:gold_hammer"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_gold_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

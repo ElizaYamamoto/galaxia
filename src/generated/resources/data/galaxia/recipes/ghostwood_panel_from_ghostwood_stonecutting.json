@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:ghostwood_planks"
+  },
+  "result": "galaxia:ghostwood_panel",
+  "count": 1
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "galaxia_planks",
+  "ingredients": [
+    {
+      "tag": "galaxia:groundstalk_logs"
+    }
+  ],
+  "result": {
+    "item": "galaxia:groundstalk_planks",
+    "count": 4
+  }
+}

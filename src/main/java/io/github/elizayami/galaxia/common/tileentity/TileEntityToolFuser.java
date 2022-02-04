@@ -4,7 +4,6 @@ import javax.annotation.Nullable;
 
 import io.github.elizayami.galaxia.common.abstracts.tileentities.FuserZoneContents;
 import io.github.elizayami.galaxia.common.block.tool_fuser.ContainerTF;
-import io.github.elizayami.galaxia.common.block.tool_fuser.FuserStateData;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -35,8 +34,6 @@ public class TileEntityToolFuser extends TileEntity implements INamedContainerPr
 	private FuserZoneContents hoeZoneContents;
 	private FuserZoneContents outputZoneContents;
 
-	private final FuserStateData fuserStateData = new FuserStateData();
-
 	public TileEntityToolFuser()
 	{
 		super(TileEntityInit.tileEntityTypeSF);
@@ -64,7 +61,6 @@ public class TileEntityToolFuser extends TileEntity implements INamedContainerPr
 	{
 		if (world.isRemote)
 			return;
-
 	}
 
 	public boolean willItemStackFit(FuserZoneContents furnaceZoneContents, int slotIndex, ItemStack itemStackOrigin)
@@ -138,7 +134,6 @@ public class TileEntityToolFuser extends TileEntity implements INamedContainerPr
 	{
 		super.write(parentNBTTagCompound);
 
-		fuserStateData.putIntoNBT(parentNBTTagCompound);
 		parentNBTTagCompound.put(PICK_SLOTS_NBT, pickZoneContents.serializeNBT());
 		parentNBTTagCompound.put(AXE_SLOTS_NBT, axeZoneContents.serializeNBT());
 		parentNBTTagCompound.put(SHOVEL_SLOTS_NBT, shovelZoneContents.serializeNBT());
@@ -151,8 +146,6 @@ public class TileEntityToolFuser extends TileEntity implements INamedContainerPr
 	public void read(BlockState blockState, CompoundNBT nbtTagCompound)
 	{
 		super.read(blockState, nbtTagCompound);
-
-		fuserStateData.readFromNBT(nbtTagCompound);
 
 		CompoundNBT inventoryNBT = nbtTagCompound.getCompound(PICK_SLOTS_NBT);
 		pickZoneContents.deserializeNBT(inventoryNBT);
@@ -224,8 +217,7 @@ public class TileEntityToolFuser extends TileEntity implements INamedContainerPr
 				axeZoneContents, 
 				shovelZoneContents, 
 				hoeZoneContents, 
-				outputZoneContents,
-				fuserStateData);
+				outputZoneContents);
 	}
 
 	private ItemStack currentlySmeltingItemLastTick = ItemStack.EMPTY;

@@ -14,5 +14,6 @@ public class TillerItem extends LargeToolItem
 				tier, 
 				properties.apply(new Properties().defaultMaxDamage((int) (tier.getMaxUses() * 1.5)).addToolType(ToolType.HOE, tier.getMaxUses()))
 			 );
+		EFFECTIVE= LargeToolItem.PLANTS;
 	}
 }

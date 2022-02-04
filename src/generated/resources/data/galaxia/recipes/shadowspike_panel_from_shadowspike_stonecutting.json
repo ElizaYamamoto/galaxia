@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:shadowspike_planks"
+  },
+  "result": "galaxia:shadowspike_panel",
+  "count": 1
+}

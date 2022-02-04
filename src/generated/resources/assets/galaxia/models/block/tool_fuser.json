@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "galaxia:block/tool_fuser_bottom",
+    "up": "galaxia:block/tool_fuser_top",
+    "north": "galaxia:block/tool_fuser_front",
+    "south": "galaxia:block/tool_fuser_side",
+    "east": "galaxia:block/tool_fuser_side",
+    "west": "galaxia:block/tool_fuser_front",
+    "particle": "galaxia:block/tool_fuser_top"
+  }
+}

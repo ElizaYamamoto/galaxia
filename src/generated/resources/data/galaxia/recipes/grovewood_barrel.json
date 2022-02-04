@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_barrels",
+  "pattern": [
+    "#S#",
+    "# #",
+    "#S#"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:grovewood_planks"
+    },
+    "S": {
+      "item": "galaxia:grovewood_slab"
+    }
+  },
+  "result": {
+    "item": "galaxia:grovewood_barrel"
+  }
+}

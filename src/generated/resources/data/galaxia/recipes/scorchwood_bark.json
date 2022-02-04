@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:scorchwood_log"
+    }
+  },
+  "result": {
+    "item": "galaxia:scorchwood_bark",
+    "count": 3
+  }
+}

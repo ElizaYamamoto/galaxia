@@ -360,7 +360,7 @@ public class ModBlockStates extends BlockStateProvider
     private void tableBlock(Block block, String name)
     {
 		ModelFile model = models()
-				.cube(name, modLoc("block/" + name + "_planks"),
+				.cube(name, modLoc("block/" + name + "_bottom"),
 						modLoc("block/" + name + "_top"),
 						modLoc("block/" + name + "_front"),
 						modLoc("block/" + name + "_side"),

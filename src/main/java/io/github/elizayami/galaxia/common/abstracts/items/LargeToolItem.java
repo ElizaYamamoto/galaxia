@@ -31,20 +31,21 @@ import java.util.Set;
 
 public class LargeToolItem extends ToolItem
 {
-	private static final Set<Material> WOODS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS,
+	protected static final Set<Material> WOODS = Sets.newHashSet(Material.WOOD, Material.NETHER_WOOD, Material.PLANTS,
 			Material.TALL_PLANTS, Material.BAMBOO, Material.GOURD);
 
-	private static final Set<Material> STONES = Sets.newHashSet(Material.IRON, Material.ANVIL, Material.ROCK);
+	protected static final Set<Material> STONES = Sets.newHashSet(Material.IRON, Material.ANVIL, Material.ROCK);
 
-	private static final Set<Material> PLANTS = Sets.newHashSet(Material.ORGANIC, Material.SPONGE, Material.LEAVES);
+	protected static final Set<Material> PLANTS = Sets.newHashSet(Material.ORGANIC, Material.SPONGE, Material.LEAVES);
 
-	private static final Set<Material> SOILS = Sets.newHashSet(Material.CLAY, Material.EARTH, Material.SAND);
+	protected static final Set<Material> SOILS = Sets.newHashSet(Material.CLAY, Material.EARTH, Material.SAND);
 
-	private Set<Material> EFFECTIVE;
+	protected Set<Material> EFFECTIVE;
 
 	public LargeToolItem(float attackDamageIn, float attackSpeedIn, IItemTier tier, Item.Properties apply)
 	{
 		super(attackDamageIn, attackSpeedIn, tier, new HashSet<>(), apply);
+		EFFECTIVE = null;
 	}
 
 	@Override
@@ -69,22 +70,6 @@ public class LargeToolItem extends ToolItem
 
 	public float getDestroySpeed(ItemStack stack, BlockState state)
 	{
-		if (stack.getToolTypes().contains(ToolType.AXE))
-		{
-			EFFECTIVE.addAll(WOODS);
-		}
-		if (stack.getToolTypes().contains(ToolType.PICKAXE))
-		{
-			EFFECTIVE.addAll(STONES);
-		}
-		if (stack.getToolTypes().contains(ToolType.HOE))
-		{
-			EFFECTIVE.addAll(PLANTS);
-		}
-		if (stack.getToolTypes().contains(ToolType.SHOVEL))
-		{
-			EFFECTIVE.addAll(WOODS);
-		}
 		Material material = state.getMaterial();
 		return material != Material.IRON && material != Material.ANVIL && material != Material.ROCK
 				&& !EFFECTIVE.contains(material) ? super.getDestroySpeed(stack, state) : this.efficiency;
@@ -200,7 +185,7 @@ public class LargeToolItem extends ToolItem
 			expandLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPAND.get(), stack);
 		}
 		
-		int size = 3 + expandLevel;
+		int size = 3 + (expandLevel * 2);
 
 		double start = -1 - expandLevel;
 		double sx = -1;
@@ -209,10 +194,10 @@ public class LargeToolItem extends ToolItem
 		
 		if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
 		{
-			for (int loopsX = 0; loopsX < start; loopsX++)
+			for (int loopsX = 0; loopsX < size; loopsX++)
 			{
-				sz = -1;
-				for (int loopsZ = 0; loopsZ < start; loopsZ++)
+				sz = start;
+				for (int loopsZ = 0; loopsZ < size; loopsZ++)
 				{
 					world.setBlockState(pos, state, 11);
 					sz++;
@@ -222,10 +207,10 @@ public class LargeToolItem extends ToolItem
 		}
 		else if (entity.getHorizontalFacing() == Direction.NORTH || entity.getHorizontalFacing() == Direction.SOUTH)
 		{
-			for (int loopsX = 0; loopsX < start; loopsX++)
+			for (int loopsX = 0; loopsX < size; loopsX++)
 			{
-				sy = -1;
-				for (int loopsY = 0; loopsY < start; loopsY++)
+				sy = start;
+				for (int loopsY = 0; loopsY < size; loopsY++)
 				{
 					world.setBlockState(pos, state, 11);
 					sy++;
@@ -235,10 +220,10 @@ public class LargeToolItem extends ToolItem
 		}
 		else if (entity.getHorizontalFacing() == Direction.WEST || entity.getHorizontalFacing() == Direction.EAST)
 		{
-			for (int loopsZ = 0; loopsZ < start; loopsZ++)
+			for (int loopsZ = 0; loopsZ < size; loopsZ++)
 			{
-				sy = -1;
-				for (int loopsY = 0; loopsY < start; loopsY++)
+				sy = start;
+				for (int loopsY = 0; loopsY < size; loopsY++)
 				{
 					world.setBlockState(pos, state, 11);
 					sy++;
@@ -263,8 +248,8 @@ public class LargeToolItem extends ToolItem
 		{
 			expandLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPAND.get(), itemstack);
 		}
-		
-		int size = 3 + expandLevel;
+
+		int size = 3 + (expandLevel * 2);
 
 		double start = -1 - expandLevel;
 		double sx = start;

@@ -20,12 +20,12 @@ public class ExpandEnchantment extends GalaxiaEnchantment
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 1;
     }
 
     @Override
     public boolean isTreasureEnchantment() {
-        return false;
+        return true;
     }
 
     @Override

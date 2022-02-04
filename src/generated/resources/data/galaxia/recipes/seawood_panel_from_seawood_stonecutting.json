@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:seawood_planks"
+  },
+  "result": "galaxia:seawood_panel",
+  "count": 1
+}

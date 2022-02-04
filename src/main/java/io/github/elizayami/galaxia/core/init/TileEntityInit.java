@@ -6,7 +6,7 @@ import io.github.elizayami.galaxia.common.block.dragonfire_furnace.Dragonfire_Fu
 import io.github.elizayami.galaxia.common.block.soul_furnace.ContainerSF;
 import io.github.elizayami.galaxia.common.block.soul_furnace.Soul_Furnace;
 import io.github.elizayami.galaxia.common.block.tool_fuser.ContainerTF;
-import io.github.elizayami.galaxia.common.block.tool_fuser.Tool_Fuser;
+import io.github.elizayami.galaxia.common.block.tool_fuser.ToolFuser;
 import io.github.elizayami.galaxia.common.tileentity.TileEntityDragonfireFurnace;
 import io.github.elizayami.galaxia.common.tileentity.TileEntitySoulFurnace;
 import io.github.elizayami.galaxia.common.tileentity.TileEntityToolFuser;
@@ -47,7 +47,7 @@ public class TileEntityInit
 		blockDFF = new Dragonfire_Furnace().setRegistryName("dragonfire_furnace");
 		blockRegisterEvent.getRegistry().register(blockDFF);
 		
-		blockDFF = new Tool_Fuser().setRegistryName("tool_fuser");
+		blockTF = new ToolFuser().setRegistryName("tool_fuser");
 		blockRegisterEvent.getRegistry().register(blockTF);
 	}
 
@@ -84,7 +84,7 @@ public class TileEntityInit
 		event.getRegistry().register(tileEntityTypeDFF);
 
 		tileEntityTypeTF = TileEntityType.Builder.create(TileEntityToolFuser::new, blockTF).build(null);
-		tileEntityTypeTF.setRegistryName("galaxia:too_fuser_registry_name");
+		tileEntityTypeTF.setRegistryName("galaxia:tool_fuser_registry_name");
 		event.getRegistry().register(tileEntityTypeTF);
 	}
 

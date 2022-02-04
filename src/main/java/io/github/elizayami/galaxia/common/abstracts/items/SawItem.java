@@ -12,6 +12,7 @@ public class SawItem extends LargeToolItem
 		super(attackDamageIn, 
 				attackSpeedIn, 
 				tier,
-				properties.apply(new Properties().defaultMaxDamage((int) (tier.getMaxUses() * 1.5)).addToolType(ToolType.SHOVEL, tier.getMaxUses())));
+				properties.apply(new Properties().defaultMaxDamage((int) (tier.getMaxUses() * 1.5)).addToolType(ToolType.AXE, tier.getMaxUses())));
+		EFFECTIVE = LargeToolItem.WOODS;
 	}
 }

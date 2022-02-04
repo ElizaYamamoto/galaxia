@@ -54,7 +54,6 @@ public class PaxelItem extends ToolItem
 	@Override
 	public boolean canHarvestBlock(BlockState state)
 	{
-
 		int i = this.getTier().getHarvestLevel();
 		if (state.getHarvestTool() == ToolType.PICKAXE)
 			return i >= state.getHarvestLevel();

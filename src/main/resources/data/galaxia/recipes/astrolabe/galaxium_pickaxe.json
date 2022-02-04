@@ -1,0 +1,17 @@
+{
+  "type": "galaxia:astrolabe",
+  "result": {
+    "item": "galaxia:galaxium_pickaxe"
+  },
+  "ingredients": {
+    "star": {
+      "item": "galaxia:galaxium_star"
+    },
+    "nether": {
+      "item": "minecraft:netherite_pickaxe"
+    },
+    "comet": {
+      "item": "galaxia:cometsteel_pickaxe"
+    }
+  }
+}

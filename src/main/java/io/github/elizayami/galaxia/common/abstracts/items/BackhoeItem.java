@@ -14,5 +14,6 @@ public class BackhoeItem extends LargeToolItem
 				tier, 
 				properties.apply(new Properties().defaultMaxDamage((int) (tier.getMaxUses() * 1.5)).addToolType(ToolType.SHOVEL, tier.getMaxUses()))
 			 );
+		EFFECTIVE = LargeToolItem.SOILS;
 	}
 }

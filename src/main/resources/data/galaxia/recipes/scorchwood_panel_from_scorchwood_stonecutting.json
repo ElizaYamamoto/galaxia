@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "galaxia:scorchwood_planks"
+  },
+  "result": "galaxia:scorchwood_panel",
+  "count": 1
+}

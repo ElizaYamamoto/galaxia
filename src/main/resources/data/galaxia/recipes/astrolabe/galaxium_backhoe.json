@@ -1,0 +1,17 @@
+{
+  "type": "galaxia:astrolabe",
+  "result": {
+    "item": "galaxia:galaxium_backhoe"
+  },
+  "ingredients": {
+    "star": {
+      "item": "galaxia:galaxium_star"
+    },
+    "nether": {
+      "item": "minecraft:netherite_backhoe"
+    },
+    "comet": {
+      "item": "galaxia:cometsteel_backhoe"
+    }
+  }
+}

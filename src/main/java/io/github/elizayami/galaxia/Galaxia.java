@@ -27,8 +27,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
-import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 import software.bernie.geckolib3.GeckoLib;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -46,118 +44,115 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 
 @Mod("galaxia")
-public class Galaxia 
+public class Galaxia
 {
 	public static final String MOD_ID = "galaxia";
-	
-    public static final Logger LOGGER = LogManager.getLogger();
-    
-	public static final IPhysicalSide SIDE = 
-			DistExecutor.safeRunForDist(() -> PhysicalClientSide::new, () -> PhysicalServerSide::new);
 
-    public static ResourceLocation createID(String id) {
-        return new ResourceLocation(MOD_ID, id);
-    }
-    
+	public static final Logger LOGGER = LogManager.getLogger();
+
+	public static final IPhysicalSide SIDE = DistExecutor.safeRunForDist(() -> PhysicalClientSide::new,
+			() -> PhysicalServerSide::new);
+
+	public static ResourceLocation createID(String id)
+	{
+		return new ResourceLocation(MOD_ID, id);
+	}
+
 	public static Map<PlayerEntity, Pair<Direction, BlockPos>> clickedBlockFaces = new HashMap<PlayerEntity, Pair<Direction, BlockPos>>();
-	
-    public Galaxia() 
-    {
-    	GeckoLib.initialize();
-    	
+
+	public Galaxia()
+	{
+		GeckoLib.initialize();
+
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-    	IEventBus forgeBus = MinecraftForge.EVENT_BUS;
-    	
-    	SIDE.setup(bus, forgeBus);
-    	
+		IEventBus forgeBus = MinecraftForge.EVENT_BUS;
+
+		SIDE.setup(bus, forgeBus);
+
 		bus.addListener(this::setup);
-		
-	    bus.register(BoatInit.class);
-	    
+
+		bus.register(BoatInit.class);
+
 		ItemInit.ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
 		EnchantmentInit.ENCHANTMENTS.register(bus);
 
-		
 		WoodTileEntityInit.TILE_ENTITY_TYPES.register(bus);
-		
-	    bus.register(TileEntityInit.class);
-	    
-        PROXY.init();
-		
-	    final ClientSideOnlyModEventRegistrar clientSideOnlyModEventRegistrar = new ClientSideOnlyModEventRegistrar(bus);
-	    DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> clientSideOnlyModEventRegistrar::registerClientOnlyEvents);
-	    
+
+		bus.register(TileEntityInit.class);
+
+		PROXY.init();
+
+		final ClientSideOnlyModEventRegistrar clientSideOnlyModEventRegistrar = new ClientSideOnlyModEventRegistrar(bus);
+		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> clientSideOnlyModEventRegistrar::registerClientOnlyEvents);
+
 		GalaxiaBiomes.initialise(bus);
 		GalaxiaSurfaceBuilders.initialise(bus);
-		
-		MinecraftForge.EVENT_BUS.register(this);
-		MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGeneration::generateOres);
+
+		forgeBus.register(this);
+		forgeBus.addListener(EventPriority.HIGH, OreGeneration::generateOres);
 	}
 
-	private void setup(final FMLCommonSetupEvent event) 
-	{	
-		event.enqueueWork(() ->{
-        PROXY.setup();
-    });
+	private void setup(final FMLCommonSetupEvent event)
+	{
+		event.enqueueWork(() ->
+		{
+			PROXY.setup();
+		});
 	}
-	
-	public static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T entry, String registryKey) 
-    {
-        entry.setRegistryName(new ResourceLocation(Galaxia.MOD_ID, registryKey));
-        registry.register(entry);
-        return entry;
-    }
 
-
-	public static boolean isClient() 
+	public static boolean isClient()
 	{
 		return FMLLoader.getDist() == Dist.CLIENT;
 	}
 
-	public static ResourceLocation makeID(String path) 
+	public static ResourceLocation makeID(String path)
 	{
 		return new ResourceLocation(MOD_ID, path);
 	}
-	
-    public static final SimpleChannel NETWORK_WRAPPER;
-    
-    private static final String PROTOCOL_VERSION = Integer.toString(1);
-    
-    public static CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
-    private static int packetsRegistered = 0;
-    static 
-    {
-        NetworkRegistry.ChannelBuilder channel = NetworkRegistry.ChannelBuilder.named(new ResourceLocation("galaxia", "main_channel"));
-        String version = PROTOCOL_VERSION;
-        version.getClass();
-        channel = channel.clientAcceptedVersions(version::equals);
-        version = PROTOCOL_VERSION;
-        version.getClass();
-        NETWORK_WRAPPER = channel.serverAcceptedVersions(version::equals).networkProtocolVersion(() -> {
-            return PROTOCOL_VERSION;
-        }).simpleChannel();
-    }
 
-    public void postInit() {
-    }
-    
-    private void setupClient(FMLClientSetupEvent event) {
-        PROXY.setupClient();
-    }
+	public static final SimpleChannel NETWORK_WRAPPER;
+
+	private static final String PROTOCOL_VERSION = Integer.toString(1);
+
+	public static CommonProxy PROXY = DistExecutor.safeRunForDist(() -> ClientProxy::new, () -> CommonProxy::new);
+	private static int packetsRegistered = 0;
+	static
+	{
+		NetworkRegistry.ChannelBuilder channel = NetworkRegistry.ChannelBuilder
+				.named(new ResourceLocation("galaxia", "main_channel"));
+		String version = PROTOCOL_VERSION;
+		version.getClass();
+		channel = channel.clientAcceptedVersions(version::equals);
+		version = PROTOCOL_VERSION;
+		version.getClass();
+		NETWORK_WRAPPER = channel.serverAcceptedVersions(version::equals).networkProtocolVersion(() ->
+		{
+			return PROTOCOL_VERSION;
+		}).simpleChannel();
+	}
+
+	public void postInit()
+	{
+	}
+
+	private void setupClient(FMLClientSetupEvent event)
+	{
+		PROXY.setupClient();
+	}
 
 	public static final ItemGroup galaxiaGroup = new GalaxiaGroup("galaxiatab");
 
-	public static class GalaxiaGroup extends ItemGroup 
+	public static class GalaxiaGroup extends ItemGroup
 	{
 
-		public GalaxiaGroup(String label) 
+		public GalaxiaGroup(String label)
 		{
 			super(label);
 		}
 
 		@Override
-		public ItemStack createIcon() 
+		public ItemStack createIcon()
 		{
 			return new ItemStack(ItemInit.GALAXIUM_STAR.get());
 		}

@@ -7,33 +7,43 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Galaxia.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class CommonProxy 
+public class CommonProxy
 {
 
-    public void setup() 
-    {
-        MinecraftForge.EVENT_BUS.register(new ServerEvents());
-    }
-    
-    public Object getArmorModel(int armorId) {
-        return null;
-    }
+	public void setup()
+	{
+		MinecraftForge.EVENT_BUS.register(new ServerEvents());
+	}
 
-   
-    public void init() 
-    {
-        MinecraftForge.EVENT_BUS.register(new ServerEvents());
-    }
+	public Object getArmorModel(int armorId)
+	{
+		return null;
+	}
 
-    @OnlyIn(Dist.CLIENT)
-    public void postInit() {
+	public void init()
+	{
+		MinecraftForge.EVENT_BUS.register(new ServerEvents());
+	}
 
-    }
+	@OnlyIn(Dist.CLIENT)
+	public void postInit()
+	{
 
-    @OnlyIn(Dist.CLIENT)
-    public void setupClient() 
-    {
-    	
-    }
+	}
 
+	@OnlyIn(Dist.CLIENT)
+	public void setupClient()
+	{
+
+	}
+
+	public void spawnParticle(String name, double x, double y, double z, double motX, double motY, double motZ)
+	{
+		spawnParticle(name, x, y, z, motX, motY, motZ, 1.0F);
+	}
+
+	public void spawnParticle(String name, double x, double y, double z, double motX, double motY, double motZ,
+			float size)
+	{
+	}
 }

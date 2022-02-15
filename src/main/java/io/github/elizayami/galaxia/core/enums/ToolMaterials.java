@@ -11,7 +11,9 @@ public enum ToolMaterials implements IItemTier
 {
 	METEOR(2, 2000, 3, 0, 1, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
 
-	COMETSTEEL(5, 3000, 11, 3.5f, 10, () -> Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get())),
+	BOLTRINE(3, 1000, 8.0F, 3.5F, 12, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
+
+	COMETSTEEL(5, 3000, 11, 5f, 10, () -> Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get())),
 
 	GALAXIUM(6, 5000, 11, 6, 22, () -> Ingredient.fromItems(BlockInit.COMETSTEEL.ingot.get()));
 

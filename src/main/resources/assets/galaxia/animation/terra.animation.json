@@ -1,0 +1,48 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"terra.model.idle": {
+			"loop": true,
+			"animation_length": 8,
+			"bones": {
+				"head": {
+					"position": {
+						"vector": [0, "math.sin(query.anim_time * 45)*.8", 0]
+					}
+				},
+				"bone": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*45)*5", "query.anim_time * 90", 0]
+					},
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*45)*1.05", 0]
+					}
+				},
+				"bone2": {
+					"rotation": {
+						"vector": ["-math.sin(query.anim_time*45)*5", "-query.anim_time * 45", 0]
+					},
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*45)*.95", 0]
+					}
+				},
+				"bone3": {
+					"rotation": {
+						"vector": ["math.sin(query.anim_time*45)*5", "query.anim_time * 90", 0]
+					},
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*45)*.85", 0]
+					}
+				},
+				"bone4": {
+					"rotation": {
+						"vector": ["-math.sin(query.anim_time*45)*5", "-query.anim_time * 45", 0]
+					},
+					"position": {
+						"vector": [0, "math.sin(query.anim_time*45)*.9", 0]
+					}
+				}
+			}
+		}
+	}
+}

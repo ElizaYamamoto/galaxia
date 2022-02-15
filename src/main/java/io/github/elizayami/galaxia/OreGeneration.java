@@ -25,6 +25,11 @@ public class OreGeneration
 		{
 			generateOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD, BlockInit.METEOR.ore.get().getDefaultState(), 5, 1, 30, 10);
 		}
+		
+		if (event.getCategory().equals(Biome.Category.NETHER))
+		{
+			generateOre(event.getGeneration(), new BlockMatchRuleTest(BlockInit.BOLT), BlockInit.BOLTRINE.ore.get().getDefaultState(), 5, 1, 30, 10);
+		}
 
 		if (event.getCategory().equals(Biome.Category.THEEND))
 		{

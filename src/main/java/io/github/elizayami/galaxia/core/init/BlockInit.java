@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableList;
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.blocks.RotatingBlock;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
@@ -110,6 +111,13 @@ public class BlockInit
 	{
 		return ImmutableList.copyOf(stoneMaterials);
 	}
+	
+	private static List<NetherrackMaterial> netherrackMaterials;
+
+	public static List<NetherrackMaterial> getNetherrackMaterials()
+	{
+		return ImmutableList.copyOf(netherrackMaterials);
+	}
 
 	private static List<SandstoneMaterial> sandstoneMaterials;
 
@@ -167,13 +175,18 @@ public class BlockInit
 
 	public static final StoneMaterial DRAGONSTONE = createStoneMaterial("dragonstone", MaterialColor.BLACK_TERRACOTTA);
 
+	// NETHERRACK
+	
+	public static final NetherrackMaterial GALVIROCK = createNetherrackMaterial("galvirock", MaterialColor.YELLOW_TERRACOTTA, new Item.Properties().group(Galaxia.galaxiaGroup));
+	public static final NetherrackMaterial WITHERRACK = createNetherrackMaterial("witherrack", MaterialColor.BLACK, new Item.Properties().group(Galaxia.galaxiaGroup));
+	
 	// SANDSTONE
 
 	public static final SandstoneMaterial SOULSANDSTONE = createSandstoneMaterial("soul_sandstone",
 			MaterialColor.BROWN);
 
 	public static final SandstoneMaterial IMPACTSANDSTONE = createSandstoneMaterial("impact_sandstone",
-			MaterialColor.BROWN);
+			MaterialColor.GRAY);
 
 	// METAL
 
@@ -188,6 +201,11 @@ public class BlockInit
 			new Item.Properties().group(Galaxia.galaxiaGroup), ToolMaterials.COMETSTEEL, ArmorMaterials.COMETSTEEL);
 
 	// GEM
+	
+	public static final GemMaterial BOLTRINE = createGemMaterial("boltrine", true,
+			AbstractBlock.Properties.create(Material.IRON, MaterialColor.YELLOW).setRequiresTool()
+					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.STONE),
+			new Item.Properties().group(Galaxia.galaxiaGroup), ToolMaterials.BOLTRINE, ArmorMaterials.BOLTRINE);
 
 	public static final GemMaterial GALAXIUM = createGemMaterial("galaxium", true,
 			AbstractBlock.Properties.create(Material.IRON, MaterialColor.PURPLE).setRequiresTool()
@@ -233,6 +251,16 @@ public class BlockInit
 
 		StoneMaterial material = new StoneMaterial(name, color);
 		stoneMaterials.add(material);
+		return material;
+	}
+
+	public static NetherrackMaterial createNetherrackMaterial(String name, MaterialColor color, Item.Properties itemSettings)
+	{
+		if (netherrackMaterials == null)
+			netherrackMaterials = new ArrayList<>();
+
+		NetherrackMaterial material = new NetherrackMaterial(name, color, itemSettings);
+		netherrackMaterials.add(material);
 		return material;
 	}
 

@@ -9,6 +9,7 @@ import io.github.elizayami.galaxia.common.abstracts.items.SawItem;
 import io.github.elizayami.galaxia.common.abstracts.items.TillerItem;
 import io.github.elizayami.galaxia.common.item.BoltrineArmor;
 import io.github.elizayami.galaxia.common.item.GalaxiumArmor;
+import io.github.elizayami.galaxia.common.item.ModArmor;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.block.AbstractBlock;
@@ -60,6 +61,7 @@ public class GemMaterial
 	public final RegistryObject<Item> boots;
 
 	public final boolean hasOre;
+	public final boolean customArmor;
 
 	public final String name;
 
@@ -110,6 +112,16 @@ public class GemMaterial
 				() -> new Block(AbstractBlock.Properties.from(Blocks.END_STONE))) : null;
 		block = BlockInit.registerBlockWithDefaultItem(name + "_block", () -> new Block(blockSettings));
 
+
+		if (name == "galaxium" || name == "boltrine")
+		{
+			customArmor = true;
+		}
+		else
+		{
+			customArmor = false;
+		}
+
 		if (name != "galaxium")
 		{
 			gem = ItemInit.registerItem(name, () -> new Item(itemSettings));
@@ -148,44 +160,14 @@ public class GemMaterial
 		backhaw = ItemInit.registerItem(name + "_backhaw",
 				() -> new BackhawItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 
-		if (name == "galaxium")
-		{
-			String sub = "galaxia:galaxium";
+		helmet = ItemInit.registerItem(name + "_helmet",
+				() -> new ModArmor(armor, EquipmentSlotType.HEAD, itemSettings, name, customArmor));
+		chestplate = ItemInit.registerItem(name + "_chestplate",
+				() -> new ModArmor(armor, EquipmentSlotType.CHEST, itemSettings, name, customArmor));
+		leggings = ItemInit.registerItem(name + "_leggings",
+				() -> new ModArmor(armor, EquipmentSlotType.LEGS, itemSettings, name, customArmor));
+		boots = ItemInit.registerItem(name + "_boots",
+				() -> new ModArmor(armor, EquipmentSlotType.FEET, itemSettings, name, customArmor));
 
-			helmet = ItemInit.registerItem(name + "_helmet",
-					() -> new GalaxiumArmor(armor, EquipmentSlotType.HEAD, itemSettings));
-			chestplate = ItemInit.registerItem(name + "_chestplate",
-					() -> new GalaxiumArmor(armor, EquipmentSlotType.CHEST, itemSettings));
-			leggings = ItemInit.registerItem(name + "_leggings",
-					() -> new GalaxiumArmor(armor, EquipmentSlotType.LEGS, itemSettings));
-			boots = ItemInit.registerItem(name + "_boots",
-					() -> new GalaxiumArmor(armor, EquipmentSlotType.FEET, itemSettings));
-
-		}
-		else if (name == "boltrine")
-		{
-			String sub = "boltrine";
-
-			helmet = ItemInit.registerItem(name + "_helmet",
-					() -> new BoltrineArmor(armor, EquipmentSlotType.HEAD, itemSettings));
-			chestplate = ItemInit.registerItem(name + "_chestplate",
-					() -> new BoltrineArmor(armor, EquipmentSlotType.CHEST, itemSettings));
-			leggings = ItemInit.registerItem(name + "_leggings",
-					() -> new BoltrineArmor(armor, EquipmentSlotType.LEGS, itemSettings));
-			boots = ItemInit.registerItem(name + "_boots",
-					() -> new BoltrineArmor(armor, EquipmentSlotType.FEET, itemSettings));
-
-		}
-		else
-		{
-			helmet = ItemInit.registerItem(name + "_helmet",
-					() -> new ArmorItem(armor, EquipmentSlotType.HEAD, itemSettings));
-			chestplate = ItemInit.registerItem(name + "_chestplate",
-					() -> new ArmorItem(armor, EquipmentSlotType.CHEST, itemSettings));
-			leggings = ItemInit.registerItem(name + "_leggings",
-					() -> new ArmorItem(armor, EquipmentSlotType.LEGS, itemSettings));
-			boots = ItemInit.registerItem(name + "_boots",
-					() -> new ArmorItem(armor, EquipmentSlotType.FEET, itemSettings));
-		}
 	}
 }

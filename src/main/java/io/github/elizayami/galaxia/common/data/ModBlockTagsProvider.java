@@ -3,6 +3,7 @@ package io.github.elizayami.galaxia.common.data;
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
@@ -52,6 +53,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		// STONE MATERIALS
 		
 		registerStoneMaterialTags(BlockInit.DRAGONSTONE);
+		
+		// NETHERRACK MATERIALS
+
+		registerNetherrackMaterialTags(BlockInit.GALVIROCK);
+		registerNetherrackMaterialTags(BlockInit.WITHERRACK);
 		
 		// SANDSTONE MATERIALS
 		
@@ -126,22 +132,6 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		return new ResourceLocation(ForgeVersion.MOD_ID, tag);
 	}
 	
-	private void registerSandstoneMaterialTags(SandstoneMaterial material)
-	{
-		getOrCreateBuilder(BlockTags.WALLS).add(material.wall.get());
-		getOrCreateBuilder(BlockTags.WALLS).add(material.smooth_wall.get());
-		
-		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
-		getOrCreateBuilder(BlockTags.SLABS).add(material.smooth_slab.get());
-		
-		getOrCreateBuilder(BlockTags.STAIRS).add(material.stairs.get());
-		getOrCreateBuilder(BlockTags.STAIRS).add(material.smooth_stairs.get());
-		
-		
-		// Forge Tags
-		getOrCreateBuilder(Tags.Blocks.SANDSTONE).add(material.stone.get());
-		getOrCreateBuilder(Tags.Blocks.SANDSTONE).add(material.smooth.get());
-	}
 
 	private void registerStoneMaterialTags(StoneMaterial material)
 	{
@@ -161,6 +151,41 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		
 		// Forge Tags
 		getOrCreateBuilder(Tags.Blocks.STONE).add(material.stone.get());
+	}
+	
+	private void registerNetherrackMaterialTags(NetherrackMaterial material)
+	{
+		getOrCreateBuilder(Tags.Blocks.FENCES_NETHER_BRICK).add(material.fence.get());
+		getOrCreateBuilder(BlockTags.FENCES).add(material.fence.get());
+		
+		getOrCreateBuilder(Tags.Blocks.FENCE_GATES).add(material.gate.get());
+		getOrCreateBuilder(BlockTags.FENCE_GATES).add(material.gate.get());
+
+		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
+		
+		getOrCreateBuilder(BlockTags.STAIRS).add(material.stairs.get());
+		
+		// Forge Tags
+		getOrCreateBuilder(Tags.Blocks.STONE).add(material.stone.get());
+		getOrCreateBuilder(Tags.Blocks.NETHERRACK).add(material.stone.get());
+		getOrCreateBuilder(BlockTags.BASE_STONE_NETHER).add(material.stone.get());
+	}
+
+	private void registerSandstoneMaterialTags(SandstoneMaterial material)
+	{
+		getOrCreateBuilder(BlockTags.WALLS).add(material.wall.get());
+		getOrCreateBuilder(BlockTags.WALLS).add(material.smooth_wall.get());
+		
+		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
+		getOrCreateBuilder(BlockTags.SLABS).add(material.smooth_slab.get());
+		
+		getOrCreateBuilder(BlockTags.STAIRS).add(material.stairs.get());
+		getOrCreateBuilder(BlockTags.STAIRS).add(material.smooth_stairs.get());
+		
+		
+		// Forge Tags
+		getOrCreateBuilder(Tags.Blocks.SANDSTONE).add(material.stone.get());
+		getOrCreateBuilder(Tags.Blocks.SANDSTONE).add(material.smooth.get());
 	}
 	
 	private void registerMetalMaterialTags(MetalMaterial material)

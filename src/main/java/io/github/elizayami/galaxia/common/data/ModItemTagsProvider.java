@@ -2,6 +2,7 @@ package io.github.elizayami.galaxia.common.data;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
@@ -30,7 +31,6 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		
 		getOrCreateBuilder(Tags.Items.ORES).add(BlockInit.SOAL_ORE.get().asItem());
 		
-		
 		// WOODEN MATERIALS
 		
 		registerWoodenMaterialTags(BlockInit.SHADOWSPIKE);
@@ -43,6 +43,11 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		// STONE MATERIALS
 		registerStoneMaterialTags(BlockInit.DRAGONSTONE);
 
+		// NETHERRACK MATERIALS
+
+		registerNetherrackMaterialTags(BlockInit.GALVIROCK);
+		registerNetherrackMaterialTags(BlockInit.WITHERRACK);
+		
 		// SANDSTONE MATERIALS
 		registerSandstoneMaterialTags(BlockInit.SOULSANDSTONE);
 		registerSandstoneMaterialTags(BlockInit.IMPACTSANDSTONE);
@@ -124,6 +129,27 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		// Forge Tags
 		getOrCreateBuilder(Tags.Items.STONE).add(material.stone.get().asItem());
 	}
+	
+	private void registerNetherrackMaterialTags(NetherrackMaterial material)
+	{
+		getOrCreateBuilder(ItemTags.STONE_BRICKS).add(material.bricks.get().asItem());
+
+		getOrCreateBuilder(Tags.Items.FENCES).add(material.fence.get().asItem());
+
+		getOrCreateBuilder(Tags.Items.FENCE_GATES).add(material.gate.get().asItem());
+		
+		getOrCreateBuilder(ItemTags.SLABS).add(material.slab.get().asItem());
+		
+		getOrCreateBuilder(ItemTags.STAIRS).add(material.stairs.get().asItem());
+		
+		getOrCreateBuilder(ItemTags.STONE_CRAFTING_MATERIALS).add(material.stone.get().asItem());
+		getOrCreateBuilder(ItemTags.STONE_TOOL_MATERIALS).add(material.stone.get().asItem());
+		
+		// Forge Tags
+		getOrCreateBuilder(Tags.Items.STONE).add(material.stone.get().asItem());
+		getOrCreateBuilder(Tags.Items.NETHERRACK).add(material.stone.get().asItem());
+	}
+
 
 	private void registerSandstoneMaterialTags(SandstoneMaterial material)
 	{

@@ -26,6 +26,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ToolType;
 
+import javax.annotation.Nullable;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -75,6 +77,38 @@ public class LargeToolItem extends ToolItem
 				&& !EFFECTIVE.contains(material) ? super.getDestroySpeed(stack, state) : this.efficiency;
 	}
 
+	@Nullable
+	private static ToolType getAction(World level, BlockPos pos, PlayerEntity player, ItemStack stack, BlockState state,
+			Direction face)
+	{
+		Set<ToolType> toolTypes = stack.getToolTypes();
+		if (toolTypes.contains(ToolType.AXE)
+				&& state.getToolModifiedState(level, pos, player, stack, ToolType.AXE) != null)
+			return ToolType.AXE;
+		if (face != Direction.DOWN)
+		{
+			if (player.isSecondaryUseActive())
+			{
+				if (toolTypes.contains(ToolType.HOE)
+						&& state.getToolModifiedState(level, pos, player, stack, ToolType.HOE) != null)
+					return ToolType.HOE;
+				if (toolTypes.contains(ToolType.SHOVEL)
+						&& state.getToolModifiedState(level, pos, player, stack, ToolType.SHOVEL) != null)
+					return ToolType.SHOVEL;
+			}
+			else
+			{
+				if (toolTypes.contains(ToolType.SHOVEL)
+						&& state.getToolModifiedState(level, pos, player, stack, ToolType.SHOVEL) != null)
+					return ToolType.SHOVEL;
+				if (toolTypes.contains(ToolType.HOE)
+						&& state.getToolModifiedState(level, pos, player, stack, ToolType.HOE) != null)
+					return ToolType.HOE;
+			}
+		}
+		return null;
+	}
+
 	@Override
 	public ActionResultType onItemUse(ItemUseContext context)
 	{
@@ -82,168 +116,81 @@ public class LargeToolItem extends ToolItem
 		BlockPos pos = context.getPos();
 		PlayerEntity player = context.getPlayer();
 		ItemStack stack = context.getItem();
-
 		BlockState state = world.getBlockState(pos);
+		Direction face = context.getFace();
 
-		BlockState strippable = state.getToolModifiedState(world, pos, player, stack, ToolType.AXE);
+		ToolType action = getAction(world, pos, player, stack, state, face);
 
-		BlockState tillable = state.getToolModifiedState(world, pos, player, stack, ToolType.HOE);
-
-		BlockState pathable = state.getToolModifiedState(world, pos, player, stack, ToolType.SHOVEL);
-
-		boolean success = false;
-
-		if (strippable != null && stack.getToolTypes().contains(ToolType.AXE))
+		if (action != null)
 		{
-			world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
-			rightClick(stack, world, strippable, pos, player);
-			success = true;
-		}
-		else if (context.getFace() != Direction.DOWN && world.getBlockState(pos.up()).isAir(world, pos.up()))
-		{
-			boolean hoe = stack.getToolTypes().contains(ToolType.HOE);
-			boolean shovel = stack.getToolTypes().contains(ToolType.SHOVEL);
-			
-			if (hoe && shovel)
-			{
-				if (player.isSneaking())
-				{
-					if (tillable != null)
-					{
-						world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-						if (!world.isRemote)
-						{
-							rightClick(stack, world, tillable, pos, player);
-							success = true;
-						}
-					}
-				}
-				else
-				{
-					if (pathable != null)
-					{
-						world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			if (action == ToolType.AXE)
+				world.playSound(player, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			else if (action == ToolType.HOE)
+				world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
+			else if (action == ToolType.SHOVEL)
+				world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
 
-						if (!world.isRemote())
-						{
-							rightClick(stack, world, pathable, pos, player);
-							success = true;
-						}
-					}
-				}
-			}
-			else if (hoe && !shovel)
+			if (!world.isRemote)
 			{
-				if (tillable != null)
-				{
-					world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					if (!world.isRemote)
-					{
-						rightClick(stack, world, tillable, pos, player);
-						success = true;
-					}
-				}
-			}
-			else if (shovel && !hoe)
-			{
-				if (pathable != null)
-				{
-					world.playSound(player, pos, SoundEvents.ITEM_SHOVEL_FLATTEN, SoundCategory.BLOCKS, 1.0F, 1.0F);
-
-					if (!world.isRemote())
-					{
-						rightClick(stack, world, pathable, pos, player);
-						success = true;
-					}
-				}
-			}
-			if (success)
-			{
+				rightClick(stack, world, pos, player, face, action);
 				if (player != null)
-				{
-					stack.damageItem(1, player, entity ->
-					{
-						entity.sendBreakAnimation(context.getHand());
-					});
-				}
-				return ActionResultType.func_233537_a_(world.isRemote);
+					stack.damageItem(1, player, entity -> entity.sendBreakAnimation(context.getHand()));
 			}
+			return ActionResultType.func_233537_a_(world.isRemote);
 		}
-		return ActionResultType.PASS;
+		else
+		{
+			return ActionResultType.PASS;
+		}
 	}
-	
-	public void rightClick (ItemStack stack, World world, BlockState state, BlockPos pos, LivingEntity entity)
+
+	public void rightClick(ItemStack stack, World world, BlockPos pos, PlayerEntity player, Direction face,
+			ToolType action)
 	{
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
 
-		int expandLevel = 0;
+		int radius = 1 + EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPAND.get(), stack);
 
-		if (ItemUtils.hasEnchantment(stack, EnchantmentInit.EXPAND.get()))
+		Iterable<BlockPos> area;
+		if (face.getAxis() == Direction.Axis.Y || action == ToolType.HOE || action == ToolType.SHOVEL)
 		{
-			expandLevel = EnchantmentHelper.getEnchantmentLevel(EnchantmentInit.EXPAND.get(), stack);
+			area = BlockPos.getAllInBoxMutable(x - radius, y, z - radius, x + radius, y, z + radius);
 		}
-		
-		int size = 3 + (expandLevel * 2);
-
-		double start = -1 - expandLevel;
-		double sx = -1;
-		double sy = -1;
-		double sz = -1;
-		
-		if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
+		else if (face.getAxis() == Direction.Axis.Z)
 		{
-			for (int loopsX = 0; loopsX < size; loopsX++)
-			{
-				sz = start;
-				for (int loopsZ = 0; loopsZ < size; loopsZ++)
-				{
-					world.setBlockState(pos, state, 11);
-					sz++;
-				}
-				sx++;
-			}
+			area = BlockPos.getAllInBoxMutable(x - radius, y - radius, z, x + radius, y + radius, z);
 		}
-		else if (entity.getHorizontalFacing() == Direction.NORTH || entity.getHorizontalFacing() == Direction.SOUTH)
+		else if (face.getAxis() == Direction.Axis.X)
 		{
-			for (int loopsX = 0; loopsX < size; loopsX++)
-			{
-				sy = start;
-				for (int loopsY = 0; loopsY < size; loopsY++)
-				{
-					world.setBlockState(pos, state, 11);
-					sy++;
-				}
-				sx++;
-			}
+			area = BlockPos.getAllInBoxMutable(x, y - radius, z - radius, x, y + radius, z + radius);
 		}
-		else if (entity.getHorizontalFacing() == Direction.WEST || entity.getHorizontalFacing() == Direction.EAST)
+		else
 		{
-			for (int loopsZ = 0; loopsZ < size; loopsZ++)
-			{
-				sy = start;
-				for (int loopsY = 0; loopsY < size; loopsY++)
-				{
-					world.setBlockState(pos, state, 11);
-					sy++;
-				}
-				sz++;
-			}
+			area = Collections.singleton(pos); // probably unreachable but here's a fallback
+		}
+		for (BlockPos pos2 : area)
+		{
+			BlockState state = world.getBlockState(pos2);
+			BlockState modifiedState = state.getToolModifiedState(world, pos2, player, stack, action);
+			if (modifiedState != null)
+				world.setBlockState(pos2, modifiedState, 11);
 		}
 	}
 
 	@Override
-	public boolean onBlockDestroyed(ItemStack itemstack, World world, BlockState state, BlockPos pos, LivingEntity entity)
+	public boolean onBlockDestroyed(ItemStack itemstack, World world, BlockState state, BlockPos pos,
+			LivingEntity entity)
 	{
 		boolean retval = super.onBlockDestroyed(itemstack, world, state, pos, entity);
 
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		
+
 		int expandLevel = 0;
-		
+
 		Material material = state.getMaterial();
 
 		if (ItemUtils.hasEnchantment(itemstack, EnchantmentInit.EXPAND.get()))
@@ -257,7 +204,7 @@ public class LargeToolItem extends ToolItem
 		double sx = start;
 		double sy = start;
 		double sz = start;
-		
+
 		if (entity.rotationPitch > 40 || entity.rotationPitch < -40)
 		{
 			for (int loopsX = 0; loopsX < size; loopsX++)
@@ -265,7 +212,8 @@ public class LargeToolItem extends ToolItem
 				sz = start;
 				for (int loopsZ = 0; loopsZ < size; loopsZ++)
 				{
-					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y, z + sz))) || EFFECTIVE.contains(material))
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y, z + sz)))
+							|| EFFECTIVE.contains(material))
 					{
 						Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y, z + sz)), world,
 								new BlockPos(x + sx, y, z + sz));
@@ -283,7 +231,8 @@ public class LargeToolItem extends ToolItem
 				sy = start;
 				for (int loopsY = 0; loopsY < size; loopsY++)
 				{
-					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y + sy, z))) || EFFECTIVE.contains(material))
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x + sx, y + sy, z)))
+							|| EFFECTIVE.contains(material))
 					{
 						Block.spawnDrops(world.getBlockState(new BlockPos(x + sx, y + sy, z)), world,
 								new BlockPos(x + sx, y + sy, z));
@@ -301,7 +250,8 @@ public class LargeToolItem extends ToolItem
 				sy = start;
 				for (int loopsY = 0; loopsY < size; loopsY++)
 				{
-					if (canHarvestBlock(world.getBlockState(new BlockPos(x, y + sy, z + sz))) || EFFECTIVE.contains(material))
+					if (canHarvestBlock(world.getBlockState(new BlockPos(x, y + sy, z + sz)))
+							|| EFFECTIVE.contains(material))
 					{
 						Block.spawnDrops(world.getBlockState(new BlockPos(x, y + sy, z + sz)), world,
 								new BlockPos(x, y + sy, z + sz));
@@ -312,7 +262,7 @@ public class LargeToolItem extends ToolItem
 				sz++;
 			}
 		}
-		
+
 		return retval;
 	}
 }

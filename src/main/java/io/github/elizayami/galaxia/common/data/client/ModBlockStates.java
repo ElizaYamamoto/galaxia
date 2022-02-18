@@ -2,6 +2,7 @@ package io.github.elizayami.galaxia.common.data.client;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
@@ -66,6 +67,11 @@ public class ModBlockStates extends BlockStateProvider
 		// STONE MATERIALS
 		
 		registerStoneMaterialBlockStates(BlockInit.DRAGONSTONE);
+		
+		// NETHERRACK MATERIALS
+
+		registerNetherrackMaterialBlockStates(BlockInit.GALVIROCK);
+		registerNetherrackMaterialBlockStates(BlockInit.WITHERRACK);
 
 		// SANDSTONE MATERIALS
 		
@@ -156,10 +162,10 @@ public class ModBlockStates extends BlockStateProvider
 		simpleBlock(material.tiles.get());
 		makeBlockItemFromExistingModel(material.tiles.get());
 		
-		stairsBlock((StairsBlock) material.stairs.get(), modLoc("block/" + material.name));
+		stairsBlock((StairsBlock) material.stairs.get(), stoneTexture);
 		makeBlockItemFromExistingModel(material.stairs.get());
 		
-		slabBlock((SlabBlock) material.slab.get(), material.stone.get().getRegistryName(), modLoc("block/" + material.name));
+		slabBlock((SlabBlock) material.slab.get(), material.stone.get().getRegistryName(), stoneTexture);
 		makeBlockItemFromExistingModel(material.slab.get());
 
 		// BlockItem handled in item model provider
@@ -178,11 +184,43 @@ public class ModBlockStates extends BlockStateProvider
 		wallBlock((WallBlock) material.brick_wall.get(), modLoc("block/" + material.name + "_bricks"));
 		
 		// BlockItem handled in item model provider
-		buttonBlock((StoneButtonBlock)material.button.get(), material.name, modLoc("block/" + material.name));
+		buttonBlock((StoneButtonBlock)material.button.get(), material.name, stoneTexture);
 		
 		pressurePlateBlock((PressurePlateBlock)material.pressure_plate.get(), material.name, stoneTexture);
 		makeBlockItemFromExistingModel(material.pressure_plate.get());
 	}	
+
+	private void registerNetherrackMaterialBlockStates(NetherrackMaterial material)
+	{
+		ResourceLocation brickTexture = modLoc("block/" + material.name);
+		
+		simpleBlock(material.stone.get());
+		makeBlockItemFromExistingModel(material.stone.get());
+
+		simpleBlock(material.stone.get());
+		makeBlockItemFromExistingModel(material.bricks.get());
+		
+		simpleBlock(material.cracked_bricks.get());
+		makeBlockItemFromExistingModel(material.cracked_bricks.get());
+
+		simpleBlock(material.chiseled.get());
+		makeBlockItemFromExistingModel(material.chiseled.get());
+		
+		stairsBlock((StairsBlock) material.stairs.get(), brickTexture);
+		makeBlockItemFromExistingModel(material.stairs.get());
+		
+		slabBlock((SlabBlock) material.slab.get(), material.stone.get().getRegistryName(), brickTexture);
+		makeBlockItemFromExistingModel(material.slab.get());
+
+		// BlockItem handled in item model provider
+		fenceBlock((FenceBlock) material.fence.get(), brickTexture);  
+		
+		fenceGateBlock((FenceGateBlock) material.gate.get(), brickTexture);
+		makeBlockItemFromExistingModel(material.gate.get());
+		
+		simpleBlock(material.bricks.get());
+		makeBlockItemFromExistingModel(material.bricks.get());
+	}
 
 	private void registerSandstoneMaterialBlockStates(SandstoneMaterial material)
 	{
@@ -197,10 +235,10 @@ public class ModBlockStates extends BlockStateProvider
 		sandstoneBlock(material.smooth.get(), material.name, "_smooth");
 		makeBlockItemFromExistingModel(material.smooth.get());
 		
-		stairsBlock((StairsBlock) material.stairs.get(), modLoc("block/" + material.name), modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
+		stairsBlock((StairsBlock) material.stairs.get(), stoneTexture, modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
 		makeBlockItemFromExistingModel(material.stairs.get());
 		
-		slabBlock((SlabBlock) material.slab.get(), material.stone.get().getRegistryName(), modLoc("block/" + material.name), modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
+		slabBlock((SlabBlock) material.slab.get(), material.stone.get().getRegistryName(), stoneTexture, modLoc("block/" + material.name + "_bottom"), modLoc("block/" + material.name + "_top"));
 		makeBlockItemFromExistingModel(material.slab.get());
 
 		wallBlock((WallBlock) material.wall.get(), stoneTexture);

@@ -1,6 +1,7 @@
 package io.github.elizayami.galaxia.common.abstracts.materials;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.items.BackhawItem;
 import io.github.elizayami.galaxia.common.abstracts.items.BackhoeItem;
 import io.github.elizayami.galaxia.common.abstracts.items.HammerItem;
 import io.github.elizayami.galaxia.common.abstracts.items.PaxelItem;
@@ -33,7 +34,7 @@ public class VanillaMaterial
 		saw = ItemInit.registerItem(name + "_saw", () -> new SawItem(material, 5, -4F, p -> p.group(Galaxia.galaxiaGroup)));
 		backhoe = ItemInit.registerItem(name + "_backhoe", () -> new BackhoeItem(material, 2.5F, -3F, p -> p.group(Galaxia.galaxiaGroup)));
 		tiller = ItemInit.registerItem(name + "_tiller", () -> new TillerItem(material, -2, 0F, p -> p.group(Galaxia.galaxiaGroup)));
-		backhaw = ItemInit.registerItem(name + "_backhaw", () -> new PaxelItem(material, 2, -1.8F, p -> p.group(Galaxia.galaxiaGroup)));
+		backhaw = ItemInit.registerItem(name + "_backhaw", () -> new BackhawItem(material, 2, -1.8F, p -> p.group(Galaxia.galaxiaGroup)));
 
 	}
 }

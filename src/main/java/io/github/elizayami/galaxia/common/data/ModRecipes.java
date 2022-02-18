@@ -4,6 +4,7 @@ import java.util.function.Consumer;
 
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.VanillaMaterial;
@@ -113,6 +114,11 @@ public class ModRecipes extends RecipeProvider
 		// STONE MATERIALS
 		
 		makeStoneMaterialRecipes(BlockInit.DRAGONSTONE, consumer);
+
+		// NETHERRACK MATERIALS
+		
+		makeNetherrackMaterialRecipes(BlockInit.GALVIROCK, consumer);
+		makeNetherrackMaterialRecipes(BlockInit.WITHERRACK, consumer);
 		
 		// SANDSTONE MATERIALS
 
@@ -179,6 +185,29 @@ public class ModRecipes extends RecipeProvider
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.bricks.get()), material.brick_stairs.get()).addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer, rl(material.name + "_bricks_stairs_from_" + material.name + "_bricks_stonecutting"));
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.bricks.get()), material.brick_slab.get(), 2).addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer, rl(material.name + "_bricks_slab_from_" + material.name + "_bricks_stonecutting"));
 		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.bricks.get()), material.brick_wall.get()).addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer, rl(material.name + "_bricks_wall_from_" + material.name + "_bricks_stonecutting"));
+	}
+
+	private void makeNetherrackMaterialRecipes(NetherrackMaterial material, Consumer<IFinishedRecipe> consumer)
+	{
+		// Crafting
+		ShapedRecipeBuilder.shapedRecipe(material.bricks.get(), 1).key('#', material.brick.get()).patternLine("##").patternLine("##").setGroup("galaxia_bricks").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+		ShapedRecipeBuilder.shapedRecipe(material.chiseled.get(), 1).key('#', material.slab.get()).patternLine("#").patternLine("#").setGroup("galaxia_bricks").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+		
+		ShapedRecipeBuilder.shapedRecipe(material.stairs.get(), 4).key('#', material.bricks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_stone_stairs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.slab.get(), 6).key('#', material.bricks.get()).patternLine("###").setGroup("galaxia_stone_slabs").addCriterion("has_" + material.stone.get().getRegistryName().getPath(), hasItem(material.stone.get())).build(consumer);
+	    ShapedRecipeBuilder.shapedRecipe(material.fence.get(), 6).key('#', material.bricks.get()).patternLine("#  ").patternLine("## ").patternLine("###").setGroup("galaxia_stone_stairs").addCriterion("has_" + material.bricks.get().getRegistryName().getPath(), hasItem(material.bricks.get())).build(consumer);
+
+		// Stonecutting
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.stone.get()), material.stairs.get()).addCriterion("has_" + material.brick.get().getRegistryName().getPath(), hasItem(material.brick.get())).build(consumer, rl(material.name + "_stairs_from_" + material.name + "_stonecutting"));
+		SingleItemRecipeBuilder.stonecuttingRecipe(Ingredient.fromItems(material.stone.get()), material.slab.get(), 2).addCriterion("has_" + material.brick.get().getRegistryName().getPath(), hasItem(material.brick.get())).build(consumer, rl(material.name + "_slab_from_" + material.name + "_stonecutting"));
+		
+		// Smelting
+	    float exp = 0.1f;
+	    int smeltTime = 200;
+	    int blastTime = smeltTime / 2;
+		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.bricks.get()), material.stone.get(), exp, smeltTime).addCriterion("has_" + material.name, hasItem(material.stone.get())).build(consumer, rl(material.name + "_brick_from_smelting"));
+		CookingRecipeBuilder.smeltingRecipe(Ingredient.fromItems(material.cracked_bricks.get()), material.stone.get(), exp, smeltTime).addCriterion("has_" + material.name + "_bricks", hasItem(material.stone.get())).build(consumer, rl(material.name + "cracked_bricks_from_smelting"));
+	
 	}
 
 	private void makeSandstoneMaterialRecipes(SandstoneMaterial material, Consumer<IFinishedRecipe> consumer)

@@ -38,6 +38,17 @@ public class ServerEvents
 			{
 				event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SPEED, 50, 1, false, false));
 			}
+
+			if (event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.HEAD).getItem() instanceof ModArmor
+					&& event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.CHEST)
+							.getItem() instanceof BoltrineArmor
+					&& event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.LEGS)
+							.getItem() instanceof BoltrineArmor
+					&& event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.FEET)
+							.getItem() instanceof BoltrineArmor)
+			{
+				event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.SPEED, 50, 1, false, false));
+			}
 		}
 		catch (Exception e)
 		{

@@ -3,6 +3,7 @@ package io.github.elizayami.galaxia.common.data.client;
 import io.github.elizayami.galaxia.Galaxia;
 import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
+import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.VanillaMaterial;
@@ -50,7 +51,12 @@ public class ModItemModels extends ItemModelProvider
 		// STONE MATERIALS
 		
 		registerStoneMaterialItemModels(BlockInit.DRAGONSTONE);
+		
+		// NETHERRACK MATERIALS
 
+		registerNetherrackMaterialItemModels(BlockInit.GALVIROCK);
+		registerNetherrackMaterialItemModels(BlockInit.WITHERRACK);
+		
 		// SANDSTONE MATERIALS
 		
 		registerSandstoneMaterialItemModels(BlockInit.SOULSANDSTONE);
@@ -96,6 +102,11 @@ public class ModItemModels extends ItemModelProvider
 		wallInventory(material.name + "_bricks_wall", modLoc("block/" + material.name + "_bricks"));
 		
 		buttonInventory(material.name, modLoc("block/" + material.name));
+	}
+	
+	private void registerNetherrackMaterialItemModels(NetherrackMaterial material)
+	{
+        fenceInventory(material.name + "_fence", modLoc("block/" + material.name + "_bricks"));
 	}
 	
 	private void registerSandstoneMaterialItemModels(SandstoneMaterial material)

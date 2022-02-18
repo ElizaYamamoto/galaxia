@@ -207,6 +207,50 @@
 	"item.galaxia.galaxium_leggings": "Galaxium Leggings",
 	"item.galaxia.galaxium_boots": "Galaxium Boots",
 	
+	
+
+	"item.galaxia.wooden_paxel": "Wooden Paxel", 
+	"item.galaxia.wooden_hammer": "Wooden Hammer",
+	"item.galaxia.wooden_saw": "Wooden Saw",
+	"item.galaxia.wooden_backhoe": "Wooden Backhoe",
+	"item.galaxia.wooden_tiller": "Wooden Tiller",
+	"item.galaxia.wooden_backhaw": "Wooden Backhaw",
+	
+	"item.galaxia.stone_paxel": "Stone Paxel", 
+	"item.galaxia.stone_hammer": "Stone Hammer",
+	"item.galaxia.stone_saw": "Stone Saw",
+	"item.galaxia.stone_backhoe": "Stone Backhoe",
+	"item.galaxia.stone_tiller": "Stone Tiller",
+	"item.galaxia.stone_backhaw": "Stone Backhaw",
+
+	"item.galaxia.iron_paxel": "Iron Paxel", 
+	"item.galaxia.iron_hammer": "Iron Hammer",
+	"item.galaxia.iron_saw": "Iron Saw",
+	"item.galaxia.iron_backhoe": "Iron Backhoe",
+	"item.galaxia.iron_tiller": "Iron Tiller",
+	"item.galaxia.iron_backhaw": "Iron Backhaw",
+
+	"item.galaxia.golden_paxel": "Golden Paxel", 
+	"item.galaxia.golden_hammer": "Golden Hammer",
+	"item.galaxia.golden_saw": "Golden Saw",
+	"item.galaxia.golden_backhoe": "Golden Backhoe",
+	"item.galaxia.golden_tiller": "Golden Tiller",
+	"item.galaxia.golden_backhaw": "Golden Backhaw",
+
+	"item.galaxia.diamond_paxel": "Diamond Paxel", 
+	"item.galaxia.diamond_hammer": "Diamond Hammer",
+	"item.galaxia.diamond_saw": "Diamond Saw",
+	"item.galaxia.diamond_backhoe": "Diamond Backhoe",
+	"item.galaxia.diamond_tiller": "Diamond Tiller",
+	"item.galaxia.diamond_backhaw": "Diamond Backhaw",
+
+	"item.galaxia.netherite_paxel": "Netherite Paxel", 
+	"item.galaxia.netherite_hammer": "Netherite Hammer",
+	"item.galaxia.netherite_saw": "Netherite Saw",
+	"item.galaxia.netherite_backhoe": "Netherite Backhoe",
+	"item.galaxia.netherite_tiller": "Netherite Tiller",
+	"item.galaxia.netherite_backhaw": "Netherite Backhaw",
+	
 //Descriptions
   "block.galaxia.soal_block_description": "A block of flaming hatred. Works great for cookin'!",
   "item.galaxia.soal_description": "A chunk of flaming hatred. Works great for cookin'!",

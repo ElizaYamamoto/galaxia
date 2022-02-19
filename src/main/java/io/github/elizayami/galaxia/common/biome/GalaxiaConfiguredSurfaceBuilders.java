@@ -18,6 +18,8 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 public class GalaxiaConfiguredSurfaceBuilders 
 {
 	public static final RegistryKey<ConfiguredSurfaceBuilder<?>> IMPACT_WASTES = key("impact_wastes");
+	
+	public static final RegistryKey<ConfiguredSurfaceBuilder<?>> ASHSPARK_DUNES = key("ashspark_dunes");
 
 	private static RegistryKey<ConfiguredSurfaceBuilder<?>> key(final String name) 
 	{
@@ -36,7 +38,15 @@ public class GalaxiaConfiguredSurfaceBuilders
 							BlockInit.IMPACTSANDSTONE.stone.get().getDefaultState(), 
 							BlockInit.IMPACTSANDSTONE.smooth.get().getDefaultState()))
 			);
+			
+			register(IMPACT_WASTES,
+					GalaxiaSurfaceBuilders.LOGGING_SURFACE.get().func_242929_a(new SurfaceBuilderConfig(
+							BlockInit.STATIC_ASH.get().getDefaultState(), 
+							BlockInit.STATIRACK.stone.get().getDefaultState(), 
+							BlockInit.STATIRACK.stone.get().getDefaultState()))
+			);
 		}
+		
 
 		private static void register(final RegistryKey<ConfiguredSurfaceBuilder<?>> key, final ConfiguredSurfaceBuilder<?> configuredSurfaceBuilder) {
 			Registry.register(WorldGenRegistries.CONFIGURED_SURFACE_BUILDER, key.getLocation(), configuredSurfaceBuilder);

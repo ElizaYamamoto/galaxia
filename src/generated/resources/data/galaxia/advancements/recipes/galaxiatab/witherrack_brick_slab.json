@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:witherrack_brick_slab"
+    ]
+  },
+  "criteria": {
+    "has_witherrack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:witherrack"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:witherrack_brick_slab"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_witherrack",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -86,6 +86,9 @@ public class BlockInit
 	public static final RegistryObject<FallingBlock> IMPACT_SAND = BLOCKS.register("impact_sand",
 			() -> new FallingBlock(AbstractBlock.Properties.from(Blocks.SAND)));
 
+	public static final RegistryObject<Block> STATIC_ASH = BLOCKS.register("static_ash",
+			() -> new Block(AbstractBlock.Properties.from(Blocks.SOUL_SOIL)));
+
 	// ores
 
 	public static final RegistryObject<Block> SOAL_ORE = BLOCKS.register("soal_ore",
@@ -177,7 +180,7 @@ public class BlockInit
 
 	// NETHERRACK
 	
-	public static final NetherrackMaterial GALVIROCK = createNetherrackMaterial("galvirock", MaterialColor.YELLOW_TERRACOTTA, new Item.Properties().group(Galaxia.galaxiaGroup));
+	public static final NetherrackMaterial STATIRACK = createNetherrackMaterial("statirack", MaterialColor.YELLOW_TERRACOTTA, new Item.Properties().group(Galaxia.galaxiaGroup));
 	public static final NetherrackMaterial WITHERRACK = createNetherrackMaterial("witherrack", MaterialColor.BLACK, new Item.Properties().group(Galaxia.galaxiaGroup));
 	
 	// SANDSTONE

@@ -117,7 +117,7 @@ public class ModRecipes extends RecipeProvider
 
 		// NETHERRACK MATERIALS
 		
-		makeNetherrackMaterialRecipes(BlockInit.GALVIROCK, consumer);
+		makeNetherrackMaterialRecipes(BlockInit.STATIRACK, consumer);
 		makeNetherrackMaterialRecipes(BlockInit.WITHERRACK, consumer);
 		
 		// SANDSTONE MATERIALS

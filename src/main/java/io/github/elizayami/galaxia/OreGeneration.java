@@ -28,7 +28,7 @@ public class OreGeneration
 		
 		if (event.getCategory().equals(Biome.Category.NETHER))
 		{
-			generateOre(event.getGeneration(), new BlockMatchRuleTest(BlockInit.GALVIROCK.stone.get()), BlockInit.BOLTRINE.ore.get().getDefaultState(), 5, 1, 30, 10);
+			generateOre(event.getGeneration(), new BlockMatchRuleTest(BlockInit.STATIRACK.stone.get()), BlockInit.BOLTRINE.ore.get().getDefaultState(), 5, 1, 30, 10);
 		}
 
 		if (event.getCategory().equals(Biome.Category.THEEND))

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "galaxia:dragonstone_bricks"
+    "galaxia:dragonstone_bricks",
+    "galaxia:galvirock_bricks",
+    "galaxia:witherrack_bricks"
   ]
 }

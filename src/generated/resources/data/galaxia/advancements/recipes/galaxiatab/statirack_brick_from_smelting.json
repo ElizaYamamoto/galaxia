@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:statirack_brick_from_smelting"
+    ]
+  },
+  "criteria": {
+    "has_statirack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:statirack"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:statirack_brick_from_smelting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_statirack",
+      "has_the_recipe"
+    ]
+  ]
+}

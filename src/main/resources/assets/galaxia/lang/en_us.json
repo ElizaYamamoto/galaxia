@@ -7,7 +7,9 @@
 	"block.galaxia.boltstone": "Boltstone",
 	"block.galaxia.boltstone_brick": "Bolt Brick",
 	"block.galaxia.boltstone_brick_yellow": "Yellow Bolt Brick",
-	"block.galaxia.sparkash": "Sparkash",
+	"block.galaxia.static_ash": "Static Ash",
+	
+	//
 	
 	//Meteor
 	"block.galaxia.meteor_ore": "Meteorite",
@@ -154,23 +156,6 @@
 	"item.galaxia.stardust": "Stardust" , 
 	
 	//Tools
-	"item.galaxia.cometsteel_ingot": "Cometsteel Ingot", 
-	"item.galaxia.cometsteel_nugget": "Cometsteel Nugget", 
-	"item.galaxia.cometsteel_pickaxe": "Cometsteel Pickaxe", 
-	"item.galaxia.cometsteel_axe": "Cometsteel Axe", 
-	"item.galaxia.cometsteel_shovel": "Cometsteel Shovel", 
-	"item.galaxia.cometsteel_hoe": "Cometsteel Hoe", 
-	"item.galaxia.cometsteel_sword": "Cometsteel Sword", 
-	"item.galaxia.cometsteel_paxel": "Cometsteel Paxel", 
-	"item.galaxia.cometsteel_hammer": "Cometsteel Hammer",
-	"item.galaxia.cometsteel_saw": "Cometsteel Saw",
-	"item.galaxia.cometsteel_backhoe": "Cometsteel Backhoe",
-	"item.galaxia.cometsteel_tiller": "Cometsteel Tiller",
-	"item.galaxia.cometsteel_backhaw": "Cometsteel Backhaw",
-	"item.galaxia.cometsteel_helmet": "Cometsteel Helmet",
-	"item.galaxia.cometsteel_chestplate": "Cometsteel Chestplate",
-	"item.galaxia.cometsteel_leggings": "Cometsteel Leggings",
-	"item.galaxia.cometsteel_boots": "Cometsteel Boots",
 	
 	"item.galaxia.meteor_ingot": "Meteor Ingot", 
 	"item.galaxia.meteor_nugget": "Meteor Nugget", 
@@ -190,6 +175,42 @@
 	"item.galaxia.meteor_leggings": "Meteor Leggings",
 	"item.galaxia.meteor_boots": "Meteor Boots",
 	
+	"item.galaxia.cometsteel_ingot": "Cometsteel Ingot", 
+	"item.galaxia.cometsteel_nugget": "Cometsteel Nugget", 
+	"item.galaxia.cometsteel_pickaxe": "Cometsteel Pickaxe", 
+	"item.galaxia.cometsteel_axe": "Cometsteel Axe", 
+	"item.galaxia.cometsteel_shovel": "Cometsteel Shovel", 
+	"item.galaxia.cometsteel_hoe": "Cometsteel Hoe", 
+	"item.galaxia.cometsteel_sword": "Cometsteel Sword", 
+	"item.galaxia.cometsteel_paxel": "Cometsteel Paxel", 
+	"item.galaxia.cometsteel_hammer": "Cometsteel Hammer",
+	"item.galaxia.cometsteel_saw": "Cometsteel Saw",
+	"item.galaxia.cometsteel_backhoe": "Cometsteel Backhoe",
+	"item.galaxia.cometsteel_tiller": "Cometsteel Tiller",
+	"item.galaxia.cometsteel_backhaw": "Cometsteel Backhaw",
+	"item.galaxia.cometsteel_helmet": "Cometsteel Helmet",
+	"item.galaxia.cometsteel_chestplate": "Cometsteel Chestplate",
+	"item.galaxia.cometsteel_leggings": "Cometsteel Leggings",
+	"item.galaxia.cometsteel_boots": "Cometsteel Boots",
+	
+	"item.galaxia.boltrine_ingot": "Boltrine Ingot", 
+	"item.galaxia.boltrine_nugget": "Boltrine Nugget", 
+	"item.galaxia.boltrine_pickaxe": "Boltrine Pickaxe", 
+	"item.galaxia.boltrine_axe": "Boltrine Axe", 
+	"item.galaxia.boltrine_shovel": "Boltrine Shovel", 
+	"item.galaxia.boltrine_hoe": "Boltrine Hoe", 
+	"item.galaxia.boltrine_sword": "Boltrine Sword", 
+	"item.galaxia.boltrine_paxel": "Boltrine Paxel", 
+	"item.galaxia.boltrine_hammer": "Boltrine Hammer",
+	"item.galaxia.boltrine_saw": "Boltrine Saw",
+	"item.galaxia.boltrine_backhoe": "Boltrine Backhoe",
+	"item.galaxia.boltrine_tiller": "Boltrine Tiller",
+	"item.galaxia.boltrine_backhaw": "Boltrine Backhaw",
+	"item.galaxia.boltrine_helmet": "Boltrine Helmet",
+	"item.galaxia.boltrine_chestplate": "Boltrine Chestplate",
+	"item.galaxia.boltrine_leggings": "Boltrine Leggings",
+	"item.galaxia.boltrine_boots": "Boltrine Boots",
+	
 	"item.galaxia.galaxium_star": "Galaxium Star", 
 	"item.galaxia.galaxium_pickaxe": "Galaxium Pickaxe", 
 	"item.galaxia.galaxium_axe": "Galaxium Axe", 
@@ -206,8 +227,6 @@
 	"item.galaxia.galaxium_chestplate": "Galaxium Chestplate",
 	"item.galaxia.galaxium_leggings": "Galaxium Leggings",
 	"item.galaxia.galaxium_boots": "Galaxium Boots",
-	
-	
 
 	"item.galaxia.wooden_paxel": "Wooden Paxel", 
 	"item.galaxia.wooden_hammer": "Wooden Hammer",

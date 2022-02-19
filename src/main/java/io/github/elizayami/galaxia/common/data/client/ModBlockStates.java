@@ -50,6 +50,9 @@ public class ModBlockStates extends BlockStateProvider
 	{
 		simpleBlock(BlockInit.IMPACT_SAND.get());
 		makeBlockItemFromExistingModel(BlockInit.IMPACT_SAND.get());
+
+		simpleBlock(BlockInit.STATIC_ASH.get());
+		makeBlockItemFromExistingModel(BlockInit.STATIC_ASH.get());
 		
 		tableBlock(TileEntityInit.blockTF, "tool_fuser");
 		
@@ -70,7 +73,7 @@ public class ModBlockStates extends BlockStateProvider
 		
 		// NETHERRACK MATERIALS
 
-		registerNetherrackMaterialBlockStates(BlockInit.GALVIROCK);
+		registerNetherrackMaterialBlockStates(BlockInit.STATIRACK);
 		registerNetherrackMaterialBlockStates(BlockInit.WITHERRACK);
 
 		// SANDSTONE MATERIALS
@@ -84,6 +87,7 @@ public class ModBlockStates extends BlockStateProvider
 		
 		//GEM MATERIALS
 		registerGemMaterialBlockStates(BlockInit.GALAXIUM);
+		registerGemMaterialBlockStates(BlockInit.BOLTRINE);
 	}
 	
 	private void registerWoodenMaterialBlockStates(WoodenMaterial material)
@@ -197,7 +201,7 @@ public class ModBlockStates extends BlockStateProvider
 		simpleBlock(material.stone.get());
 		makeBlockItemFromExistingModel(material.stone.get());
 
-		simpleBlock(material.stone.get());
+		simpleBlock(material.bricks.get());
 		makeBlockItemFromExistingModel(material.bricks.get());
 		
 		simpleBlock(material.cracked_bricks.get());
@@ -217,9 +221,6 @@ public class ModBlockStates extends BlockStateProvider
 		
 		fenceGateBlock((FenceGateBlock) material.gate.get(), brickTexture);
 		makeBlockItemFromExistingModel(material.gate.get());
-		
-		simpleBlock(material.bricks.get());
-		makeBlockItemFromExistingModel(material.bricks.get());
 	}
 
 	private void registerSandstoneMaterialBlockStates(SandstoneMaterial material)

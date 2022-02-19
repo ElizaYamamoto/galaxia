@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "galaxia:dragonstone"
+    "galaxia:dragonstone",
+    "galaxia:galvirock",
+    "galaxia:witherrack"
   ]
 }

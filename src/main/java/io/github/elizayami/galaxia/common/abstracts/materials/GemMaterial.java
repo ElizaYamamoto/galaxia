@@ -21,7 +21,6 @@ import net.minecraft.block.StairsBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.IArmorMaterial;
@@ -112,7 +111,6 @@ public class GemMaterial
 				() -> new Block(AbstractBlock.Properties.from(Blocks.END_STONE))) : null;
 		block = BlockInit.registerBlockWithDefaultItem(name + "_block", () -> new Block(blockSettings));
 
-
 		if (name == "galaxium" || name == "boltrine")
 		{
 			customArmor = true;
@@ -160,14 +158,38 @@ public class GemMaterial
 		backhaw = ItemInit.registerItem(name + "_backhaw",
 				() -> new BackhawItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 
-		helmet = ItemInit.registerItem(name + "_helmet",
-				() -> new ModArmor(armor, EquipmentSlotType.HEAD, itemSettings, name, customArmor));
-		chestplate = ItemInit.registerItem(name + "_chestplate",
-				() -> new ModArmor(armor, EquipmentSlotType.CHEST, itemSettings, name, customArmor));
-		leggings = ItemInit.registerItem(name + "_leggings",
-				() -> new ModArmor(armor, EquipmentSlotType.LEGS, itemSettings, name, customArmor));
-		boots = ItemInit.registerItem(name + "_boots",
-				() -> new ModArmor(armor, EquipmentSlotType.FEET, itemSettings, name, customArmor));
-
+		if (name == "galaxium")
+		{
+			helmet = ItemInit.registerItem(name + "_helmet",
+					() -> new GalaxiumArmor(armor, EquipmentSlotType.HEAD, itemSettings));
+			chestplate = ItemInit.registerItem(name + "_chestplate",
+					() -> new GalaxiumArmor(armor, EquipmentSlotType.CHEST, itemSettings));
+			leggings = ItemInit.registerItem(name + "_leggings",
+					() -> new GalaxiumArmor(armor, EquipmentSlotType.LEGS, itemSettings));
+			boots = ItemInit.registerItem(name + "_boots",
+					() -> new GalaxiumArmor(armor, EquipmentSlotType.FEET, itemSettings));
+		}
+		else if (name == "boltrine")
+		{
+			helmet = ItemInit.registerItem(name + "_helmet",
+					() -> new BoltrineArmor(armor, EquipmentSlotType.HEAD, itemSettings));
+			chestplate = ItemInit.registerItem(name + "_chestplate",
+					() -> new BoltrineArmor(armor, EquipmentSlotType.CHEST, itemSettings));
+			leggings = ItemInit.registerItem(name + "_leggings",
+					() -> new BoltrineArmor(armor, EquipmentSlotType.LEGS, itemSettings));
+			boots = ItemInit.registerItem(name + "_boots",
+					() -> new BoltrineArmor(armor, EquipmentSlotType.FEET, itemSettings));
+		}
+		else
+		{
+			helmet = ItemInit.registerItem(name + "_helmet",
+					() -> new ModArmor(armor, EquipmentSlotType.HEAD, itemSettings, name, false));
+			chestplate = ItemInit.registerItem(name + "_chestplate",
+					() -> new ModArmor(armor, EquipmentSlotType.CHEST, itemSettings, name, false));
+			leggings = ItemInit.registerItem(name + "_leggings",
+					() -> new ModArmor(armor, EquipmentSlotType.LEGS, itemSettings, name, false));
+			boots = ItemInit.registerItem(name + "_boots",
+					() -> new ModArmor(armor, EquipmentSlotType.FEET, itemSettings, name, false));
+		}
 	}
 }

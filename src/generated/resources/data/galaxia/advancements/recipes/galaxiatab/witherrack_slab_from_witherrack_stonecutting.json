@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:witherrack_slab_from_witherrack_stonecutting"
+    ]
+  },
+  "criteria": {
+    "has_witherrack_brick": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:witherrack_brick"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:witherrack_slab_from_witherrack_stonecutting"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_witherrack_brick",
+      "has_the_recipe"
+    ]
+  ]
+}

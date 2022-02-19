@@ -7,6 +7,7 @@ import io.github.elizayami.galaxia.common.abstracts.items.HammerItem;
 import io.github.elizayami.galaxia.common.abstracts.items.PaxelItem;
 import io.github.elizayami.galaxia.common.abstracts.items.SawItem;
 import io.github.elizayami.galaxia.common.abstracts.items.TillerItem;
+import io.github.elizayami.galaxia.common.item.CometsteelArmor;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.block.AbstractBlock;
@@ -116,10 +117,24 @@ public class MetalMaterial
 		backhoe = ItemInit.registerItem(name + "_backhoe", () -> new BackhoeItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 		tiller = ItemInit.registerItem(name + "_tiller", () -> new TillerItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 		backhaw = ItemInit.registerItem(name + "_backhaw", () -> new BackhawItem(material, 1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
-		
-		helmet = ItemInit.registerItem(name + "_helmet", () -> new ArmorItem(armor, EquipmentSlotType.HEAD, itemSettings));
-		chestplate = ItemInit.registerItem(name + "_chestplate", () -> new ArmorItem(armor, EquipmentSlotType.CHEST, itemSettings));
-		leggings = ItemInit.registerItem(name + "_leggings", () -> new ArmorItem(armor, EquipmentSlotType.LEGS, itemSettings));
-		boots = ItemInit.registerItem(name + "_boots", () -> new ArmorItem(armor, EquipmentSlotType.FEET, itemSettings));
+
+		if (name == "cometsteel")
+		{
+			helmet = ItemInit.registerItem(name + "_helmet",
+					() -> new CometsteelArmor(armor, EquipmentSlotType.HEAD, itemSettings));
+			chestplate = ItemInit.registerItem(name + "_chestplate",
+					() -> new CometsteelArmor(armor, EquipmentSlotType.CHEST, itemSettings));
+			leggings = ItemInit.registerItem(name + "_leggings",
+					() -> new CometsteelArmor(armor, EquipmentSlotType.LEGS, itemSettings));
+			boots = ItemInit.registerItem(name + "_boots",
+					() -> new CometsteelArmor(armor, EquipmentSlotType.FEET, itemSettings));
+		}
+		else
+		{
+			helmet = ItemInit.registerItem(name + "_helmet", () -> new ArmorItem(armor, EquipmentSlotType.HEAD, itemSettings));
+			chestplate = ItemInit.registerItem(name + "_chestplate", () -> new ArmorItem(armor, EquipmentSlotType.CHEST, itemSettings));
+			leggings = ItemInit.registerItem(name + "_leggings", () -> new ArmorItem(armor, EquipmentSlotType.LEGS, itemSettings));
+			boots = ItemInit.registerItem(name + "_boots", () -> new ArmorItem(armor, EquipmentSlotType.FEET, itemSettings));
+		}
 	}
 }

@@ -11,11 +11,8 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.PressurePlateBlock.Sensitivity;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
-import net.minecraft.block.StoneButtonBlock;
 import net.minecraft.block.WallBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -49,7 +46,7 @@ public class NetherrackMaterial
 				.hardnessAndResistance(3.0F, 9.0F);
 
 		stone = BlockInit.registerBlockWithDefaultItem(name, () -> new Block(material));
-		bricks = BlockInit.registerBlockWithDefaultItem(name + "_brick", () -> new Block(material));
+		bricks = BlockInit.registerBlockWithDefaultItem(name + "_bricks", () -> new Block(material));
 		cracked_bricks = BlockInit.registerBlockWithDefaultItem(name + "_brick_cracked", () -> new Block(material));
 		chiseled = BlockInit.registerBlockWithDefaultItem(name + "_brick_chiseled", () -> new WallBlock(material));
 

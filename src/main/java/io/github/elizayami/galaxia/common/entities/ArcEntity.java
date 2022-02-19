@@ -3,19 +3,15 @@ package io.github.elizayami.galaxia.common.entities;
 import net.minecraft.entity.AgeableEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.MobEntity;
 import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
-import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
@@ -23,7 +19,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -124,17 +119,17 @@ public class ArcEntity extends MonsterEntity implements IAnimatable
 
 	protected SoundEvent getAmbientSound()
 	{
-		return SoundEvents.ENTITY_arc_AMBIENT;
+		return SoundEvents.ENTITY_BLAZE_AMBIENT;
 	}
 
 	protected SoundEvent getHurtSound(DamageSource damageSourceIn)
 	{
-		return SoundEvents.ENTITY_arc_HURT;
+		return SoundEvents.ENTITY_BLAZE_HURT;
 	}
 
 	protected SoundEvent getDeathSound()
 	{
-		return SoundEvents.ENTITY_arc_DEATH;
+		return SoundEvents.ENTITY_BLAZE_DEATH;
 	}
 
 	public float getBrightness()

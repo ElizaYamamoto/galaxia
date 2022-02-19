@@ -38,7 +38,7 @@ public class ModArmor extends ArmorItem
 		case LEGS:
 			return "item.galaxia." + type + "_leggings";
 		case FEET:
-			return "item.galaxia" + type + "_boots";
+			return "item.galaxia." + type + "_boots";
 		default:
 			break;
 		}
@@ -52,7 +52,14 @@ public class ModArmor extends ArmorItem
 	{
 		if (model)
 		{
-			return (A) Galaxia.PROXY.getArmorModel((slot == EquipmentSlotType.LEGS ? 1 : 0));
+			if (type == "galaxium")
+			{
+				return (A) Galaxia.PROXY.getArmorModel(slot == EquipmentSlotType.LEGS ? 1 : 0);
+			}
+			if (type == "boltrine")
+			{
+				return (A) Galaxia.PROXY.getArmorModel(slot == EquipmentSlotType.LEGS ? 3 : 2);
+			}
 		}
 		return _default;
 	}

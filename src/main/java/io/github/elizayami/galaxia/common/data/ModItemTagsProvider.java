@@ -45,7 +45,7 @@ public class ModItemTagsProvider extends ItemTagsProvider
 
 		// NETHERRACK MATERIALS
 
-		registerNetherrackMaterialTags(BlockInit.GALVIROCK);
+		registerNetherrackMaterialTags(BlockInit.STATIRACK);
 		registerNetherrackMaterialTags(BlockInit.WITHERRACK);
 		
 		// SANDSTONE MATERIALS

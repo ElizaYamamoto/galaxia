@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "side": "galaxia:block/boltrine_tile",
+    "bottom": "galaxia:block/boltrine_tile",
+    "top": "galaxia:block/boltrine_tile"
+  }
+}

@@ -43,6 +43,8 @@ public class ModBlockLootTables extends BlockLootTables
 
 		registerDropSelfLootTable(BlockInit.IMPACT_SAND.get());
 
+		registerDropSelfLootTable(BlockInit.STATIC_ASH.get());
+		
 		// MATERIALS
 		registerDropSelfLootTable(BlockInit.GALAXIUM_STAR);
 
@@ -74,7 +76,7 @@ public class ModBlockLootTables extends BlockLootTables
 		
 		// NETHERRACK MATERIALS
 
-		registerNetherrackMaterialLootTables(BlockInit.GALVIROCK);
+		registerNetherrackMaterialLootTables(BlockInit.STATIRACK);
 		registerNetherrackMaterialLootTables(BlockInit.WITHERRACK);
 
 		// SANDSTONE MATERIALS
@@ -88,6 +90,7 @@ public class ModBlockLootTables extends BlockLootTables
 		registerMetalMaterialLootTables(BlockInit.COMETSTEEL);
 
 		// Gem Materials
+		registerGemMaterialLootTables(BlockInit.BOLTRINE);
 		registerGemMaterialLootTables(BlockInit.GALAXIUM);
 
 	}

@@ -33,6 +33,9 @@ public class ItemInit
 
 	public static final RegistryObject<BlockItem> IMPACT_SAND = ITEMS.register("impact_sand",
 			() -> new BlockItem(BlockInit.IMPACT_SAND.get(), new Item.Properties().group(Galaxia.galaxiaGroup)));
+
+	public static final RegistryObject<BlockItem> STATIC_ASH = ITEMS.register("static_ash",
+			() -> new BlockItem(BlockInit.STATIC_ASH.get(), new Item.Properties().group(Galaxia.galaxiaGroup)));
 	
 	// Ores
 
@@ -44,12 +47,12 @@ public class ItemInit
 	
 	// Boats
 	
-	public static final RegistryObject<Item> SHADOWSPIKE_BOAT = createBoatItem("shadowspike", BlockInit.SHADOWSPIKE.planks);
+	/*public static final RegistryObject<Item> SHADOWSPIKE_BOAT = createBoatItem("shadowspike", BlockInit.SHADOWSPIKE.planks);
 	public static final RegistryObject<Item> GROUNDSTALK_BOAT = createBoatItem("groundstalk", BlockInit.SHADOWSPIKE.planks);
 	public static final RegistryObject<Item> SEAWOOD_BOAT = createBoatItem("seawood", BlockInit.SHADOWSPIKE.planks);
 	public static final RegistryObject<Item> SCORCHWOOD_BOAT = createBoatItem("scorchwood", BlockInit.SHADOWSPIKE.planks);
 	public static final RegistryObject<Item> GHOSTWOOD_BOAT = createBoatItem("ghostwood", BlockInit.SHADOWSPIKE.planks);
-	public static final RegistryObject<Item> GROVEWOOD_BOAT = createBoatItem("grovewood", BlockInit.SHADOWSPIKE.planks);
+	public static final RegistryObject<Item> GROVEWOOD_BOAT = createBoatItem("grovewood", BlockInit.SHADOWSPIKE.planks);*/
 
 	// helper
 

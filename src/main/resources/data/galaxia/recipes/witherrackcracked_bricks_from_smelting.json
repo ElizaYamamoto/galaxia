@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "galaxia:witherrack_brick_cracked"
+  },
+  "result": "galaxia:witherrack",
+  "experience": 0.1,
+  "cookingtime": 200
+}

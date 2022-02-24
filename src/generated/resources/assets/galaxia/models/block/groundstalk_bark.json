@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "galaxia:block/groundstalk_bark"
+    "down": "galaxia:block/groundstalk_log",
+    "up": "galaxia:block/groundstalk_log",
+    "north": "galaxia:block/groundstalk_log",
+    "south": "galaxia:block/groundstalk_log",
+    "east": "galaxia:block/groundstalk_log",
+    "west": "galaxia:block/groundstalk_log",
+    "particle": "galaxia:block/groundstalk_log"
   }
 }

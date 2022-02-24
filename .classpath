@@ -2,39 +2,39 @@
 <classpath>
 	<classpathentry output="bin/main" kind="src" path="src/main/java">
 		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry output="bin/main" kind="src" path="src/main/resources">
 		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry output="bin/main" kind="src" path="src/generated/resources">
 		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 			<attribute name="gradle_scope" value="main"/>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry output="bin/test" kind="src" path="src/test/java">
 		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
+			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry output="bin/test" kind="src" path="src/test/resources">
 		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
+			<attribute name="test" value="true"/>
 			<attribute name="gradle_scope" value="test"/>
 			<attribute name="gradle_used_by_scope" value="test"/>
-			<attribute name="test" value="true"/>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="C:\Users\Alpha\Desktop\Mod Sources\galaxia\build\natives"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="bin/default"/>

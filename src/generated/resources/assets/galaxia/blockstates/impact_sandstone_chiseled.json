@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "galaxia:block/impact_sandstone_chiseled"
+      "model": "galaxia:block/impact_chiseled"
     }
   }
 }

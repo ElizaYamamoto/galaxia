@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.particles.ParticleTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
@@ -18,7 +19,11 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.network.NetworkHooks;
+
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -29,17 +34,17 @@ public class Dragonfire_Furnace extends ContainerBlock
 	public Dragonfire_Furnace()
 	{
 		super(Block.Properties.create(Material.ROCK).setLightLevel(Dragonfire_Furnace::getLightValue));
-		BlockState defaultBlockState = this.stateContainer.getBaseState().with(NUMBER_BURNING, 0).
+		BlockState getDefaultState = this.stateContainer.getBaseState().with(NUMBER_BURNING, 0).
 				getBlockState().with(FACING, Direction.NORTH).
 				getBlockState().with(IS_BURNING, false);
 
 
-		this.setDefaultState(defaultBlockState);
+		this.setDefaultState(getDefaultState);
 	}
 
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;
 	public static final BooleanProperty LIT = BlockStateProperties.LIT;
-
+	
 	final static int MAX_BURNING = 3;
 	public static final IntegerProperty NUMBER_BURNING = IntegerProperty.create("number_burning", 0, MAX_BURNING);
 	
@@ -70,6 +75,30 @@ public class Dragonfire_Furnace extends ContainerBlock
 	public BlockState getStateForPlacement(BlockItemUseContext p_196258_1_)
 	{
 		return this.getDefaultState().with(FACING, p_196258_1_.getPlacementHorizontalFacing().getOpposite());
+	}
+	
+	@OnlyIn(Dist.CLIENT)
+	@Override
+	public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
+		if (stateIn.get(LIT)) 
+		{
+			double x = pos.getX() + 0.5D;
+			double y = pos.getY();
+			double z = pos.getZ() + 0.5D;
+			if (rand.nextDouble() < 0.1D) 
+			{
+			   worldIn.playSound(x, y, z, SoundEvents.BLOCK_BLASTFURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+			}
+
+			Direction direction = (Direction)stateIn.get(FACING);
+			Direction.Axis axis = direction.getAxis();
+			double defOffset = rand.nextDouble() * 0.6D - 0.3D;
+			double offX = axis == Direction.Axis.X ? direction.getXOffset() * 0.52D : defOffset;
+			double offY = rand.nextDouble() * 9.0D / 16.0D;
+			double offZ = axis == Direction.Axis.Z ? direction.getZOffset() * 0.52D : defOffset;
+			worldIn.addParticle(ParticleTypes.SMOKE, x + offX, y + offY, z + offZ, 0.0D, 0.0D, 0.0D);
+		}
 	}
 
 	private static final int ALL_SIDES_LIGHT_VALUE = 15;

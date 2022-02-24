@@ -16,13 +16,13 @@ import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.VanillaMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.common.block.galaxium_star.Galaxium_Star;
+import io.github.elizayami.galaxia.common.block.StaticBlock;
 import io.github.elizayami.galaxia.common.block.galaxium_star.Galaxium_Star2;
 import io.github.elizayami.galaxia.core.enums.ArmorMaterials;
 import io.github.elizayami.galaxia.core.enums.ToolMaterials;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FallingBlock;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
@@ -82,10 +82,7 @@ public class BlockInit
 							.build(null).setRegistryName("galaxium_star_tile2"));
 		}
 	}
-
-	public static final RegistryObject<FallingBlock> IMPACT_SAND = BLOCKS.register("impact_sand",
-			() -> new FallingBlock(AbstractBlock.Properties.from(Blocks.SAND)));
-
+	
 	public static final RegistryObject<Block> STATIC_ASH = BLOCKS.register("static_ash",
 			() -> new Block(AbstractBlock.Properties.from(Blocks.SOUL_SOIL)));
 
@@ -100,6 +97,14 @@ public class BlockInit
 			() -> new Block(AbstractBlock.Properties.from(Blocks.COAL_BLOCK).setLightLevel(s -> 15)
 					.setNeedsPostProcessing((bs, br, bp) -> true).setEmmisiveRendering((bs, br, bp) -> true)));
 
+	//Fire
+	public static final RegistryObject<Block> STATIC = BLOCKS.register("static",
+			() -> new StaticBlock(AbstractBlock.Properties.create(Material.FIRE, MaterialColor.YELLOW)
+                    .sound(SoundType.CLOTH)
+                    .notSolid()
+                    .zeroHardnessAndResistance()
+                    .setLightLevel((state) -> 14)));
+	
 	// Materials
 	private static List<WoodenMaterial> woodenMaterials;
 
@@ -185,10 +190,10 @@ public class BlockInit
 	
 	// SANDSTONE
 
-	public static final SandstoneMaterial SOULSANDSTONE = createSandstoneMaterial("soul_sandstone",
+	public static final SandstoneMaterial SOULSANDSTONE = createSandstoneMaterial("soul",
 			MaterialColor.BROWN);
 
-	public static final SandstoneMaterial IMPACTSANDSTONE = createSandstoneMaterial("impact_sandstone",
+	public static final SandstoneMaterial IMPACTSANDSTONE = createSandstoneMaterial("impact",
 			MaterialColor.GRAY);
 
 	// METAL
@@ -197,6 +202,11 @@ public class BlockInit
 			AbstractBlock.Properties.create(Material.IRON, MaterialColor.GRAY).setRequiresTool()
 					.hardnessAndResistance(5.0F, 6.0F).sound(SoundType.METAL),
 			new Item.Properties().group(Galaxia.galaxiaGroup), ToolMaterials.METEOR, ArmorMaterials.METEOR);
+
+	public static final MetalMaterial SILVER = createMetalMaterial("silver", true,
+			AbstractBlock.Properties.create(Material.IRON, MaterialColor.LIGHT_BLUE).setRequiresTool()
+					.hardnessAndResistance(4.0F, 5.0F).sound(SoundType.METAL),
+			new Item.Properties().group(Galaxia.galaxiaGroup), ToolMaterials.SILVER, ArmorMaterials.SILVER);
 
 	public static final MetalMaterial COMETSTEEL = createMetalMaterial("cometsteel", true,
 			AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE_TERRACOTTA).setRequiresTool()

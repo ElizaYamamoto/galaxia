@@ -32,7 +32,6 @@ public class ModelBoltrineArmor extends BipedModel<LivingEntity>
 
 		Horns = new ModelRenderer(this);
 		Horns.setRotationPoint(-4.0F, -5.0F, 0.0F);
-		Head.addChild(Horns);
 		setRotationAngle(Horns, 0.5236F, 0.0F, 0.0F);
 		Horns.setTextureOffset(11, 38).addBox(8.0F, -1.0F, -1.0F, 1.0F, 1.0F, 4.0F, 0.0F, false);
 		Horns.setTextureOffset(0, 38).addBox(8.0F, -2.0F, 1.0F, 1.0F, 1.0F, 4.0F, 0.0F, false);
@@ -57,7 +56,6 @@ public class ModelBoltrineArmor extends BipedModel<LivingEntity>
 
 		FootR = new ModelRenderer(this);
 		FootR.setRotationPoint(-2.1F, 9.0F, 0.0F);
-		RightLeg.addChild(FootR);
 		setRotationAngle(FootR, 0.5236F, 0.0F, 0.0F);
 		FootR.setTextureOffset(9, 33).addBox(-1.0F, 0.0F, -1.0F, 1.0F, 1.0F, 3.0F, 0.0F, false);
 		FootR.setTextureOffset(0, 33).addBox(-1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 3.0F, 0.0F, false);
@@ -68,10 +66,13 @@ public class ModelBoltrineArmor extends BipedModel<LivingEntity>
 
 		FootL = new ModelRenderer(this);
 		FootL.setRotationPoint(3.1F, 9.0F, 0.0F);
-		LeftLeg.addChild(FootL);
 		setRotationAngle(FootL, 0.5236F, 0.0F, 0.0F);
 		FootL.setTextureOffset(0, 33).addBox(-1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 3.0F, 0.0F, false);
 		FootL.setTextureOffset(9, 33).addBox(-1.0F, 0.0F, -1.0F, 1.0F, 1.0F, 3.0F, 0.0F, false);
+
+		bipedHead.addChild(Horns);
+		RightLeg.addChild(FootR);
+		LeftLeg.addChild(FootL);
 	}
 
 	public void setRotationAngles(LivingEntity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks,

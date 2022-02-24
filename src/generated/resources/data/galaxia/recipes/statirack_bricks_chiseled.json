@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "galaxia_bricks",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "galaxia:statirack_brick_slab"
+    }
+  },
+  "result": {
+    "item": "galaxia:statirack_bricks_chiseled"
+  }
+}

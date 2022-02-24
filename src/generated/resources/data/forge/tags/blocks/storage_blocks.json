@@ -3,6 +3,8 @@
   "values": [
     "galaxia:soal_block",
     "galaxia:meteor_block",
+    "galaxia:cometsteel_block",
+    "galaxia:meteor_block",
     "galaxia:cometsteel_block"
   ]
 }

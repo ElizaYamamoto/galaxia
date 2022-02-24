@@ -9,6 +9,7 @@ import io.github.elizayami.galaxia.common.abstracts.materials.StoneMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.VanillaMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.WoodenMaterial;
 import io.github.elizayami.galaxia.core.init.BlockInit;
+import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -27,9 +28,14 @@ public class ModItemModels extends ItemModelProvider
 	@Override
 	protected void registerModels()
 	{
-		getBuilder("comet_trail_dust").parent(new ModelFile.UncheckedModelFile("item/generated")).texture("layer0",
-				modLoc("item/comet_trail_dust"));
-
+		simpleItem(ItemInit.COMET_TRAIL_DUST.get());
+		
+		simpleItem(ItemInit.DRAGON_CHARGE.get());
+		
+		simpleItem(ItemInit.GALAXIUM_STAR.get());
+		
+		simpleItem(ItemInit.SOAL.get());
+		
 		// VANILLA MATERIALS
 
 		registerVanillaMaterialItemModels(BlockInit.WOOD);
@@ -63,6 +69,7 @@ public class ModItemModels extends ItemModelProvider
 		registerSandstoneMaterialItemModels(BlockInit.IMPACTSANDSTONE);
 
 		// METAL MATERIALS
+		registerMetalMaterialItemModels(BlockInit.SILVER);
 		registerMetalMaterialItemModels(BlockInit.METEOR);
 		registerMetalMaterialItemModels(BlockInit.COMETSTEEL);
 
@@ -118,9 +125,9 @@ public class ModItemModels extends ItemModelProvider
 
 	private void registerSandstoneMaterialItemModels(SandstoneMaterial material)
 	{
-		wallInventory(material.name + "_wall", modLoc("block/" + material.name));
+		wallInventory(material.name + "_wall", modLoc("block/" + material.name + "_sandstone"));
 
-		wallInventory(material.name + "_smooth_wall", modLoc("block/" + material.name + "_smooth"));
+		wallInventory(material.name + "_smooth_wall", modLoc("block/" + material.name + "_sandstone_smooth"));
 	}
 
 	private void registerMetalMaterialItemModels(MetalMaterial material)
@@ -184,6 +191,18 @@ public class ModItemModels extends ItemModelProvider
 	private void registerGemMaterialItemModels(GemMaterial material)
 	{
 		// Tools and armor
+
+		if (material == BlockInit.GALAXIUM)
+		{
+			getBuilder(material.name).parent(new ModelFile.UncheckedModelFile("item/generated"))
+			.texture("layer0", modLoc("item/stardust"));
+		}
+		else
+		{
+			getBuilder(material.name).parent(new ModelFile.UncheckedModelFile("item/generated"))
+			.texture("layer0", modLoc("item/" + material.name));
+		}
+		
 		getBuilder(material.name + "_shovel").parent(new ModelFile.UncheckedModelFile("item/handheld"))
 				.texture("layer0", modLoc("item/" + material.name + "_shovel"));
 

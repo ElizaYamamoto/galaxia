@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
+    "galaxia:silver_block",
     "galaxia:meteor_block",
-    "galaxia:cometsteel_block"
+    "galaxia:cometsteel_block",
+    "galaxia:boltrine_block",
+    "galaxia:galaxium_block"
   ]
 }

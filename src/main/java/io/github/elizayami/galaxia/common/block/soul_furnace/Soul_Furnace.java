@@ -29,11 +29,11 @@ public class Soul_Furnace extends ContainerBlock
 	public Soul_Furnace()
 	{
 		super(Block.Properties.create(Material.ROCK).setLightLevel(Soul_Furnace::getLightValue));
-		BlockState defaultBlockState = this.stateContainer.getBaseState().with(NUMBER_BURNING, 0).
+		BlockState getDefaultState = this.stateContainer.getBaseState().with(NUMBER_BURNING, 0).
 				getBlockState().with(FACING, Direction.NORTH).
 				getBlockState().with(IS_BURNING, false);
 
-		this.setDefaultState(defaultBlockState);
+		this.setDefaultState(getDefaultState);
 	}
 
 	   public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;

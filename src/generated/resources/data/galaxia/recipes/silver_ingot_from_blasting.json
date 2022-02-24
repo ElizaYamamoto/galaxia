@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "galaxia:silver_ore"
+  },
+  "result": "galaxia:silver_ingot",
+  "experience": 0.35,
+  "cookingtime": 100
+}

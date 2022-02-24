@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/fence_side",
   "textures": {
-    "texture": "galaxia:block/statirack"
+    "texture": "galaxia:block/statirack_bricks"
   }
 }

@@ -1,6 +1,7 @@
 package io.github.elizayami.galaxia.common.data;
 
 import io.github.elizayami.galaxia.Galaxia;
+import io.github.elizayami.galaxia.common.abstracts.materials.GemMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.MetalMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.NetherrackMaterial;
 import io.github.elizayami.galaxia.common.abstracts.materials.SandstoneMaterial;
@@ -53,8 +54,13 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		registerSandstoneMaterialTags(BlockInit.IMPACTSANDSTONE);
 		
 		// METAL MATERIALS
+		registerMetalMaterialTags(BlockInit.SILVER);
 		registerMetalMaterialTags(BlockInit.METEOR);
 		registerMetalMaterialTags(BlockInit.COMETSTEEL);
+		
+		// GEM MATERIALS
+		registerGemMaterialTags(BlockInit.BOLTRINE);
+		registerGemMaterialTags(BlockInit.GALAXIUM);
 	}
 	
 	private ResourceLocation frl(String tag) {
@@ -148,6 +154,14 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		// Forge Tags
 		getOrCreateBuilder(Tags.Items.STONE).add(material.stone.get().asItem());
 		getOrCreateBuilder(Tags.Items.NETHERRACK).add(material.stone.get().asItem());
+
+		getOrCreateBuilder(Tags.Items.ORES).add(material.gold.get().asItem());
+		getOrCreateBuilder(Tags.Items.ORES).add(material.quartz.get().asItem());
+
+		if (material.silver != null)
+		{
+			getOrCreateBuilder(Tags.Items.ORES).add(material.silver.get().asItem());
+		}
 	}
 
 
@@ -183,6 +197,32 @@ public class ModItemTagsProvider extends ItemTagsProvider
 		getOrCreateBuilder(Tags.Items.NUGGETS).add(material.nugget.get());
 		
 		getOrCreateBuilder(Tags.Items.INGOTS).add(material.ingot.get());
+		
+		if (material.hasOre)
+		{
+			getOrCreateBuilder(Tags.Items.ORES).add(material.ore.get().asItem());
+		}
+		
+		getOrCreateBuilder(Tags.Items.STORAGE_BLOCKS).add(material.block.get().asItem());
+		
+	}
+	
+	private void registerGemMaterialTags(GemMaterial material)
+	{
+		getOrCreateBuilder(ItemTags.SLABS).add(material.slab.get().asItem());
+		
+		getOrCreateBuilder(ItemTags.STAIRS).add(material.stairs.get().asItem());
+		
+		if (material == BlockInit.GALAXIUM)
+		{
+			getOrCreateBuilder(Tags.Items.DUSTS).add(material.gem.get());
+		}
+		else
+		{
+			getOrCreateBuilder(ItemTags.BEACON_PAYMENT_ITEMS).add(material.gem.get());
+			
+			getOrCreateBuilder(Tags.Items.GEMS).add(material.gem.get());
+		}
 		
 		if (material.hasOre)
 		{

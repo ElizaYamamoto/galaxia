@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "galaxia:statirack_brick_cracked"
+    "item": "galaxia:statirack_bricks_cracked"
   },
   "result": "galaxia:statirack",
   "experience": 0.1,

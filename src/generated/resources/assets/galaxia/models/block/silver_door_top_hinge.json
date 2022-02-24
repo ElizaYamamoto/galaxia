@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "galaxia:block/silver_door_bottom",
+    "top": "galaxia:block/silver_door_top"
+  }
+}

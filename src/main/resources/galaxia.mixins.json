@@ -1,0 +1,15 @@
+{
+	"required": true,
+	"package": "io.github.elizayami.galaxia.mixin",
+	"compatibilityLevel": "JAVA_8",
+	"refmap": "byg.refmap.json",
+	"mixins": [
+		"common.block.MixinAbstractFireBlock"
+	],
+	"client": [
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"minVersion": "0.8"
+}

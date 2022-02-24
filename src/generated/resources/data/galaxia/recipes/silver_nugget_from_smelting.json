@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": [
+    {
+      "item": "galaxia:silver_axe"
+    },
+    {
+      "item": "galaxia:silver_pickaxe"
+    },
+    {
+      "item": "galaxia:silver_shovel"
+    },
+    {
+      "item": "galaxia:silver_hoe"
+    },
+    {
+      "item": "galaxia:silver_sword"
+    },
+    {
+      "item": "galaxia:silver_helmet"
+    },
+    {
+      "item": "galaxia:silver_chestplate"
+    },
+    {
+      "item": "galaxia:silver_leggings"
+    },
+    {
+      "item": "galaxia:silver_boots"
+    }
+  ],
+  "result": "galaxia:silver_nugget",
+  "experience": 0.35,
+  "cookingtime": 200
+}

@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "galaxia:witherrack_bricks"
+    "item": "galaxia:witherrack_brick"
   },
   "result": "galaxia:witherrack",
   "experience": 0.1,

@@ -15,9 +15,13 @@ import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.data.loot.BlockLootTables;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.ConstantRange;
+import net.minecraft.loot.ItemLootEntry;
 import net.minecraft.loot.RandomValueRange;
+import net.minecraft.loot.functions.ApplyBonus;
+import net.minecraft.loot.functions.SetCount;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModBlockLootTables extends BlockLootTables
@@ -26,9 +30,7 @@ public class ModBlockLootTables extends BlockLootTables
 	protected Iterable<Block> getKnownBlocks()
 	{
 		return StreamSupport.stream(ForgeRegistries.BLOCKS.spliterator(), false)
-				.filter(entry -> entry.getRegistryName() != null
-						&& entry.getRegistryName().getNamespace().equals(Galaxia.MOD_ID))
-				.collect(Collectors.toSet());
+				.filter(entry -> entry.getRegistryName() != null && entry.getRegistryName().getNamespace().equals(Galaxia.MOD_ID)).collect(Collectors.toSet());
 	}
 
 	@Override
@@ -41,10 +43,10 @@ public class ModBlockLootTables extends BlockLootTables
 
 		registerDropSelfLootTable(BlockInit.SOAL_BLOCK.get());
 
-		registerDropSelfLootTable(BlockInit.IMPACT_SAND.get());
-
 		registerDropSelfLootTable(BlockInit.STATIC_ASH.get());
-		
+
+		registerLootTable(BlockInit.STATIC.get(), blockNoDrop());
+
 		// MATERIALS
 		registerDropSelfLootTable(BlockInit.GALAXIUM_STAR);
 
@@ -59,8 +61,6 @@ public class ModBlockLootTables extends BlockLootTables
 			return droppingItemWithFortune(block, ItemInit.SOAL.get());
 		});
 
-		// STONES
-
 		// WOODEN_MATERIALS
 
 		registerWoodenMaterialLootTables(BlockInit.SHADOWSPIKE);
@@ -73,7 +73,7 @@ public class ModBlockLootTables extends BlockLootTables
 		// STONE MATERIALS
 
 		registerStoneMaterialLootTables(BlockInit.DRAGONSTONE);
-		
+
 		// NETHERRACK MATERIALS
 
 		registerNetherrackMaterialLootTables(BlockInit.STATIRACK);
@@ -86,6 +86,7 @@ public class ModBlockLootTables extends BlockLootTables
 
 		// METAL MATERIALS
 
+		registerMetalMaterialLootTables(BlockInit.SILVER);
 		registerMetalMaterialLootTables(BlockInit.METEOR);
 		registerMetalMaterialLootTables(BlockInit.COMETSTEEL);
 
@@ -116,8 +117,7 @@ public class ModBlockLootTables extends BlockLootTables
 		registerDropSelfLootTable(material.chest.get());
 		registerDropSelfLootTable(material.sign.get());
 		registerDropSelfLootTable(material.barrel.get());
-		registerLootTable(material.shelf.get(),
-				droppingWithSilkTouchOrRandomly(material.shelf.get(), Items.BOOK, ConstantRange.of(3)));
+		registerLootTable(material.shelf.get(), droppingWithSilkTouchOrRandomly(material.shelf.get(), Items.BOOK, ConstantRange.of(3)));
 	}
 
 	private void registerStoneMaterialLootTables(StoneMaterial material)
@@ -146,10 +146,27 @@ public class ModBlockLootTables extends BlockLootTables
 		registerDropSelfLootTable(material.fence.get());
 		registerDropSelfLootTable(material.gate.get());
 		registerLootTable(material.slab.get(), BlockLootTables::droppingSlab);
+
+		registerLootTable(material.gold.get(),
+				droppingWithSilkTouch(material.gold.get(), withExplosionDecay(material.gold.get(), ItemLootEntry.builder(Items.GOLD_NUGGET)
+						.acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 6.0F))).acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)))));
+
+		registerLootTable(material.quartz.get(), droppingItemWithFortune(material.quartz.get(), Items.QUARTZ));
+
+		if (material.silver != null)
+		{
+			registerLootTable(material.silver.get(),
+					droppingWithSilkTouch(material.silver.get(), withExplosionDecay(material.silver.get(), ItemLootEntry.builder(BlockInit.SILVER.nugget.get())
+							.acceptFunction(SetCount.builder(RandomValueRange.of(2.0F, 6.0F))).acceptFunction(ApplyBonus.oreDrops(Enchantments.FORTUNE)))));
+		}
 	}
 
 	private void registerSandstoneMaterialLootTables(SandstoneMaterial material)
 	{
+		if (material.sand != null)
+		{
+			registerDropSelfLootTable(material.sand.get());
+		}
 		registerDropSelfLootTable(material.stone.get());
 		registerDropSelfLootTable(material.stairs.get());
 		registerLootTable(material.slab.get(), BlockLootTables::droppingSlab);
@@ -179,7 +196,7 @@ public class ModBlockLootTables extends BlockLootTables
 	{
 		if (material.hasOre)
 		{
-			registerDropSelfLootTable(material.ore.get());
+			registerLootTable(material.ore.get(), droppingItemWithFortune(material.ore.get(), material.gem.get()));
 		}
 		registerDropSelfLootTable(material.block.get());
 		registerDropSelfLootTable(material.tile.get());

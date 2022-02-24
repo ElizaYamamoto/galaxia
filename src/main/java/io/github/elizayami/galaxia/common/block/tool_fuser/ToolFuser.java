@@ -25,9 +25,9 @@ public class ToolFuser extends ContainerBlock
 	public ToolFuser()
 	{
 		super(Block.Properties.create(Material.ROCK).setLightLevel(ToolFuser::getLightValue));
-		BlockState defaultBlockState = this.stateContainer.getBaseState().with(FACING, Direction.NORTH);
+		BlockState getDefaultState = this.stateContainer.getBaseState().with(FACING, Direction.NORTH);
 
-		this.setDefaultState(defaultBlockState);
+		this.setDefaultState(getDefaultState);
 	}
 
 	public static final DirectionProperty FACING = HorizontalBlock.HORIZONTAL_FACING;

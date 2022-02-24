@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "galaxia:block/scorchwood_bark"
+    "down": "galaxia:block/scorchwood_log",
+    "up": "galaxia:block/scorchwood_log",
+    "north": "galaxia:block/scorchwood_log",
+    "south": "galaxia:block/scorchwood_log",
+    "east": "galaxia:block/scorchwood_log",
+    "west": "galaxia:block/scorchwood_log",
+    "particle": "galaxia:block/scorchwood_log"
   }
 }

@@ -23,11 +23,10 @@ public class VanillaMaterial
 	public final RegistryObject<Item> backhaw;
 	
 	public final String name;
-	
 	public VanillaMaterial(String name, IItemTier material) 
 	{
 		this.name = name;
-
+		
 		paxel = ItemInit.registerItem(name + "_paxel", () -> new PaxelItem(material,  1, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));
 		
 		hammer = ItemInit.registerItem(name + "_hammer", () -> new HammerItem(material, 2.5f, -2.8F, p -> p.group(Galaxia.galaxiaGroup)));

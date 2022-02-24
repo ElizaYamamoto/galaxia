@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "galaxia:block/ghostwood_bark"
+    "down": "galaxia:block/ghostwood_log",
+    "up": "galaxia:block/ghostwood_log",
+    "north": "galaxia:block/ghostwood_log",
+    "south": "galaxia:block/ghostwood_log",
+    "east": "galaxia:block/ghostwood_log",
+    "west": "galaxia:block/ghostwood_log",
+    "particle": "galaxia:block/ghostwood_log"
   }
 }

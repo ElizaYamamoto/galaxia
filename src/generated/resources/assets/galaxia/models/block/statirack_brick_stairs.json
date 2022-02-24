@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/stairs",
   "textures": {
-    "side": "galaxia:block/statirack",
-    "bottom": "galaxia:block/statirack",
-    "top": "galaxia:block/statirack"
+    "side": "galaxia:block/statirack_bricks",
+    "bottom": "galaxia:block/statirack_bricks",
+    "top": "galaxia:block/statirack_bricks"
   }
 }

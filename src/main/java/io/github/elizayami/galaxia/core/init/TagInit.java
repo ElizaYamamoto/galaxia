@@ -11,8 +11,6 @@ import net.minecraft.util.ResourceLocation;
 public class TagInit
 {
 	// MOD BLOCK TAGS
-	public static final ITag.INamedTag<Block> END_STONE = makeModBlockTag("endstone");
-
 	public static final ITag.INamedTag<Block> BLOCK_BARRELS = makeBlockTag("forge", "barrels/wooden");
 
 	// CUSTOM FORGE ITEM TAGS

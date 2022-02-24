@@ -1,9 +1,11 @@
 package io.github.elizayami.galaxia.common;
 
 import io.github.elizayami.galaxia.Galaxia;
-import io.github.elizayami.galaxia.common.item.BoltrineArmor;
-import io.github.elizayami.galaxia.common.item.CometsteelArmor;
-import io.github.elizayami.galaxia.common.item.GalaxiumArmor;
+import io.github.elizayami.galaxia.common.item.armor.BoltrineArmor;
+import io.github.elizayami.galaxia.common.item.armor.CometsteelArmor;
+import io.github.elizayami.galaxia.common.item.armor.GalaxiumArmor;
+import io.github.elizayami.galaxia.common.item.armor.SilverArmor;
+import io.github.elizayami.galaxia.core.init.EffectInit;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
@@ -50,6 +52,17 @@ public class ServerEvents
 							.getItem() instanceof CometsteelArmor)
 			{
 				event.getEntityLiving().addPotionEffect(new EffectInstance(Effects.HASTE, 50, 1, false, false));
+			}
+			if (event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.HEAD)
+					.getItem() instanceof SilverArmor
+					&& event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.CHEST)
+							.getItem() instanceof SilverArmor
+					&& event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.LEGS)
+							.getItem() instanceof SilverArmor
+					&& event.getEntityLiving().getItemStackFromSlot(EquipmentSlotType.FEET)
+							.getItem() instanceof SilverArmor)
+			{
+				event.getEntityLiving().addPotionEffect(new EffectInstance(EffectInit.BLESSED.get(), 50, 1, false, false));
 			}
 		}
 		catch (Exception e)

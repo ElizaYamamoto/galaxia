@@ -13,7 +13,6 @@ import net.minecraft.block.FenceBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.StairsBlock;
-import net.minecraft.block.WallBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
@@ -36,6 +35,10 @@ public class NetherrackMaterial
 	public final RegistryObject<Block> fence;
 	public final RegistryObject<Block> gate;
 
+	public final RegistryObject<Block> quartz;
+	public final RegistryObject<Block> gold;
+	public final RegistryObject<Block> silver;
+
 	public final RegistryObject<Item> brick;
 
 	public NetherrackMaterial(String name, MaterialColor color, Item.Properties itemSettings)
@@ -47,8 +50,8 @@ public class NetherrackMaterial
 
 		stone = BlockInit.registerBlockWithDefaultItem(name, () -> new Block(material));
 		bricks = BlockInit.registerBlockWithDefaultItem(name + "_bricks", () -> new Block(material));
-		cracked_bricks = BlockInit.registerBlockWithDefaultItem(name + "_brick_cracked", () -> new Block(material));
-		chiseled = BlockInit.registerBlockWithDefaultItem(name + "_brick_chiseled", () -> new WallBlock(material));
+		cracked_bricks = BlockInit.registerBlockWithDefaultItem(name + "_bricks_cracked", () -> new Block(material));
+		chiseled = BlockInit.registerBlockWithDefaultItem(name + "_bricks_chiseled", () -> new Block(material));
 
 		stairs = BlockInit.registerBlockWithDefaultItem(name + "_brick_stairs",
 				() -> new StairsBlock(() -> stone.get().getDefaultState(), material));
@@ -56,6 +59,19 @@ public class NetherrackMaterial
 		fence = BlockInit.registerBlockWithDefaultItem(name + "_fence", () -> new FenceBlock(material));
 		gate = BlockInit.registerBlockWithDefaultItem(name + "_gate", () -> new FenceGateBlock(material));
 
+		quartz = BlockInit.registerBlockWithDefaultItem(name + "_quartz", () -> new Block(material));
+		gold = BlockInit.registerBlockWithDefaultItem(name + "_gold", () -> new Block(material));
+		
+		if (name == "witherrack")
+		{
+			silver = BlockInit.registerBlockWithDefaultItem(name + "_silver", () -> new Block(material));
+		}
+		else
+		{
+			silver = null;
+		}
+		
+		
 		brick = ItemInit.registerItem(name + "_brick", () -> new Item(itemSettings));
 		MATERIALS.add(this);
 	}

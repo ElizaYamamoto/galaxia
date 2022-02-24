@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "galaxia:block/seawood_bark_stripped"
+      "model": "galaxia:block/seawood_bark"
     }
   }
 }

@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "galaxia:block/seawood_bark"
+    "down": "galaxia:block/seawood_log",
+    "up": "galaxia:block/seawood_log",
+    "north": "galaxia:block/seawood_log",
+    "south": "galaxia:block/seawood_log",
+    "east": "galaxia:block/seawood_log",
+    "west": "galaxia:block/seawood_log",
+    "particle": "galaxia:block/seawood_log"
   }
 }

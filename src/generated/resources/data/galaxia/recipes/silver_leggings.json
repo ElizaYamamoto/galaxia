@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X X",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "galaxia:silver_ingot"
+    }
+  },
+  "result": {
+    "item": "galaxia:silver_leggings"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "galaxia:block/groundstalk_bark_stripped"
+      "model": "galaxia:block/groundstalk_bark"
     }
   }
 }

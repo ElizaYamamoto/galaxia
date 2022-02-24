@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "galaxia:soulsandstone"
-  },
-  "result": "galaxia:soulsandstone_slab",
-  "count": 2
-}

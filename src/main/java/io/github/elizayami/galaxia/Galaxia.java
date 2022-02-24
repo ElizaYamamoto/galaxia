@@ -10,8 +10,10 @@ import io.github.elizayami.galaxia.common.CommonProxy;
 import io.github.elizayami.galaxia.common.PhysicalServerSide;
 import io.github.elizayami.galaxia.common.biome.GalaxiaBiomes;
 import io.github.elizayami.galaxia.common.biome.GalaxiaSurfaceBuilders;
+import io.github.elizayami.galaxia.common.entities.boat.GalaxiaBoatRenderer;
 import io.github.elizayami.galaxia.core.init.BlockInit;
 import io.github.elizayami.galaxia.core.init.BoatInit;
+import io.github.elizayami.galaxia.core.init.EntityInit;
 import io.github.elizayami.galaxia.core.init.TileEntityInit;
 import io.github.elizayami.galaxia.core.init.ItemInit;
 import io.github.elizayami.galaxia.core.init.WoodTileEntityInit;
@@ -25,6 +27,7 @@ import org.apache.logging.log4j.LogManager;
 
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
+import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 import software.bernie.geckolib3.GeckoLib;
@@ -33,15 +36,24 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.biome.Biome;
+
+import java.io.File;
+import java.nio.file.Path;
 
 @Mod("galaxia")
 public class Galaxia
@@ -52,6 +64,9 @@ public class Galaxia
 
 	public static final IPhysicalSide SIDE = DistExecutor.safeRunForDist(() -> PhysicalClientSide::new,
 			() -> PhysicalServerSide::new);
+
+	public static final Path CONFIG_PATH = new File(String.valueOf(FMLPaths.CONFIGDIR.get().resolve(MOD_ID))).toPath();
+	public static Registry<Biome> EARLY_BIOME_REGISTRY_ACCESS = null;
 
 	public static ResourceLocation createID(String id)
 	{
@@ -71,6 +86,8 @@ public class Galaxia
 
 		bus.addListener(this::setup);
 
+		bus.addListener(this::clientSetup);
+
 		bus.register(BoatInit.class);
 
 		ItemInit.ITEMS.register(bus);
@@ -83,7 +100,8 @@ public class Galaxia
 
 		PROXY.init();
 
-		final ClientSideOnlyModEventRegistrar clientSideOnlyModEventRegistrar = new ClientSideOnlyModEventRegistrar(bus);
+		final ClientSideOnlyModEventRegistrar clientSideOnlyModEventRegistrar = new ClientSideOnlyModEventRegistrar(
+				bus);
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> clientSideOnlyModEventRegistrar::registerClientOnlyEvents);
 
 		GalaxiaBiomes.initialise(bus);
@@ -91,6 +109,15 @@ public class Galaxia
 
 		forgeBus.register(this);
 		forgeBus.addListener(EventPriority.HIGH, OreGeneration::generateOres);
+	}
+
+	@SubscribeEvent
+	public static void registerEntities(RegistryEvent.Register<EntityType<?>> event)
+	{
+		Galaxia.LOGGER.debug("Galaxia: Registering entities...");
+		EntityInit.init();
+		EntityInit.entities.forEach(entityType -> event.getRegistry().register(entityType));
+		Galaxia.LOGGER.info("Galaxia: Entities registered!");
 	}
 
 	private void setup(final FMLCommonSetupEvent event)
@@ -134,6 +161,13 @@ public class Galaxia
 
 	public void postInit()
 	{
+	}
+
+	private void clientSetup(FMLClientSetupEvent event)
+	{
+		LOGGER.debug("Galaxia: \"Client Setup\" Event Starting...");
+		RenderingRegistry.registerEntityRenderingHandler(EntityInit.BOAT, GalaxiaBoatRenderer::new);
+		LOGGER.info("Galaxia: \"Client Setup\" Event Complete!");
 	}
 
 	private void setupClient(FMLClientSetupEvent event)

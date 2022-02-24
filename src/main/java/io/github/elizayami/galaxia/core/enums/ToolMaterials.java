@@ -10,6 +10,8 @@ import net.minecraft.util.LazyValue;
 public enum ToolMaterials implements IItemTier
 {
 	METEOR(2, 2000, 3, 0, 1, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
+	
+	SILVER(2, 150, 6.0F, 1.5F, 18, () -> Ingredient.fromItems(BlockInit.SILVER.ingot.get())),
 
 	BOLTRINE(3, 1000, 8.0F, 3.5F, 12, () -> Ingredient.fromItems(BlockInit.METEOR.ingot.get())),
 

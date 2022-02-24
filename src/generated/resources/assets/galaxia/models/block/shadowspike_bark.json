@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "galaxia:block/shadowspike_bark"
+    "down": "galaxia:block/shadowspike_log",
+    "up": "galaxia:block/shadowspike_log",
+    "north": "galaxia:block/shadowspike_log",
+    "south": "galaxia:block/shadowspike_log",
+    "east": "galaxia:block/shadowspike_log",
+    "west": "galaxia:block/shadowspike_log",
+    "particle": "galaxia:block/shadowspike_log"
   }
 }

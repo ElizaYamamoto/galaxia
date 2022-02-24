@@ -15,7 +15,10 @@
     "galaxia:soul_sandstone_smooth_stairs",
     "galaxia:impact_sandstone_stairs",
     "galaxia:impact_sandstone_smooth_stairs",
+    "galaxia:silver_stairs",
     "galaxia:meteor_stairs",
-    "galaxia:cometsteel_stairs"
+    "galaxia:cometsteel_stairs",
+    "galaxia:boltrine_stairs",
+    "galaxia:galaxium_stairs"
   ]
 }

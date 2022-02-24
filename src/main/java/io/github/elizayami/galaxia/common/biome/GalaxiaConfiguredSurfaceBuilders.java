@@ -34,7 +34,7 @@ public class GalaxiaConfiguredSurfaceBuilders
 		public static void register(final RegistryEvent.Register<SurfaceBuilder<?>> event) {
 			register(IMPACT_WASTES,
 					GalaxiaSurfaceBuilders.LOGGING_SURFACE.get().func_242929_a(new SurfaceBuilderConfig(
-							BlockInit.IMPACT_SAND.get().getDefaultState(), 
+							BlockInit.IMPACTSANDSTONE.sand.get().getDefaultState(), 
 							BlockInit.IMPACTSANDSTONE.stone.get().getDefaultState(), 
 							BlockInit.IMPACTSANDSTONE.smooth.get().getDefaultState()))
 			);

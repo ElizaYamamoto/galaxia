@@ -67,6 +67,11 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		
 		registerMetalMaterialTags(BlockInit.METEOR);
 		registerMetalMaterialTags(BlockInit.COMETSTEEL);
+		
+		// GEM MATERIALS
+
+		registerMetalMaterialTags(BlockInit.METEOR);
+		registerMetalMaterialTags(BlockInit.COMETSTEEL);
 	}
 	
 	private void registerWoodenMaterialTags(WoodenMaterial material)
@@ -169,6 +174,14 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		getOrCreateBuilder(Tags.Blocks.STONE).add(material.stone.get());
 		getOrCreateBuilder(Tags.Blocks.NETHERRACK).add(material.stone.get());
 		getOrCreateBuilder(BlockTags.BASE_STONE_NETHER).add(material.stone.get());
+
+		getOrCreateBuilder(Tags.Blocks.ORES).add(material.gold.get());
+		getOrCreateBuilder(Tags.Blocks.ORES).add(material.quartz.get());
+		
+		if (material.silver != null)
+		{
+			getOrCreateBuilder(Tags.Blocks.ORES).add(material.silver.get());
+		}
 	}
 
 	private void registerSandstoneMaterialTags(SandstoneMaterial material)
@@ -193,10 +206,12 @@ public class ModBlockTagsProvider extends BlockTagsProvider
 		getOrCreateBuilder(BlockTags.BEACON_BASE_BLOCKS).add(material.block.get());
 		
 		getOrCreateBuilder(BlockTags.DOORS).add(material.door.get());
+		getOrCreateBuilder(BlockTags.WOODEN_DOORS).add(material.door.get());
 		
 		getOrCreateBuilder(BlockTags.STAIRS).add(material.stairs.get());
 
 		getOrCreateBuilder(BlockTags.TRAPDOORS).add(material.trapdoor.get());
+		getOrCreateBuilder(BlockTags.WOODEN_TRAPDOORS).add(material.trapdoor.get());
 		
 		getOrCreateBuilder(BlockTags.SLABS).add(material.slab.get());
 		

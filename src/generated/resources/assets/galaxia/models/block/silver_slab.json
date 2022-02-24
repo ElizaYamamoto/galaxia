@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "side": "galaxia:block/silver_tile",
+    "bottom": "galaxia:block/silver_tile",
+    "top": "galaxia:block/silver_tile"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "galaxia:silver_backhoe"
+    ]
+  },
+  "criteria": {
+    "has_silver_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "galaxia:silver_block"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "galaxia:silver_backhoe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_silver_ingot",
+      "has_the_recipe"
+    ]
+  ]
+}

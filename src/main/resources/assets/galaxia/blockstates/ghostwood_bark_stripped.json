@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "galaxia:block/ghostwood_bark_stripped"
+      "model": "galaxia:block/ghostwood_bark"
     }
   }
 }

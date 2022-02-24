@@ -19,6 +19,12 @@ public enum ArmorMaterials implements IArmorMaterial
 		return Ingredient.fromItems(BlockInit.METEOR.ingot.get());
 	}, 0.1F),
 
+	SILVER(Galaxia.MOD_ID + ":silver", 13, new int[]
+	{ 2, 4, 5, 2 }, 15, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 0.0F, () ->
+	{
+		return Ingredient.fromItems(BlockInit.SILVER.ingot.get());
+	}, 0F),
+
 	BOLTRINE(Galaxia.MOD_ID + ":boltrine", 28, new int[]
 	{ 2, 5, 7, 2 }, 13, SoundEvents.ITEM_ARMOR_EQUIP_IRON, 1F, () ->
 	{

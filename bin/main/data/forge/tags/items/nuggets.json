@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "galaxia:silver_nugget",
     "galaxia:meteor_nugget",
     "galaxia:cometsteel_nugget"
   ]

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "galaxia:block/soul_chiseled"
+      "model": "galaxia:block/soul_sandstone_chiseled"
     }
   }
 }

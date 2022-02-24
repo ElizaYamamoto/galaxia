@@ -1,9 +1,7 @@
 {
   "replace": false,
   "values": [
-    "galaxia:silver_ingot",
     "galaxia:meteor_ingot",
-    "galaxia:cometsteel_ingot",
-    "galaxia:boltrine"
+    "galaxia:cometsteel_ingot"
   ]
 }

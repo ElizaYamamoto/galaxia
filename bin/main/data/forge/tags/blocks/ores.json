@@ -2,13 +2,6 @@
   "replace": false,
   "values": [
     "galaxia:soal_ore",
-    "galaxia:statirack_gold",
-    "galaxia:statirack_quartz",
-    "galaxia:witherrack_gold",
-    "galaxia:witherrack_quartz",
-    "galaxia:witherrack_silver",
-    "galaxia:meteor_ore",
-    "galaxia:cometsteel_ore",
     "galaxia:meteor_ore",
     "galaxia:cometsteel_ore"
   ]
